@@ -8,6 +8,13 @@
   [formControl]="control"
   placeholder="{{ placeholder }}"
 />
-@if (control.getError("required") && (control.dirty || control.touched)) {
-  <div>Must be here!</div>
+@if (showErrors) {
+  <div class="text-red-600">
+    @if (control.hasError("required")) {
+      <div>This field is required!</div>
+    }
+    @if (control.hasError("email")) {
+      <div>Enter correct email!</div>
+    }
+  </div>
 }

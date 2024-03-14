@@ -25,8 +25,8 @@ export class SignInFormComponent {
   constructor(private fb: FormBuilder) {}
 
   signInForm = this.fb.group({
-    email: ['', Validators.required, Validators.email],
-    password: [''],
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', [Validators.required]],
   });
 
   onSubmit() {
