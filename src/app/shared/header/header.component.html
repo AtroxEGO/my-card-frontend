@@ -1,0 +1,25 @@
+<div
+  class="w-100% flex h-fit items-center justify-between {{ bgColor }} {{
+    textColor
+  }} px-32 py-3 text-secondary"
+>
+  <a
+    class="flex select-none items-center justify-center gap-2 text-5xl font-thin hover:cursor-pointer"
+    routerLink="/"
+  >
+    <img src="../../../assets/logo-frame.svg" alt="logo" class="w-16" />
+    MyCard
+  </a>
+  <div class="flex items-center gap-4 text-xl">
+    @if (isIndex) {
+      <a routerLink="/sign-up">Sign up</a>
+      <a
+        class="rounded-md bg-primary px-12 py-2 text-2xl text-white hover:bg-blue-800"
+        routerLink="/sign-in"
+      >
+        Sign in
+      </a>
+    }
+    <button>EN</button>
+  </div>
+</div>
