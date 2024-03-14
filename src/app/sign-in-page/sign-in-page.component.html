@@ -1,1 +1,43 @@
-<p>sign-in-page works!</p>
+<div
+  class="flex h-full w-full flex-col items-center py-10 text-2xl font-thin text-secondary"
+>
+  <div class="flex w-1/4 min-w-96 flex-col gap-4">
+    <div class="flex flex-col gap-3 rounded-lg bg-white px-8 pb-7 pt-5">
+      <h1 class="text-4xl">Sign in</h1>
+      <input
+        class="rounded-md border border-gray-500 px-4 py-2 focus-visible:outline-none"
+        type="text"
+        name="email"
+        id="emailInput"
+        placeholder="Email"
+      />
+      <input
+        class="rounded-md border border-gray-500 px-4 py-2 focus-visible:outline-none"
+        type="password"
+        name="password"
+        id="passwordInput"
+        placeholder="Password"
+      />
+      <div>
+        <button class="text-xl font-extralight text-primary">
+          Forgot password?
+        </button>
+      </div>
+      <button class="rounded-full bg-primary py-2 text-white hover:bg-blue-800">
+        Sign in
+      </button>
+      <div class="flex items-center">
+        <div class="m-2 h-0 w-full border border-gray-300"></div>
+        or
+        <div class="m-2 h-0 w-full border border-gray-300"></div>
+      </div>
+      <button class="rounded-md border border-gray-500 py-2">
+        Sign in with Google
+      </button>
+    </div>
+    <div class="flex flex-col px-3 font-thin text-white md:flex-row md:gap-3">
+      <p>Don't have an account?</p>
+      <a routerLink="/sign-up" class="w-fit font-extralight">Sign up</a>
+    </div>
+  </div>
+</div>
