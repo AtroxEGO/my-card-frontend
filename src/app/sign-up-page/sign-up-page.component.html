@@ -1,0 +1,31 @@
+<div
+  class="flex h-full w-full flex-col items-center py-10 text-2xl font-thin text-secondary"
+>
+  <div class="flex w-1/4 min-w-96 flex-col gap-4">
+    <div class="flex flex-col gap-3 rounded-lg bg-white px-8 pb-7 pt-5">
+      <h1 class="text-4xl">Sign up</h1>
+      <app-custom-input id="email-input" name="email" placeholder="Email" />
+      <app-custom-password-input
+        name="password"
+        placeholder="Password"
+        id="password-input"
+      />
+      <app-custom-password-input
+        name="confirm"
+        placeholder="Confirm password"
+        id="confirm-input"
+      />
+      <button class="rounded-full bg-primary py-2 text-white hover:bg-blue-800">
+        Sign up
+      </button>
+      <app-divider value="or" />
+      <button class="rounded-md border border-gray-500 py-2">
+        Sign up with Google
+      </button>
+    </div>
+    <div class="flex flex-wrap gap-x-3 px-3 font-thin text-white">
+      <p>Have an account?</p>
+      <a routerLink="/sign-in" class="w-fit font-extralight">Sign in</a>
+    </div>
+  </div>
+</div>
