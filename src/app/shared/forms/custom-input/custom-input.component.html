@@ -1,7 +1,13 @@
 <input
-  class="w-full rounded-md border border-gray-500 px-4 py-2 focus-visible:outline-none"
+  class="w-full rounded-md border {{
+    borderColor
+  }} px-4 py-2 focus-visible:outline-none"
   type="text"
   name="{{ name }}"
   id="{{ id }}"
+  [formControl]="control"
   placeholder="{{ placeholder }}"
 />
+@if (control.getError("required") && (control.dirty || control.touched)) {
+  <div>Must be here!</div>
+}

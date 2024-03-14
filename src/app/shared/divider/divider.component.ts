@@ -7,5 +7,5 @@ import { Component, Input } from '@angular/core';
   templateUrl: './divider.component.html',
 })
 export class DividerComponent {
-  @Input({ required: true }) value!: string;
+  @Input() value!: string;
 }
