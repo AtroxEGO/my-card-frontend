@@ -1,0 +1,37 @@
+<div class="flex flex-col gap-3 rounded-lg bg-white px-8 pb-7 pt-5">
+  <h1 class="text-4xl">Sign up</h1>
+  <form
+    [formGroup]="signUpForm"
+    (ngSubmit)="onSubmit()"
+    class="flex flex-col gap-3"
+  >
+    <app-custom-input
+      id="email-input"
+      name="email"
+      placeholder="Email"
+      [control]="getControl('email')"
+    />
+    <app-custom-password-input
+      name="password"
+      placeholder="Password"
+      id="password-input"
+      [control]="getControl('password')"
+    />
+    <app-custom-password-input
+      name="confirm"
+      placeholder="Confirm password"
+      id="confirm-input"
+      [control]="getControl('confirm')"
+    />
+    <button
+      type="submit"
+      class="rounded-full bg-primary py-2 text-white hover:bg-blue-800"
+    >
+      Sign up
+    </button>
+  </form>
+  <app-divider value="or" />
+  <button class="rounded-md border border-gray-500 py-2">
+    Sign up with Google
+  </button>
+</div>

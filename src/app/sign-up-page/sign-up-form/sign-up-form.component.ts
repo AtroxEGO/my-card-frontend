@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { DividerComponent } from '../../shared/divider/divider.component';
-import { CustomPasswordInputComponent } from '../../shared/forms/custom-password-input/custom-password-input.component';
 import { CustomInputComponent } from '../../shared/forms/custom-input/custom-input.component';
+import { CustomPasswordInputComponent } from '../../shared/forms/custom-password-input/custom-password-input.component';
 import {
   FormBuilder,
   FormControl,
@@ -10,31 +10,28 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-sign-in-form',
+  selector: 'app-sign-up-form',
   standalone: true,
-  templateUrl: './sign-in-form.component.html',
+  templateUrl: './sign-up-form.component.html',
   imports: [
     DividerComponent,
-    CustomPasswordInputComponent,
     CustomInputComponent,
+    CustomPasswordInputComponent,
     ReactiveFormsModule,
   ],
 })
-export class SignInFormComponent {
+export class SignUpFormComponent {
   constructor(private fb: FormBuilder) {}
 
-  signInForm = this.fb.group({
+  signUpForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
     password: ['', [Validators.required]],
+    confirm: ['', [Validators.required]],
   });
 
-  onSubmit() {
-    console.log(this.signInForm.value);
-    console.log(this.signInForm.errors);
-    console.log(this.getControl('email').errors);
-  }
+  onSubmit() {}
 
   getControl(name: string) {
-    return this.signInForm.get(name) as FormControl;
+    return this.signUpForm.get(name) as FormControl;
   }
 }

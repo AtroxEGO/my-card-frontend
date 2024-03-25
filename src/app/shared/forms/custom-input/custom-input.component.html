@@ -11,7 +11,7 @@
 @if (showErrors) {
   <div class="text-red-600">
     @if (control.hasError("required")) {
-      <div>This field is required!</div>
+      <div>{{ placeholder }} is required!</div>
     }
     @if (control.hasError("email")) {
       <div>Enter correct email!</div>
