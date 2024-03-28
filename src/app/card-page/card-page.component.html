@@ -1,1 +1,5 @@
-<div class="flex w-full py-20">Card of: {{ user }}</div>
+<div class="flex w-full py-20">
+  <ng-container *ngIf="card$ | async as card">
+    <div>Card data: {{ card | json }}</div>
+  </ng-container>
+</div>

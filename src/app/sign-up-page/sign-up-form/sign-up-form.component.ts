@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { DividerComponent } from '../../shared/divider/divider.component';
-import { CustomInputComponent } from '../../shared/forms/custom-input/custom-input.component';
-import { CustomPasswordInputComponent } from '../../shared/forms/custom-password-input/custom-password-input.component';
+import { CustomInputComponent } from '../../shared/components/forms/custom-input/custom-input.component';
+import { CustomPasswordInputComponent } from '../../shared/components/forms/custom-password-input/custom-password-input.component';
+import { DividerComponent } from '../../shared/components/divider/divider.component';
 import {
   FormBuilder,
   FormControl,
