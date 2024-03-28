@@ -26,7 +26,7 @@ export class HeaderComponent {
   get showAuthButtons() {
     let showAuthButtons = false;
     if (this.currentUrl === '/') showAuthButtons = true;
-    if (this.currentUrl.startsWith('/cards/')) showAuthButtons = true;
+    if (this.currentUrl?.startsWith('/cards/')) showAuthButtons = true;
     return showAuthButtons;
   }
 

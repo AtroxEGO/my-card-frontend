@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
 
 export type Card = {
@@ -26,6 +26,6 @@ export class CardService {
 
   getCard(id: string): Observable<Card> {
     const path = environment.apiBaseUrl + '/cards/' + id;
-    return this.http.get<Card>(path);
+    return this.http.get<Card>(path).pipe(shareReplay());
   }
 }

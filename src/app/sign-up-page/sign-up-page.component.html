@@ -1,11 +1,15 @@
 <div
   class="flex h-full w-full flex-col items-center py-10 text-2xl font-thin text-secondary"
 >
-  <div class="flex w-1/4 min-w-96 flex-col gap-4">
+  <div class="flex w-1/4 min-w-80 flex-col gap-4">
     <app-sign-up-form />
     <div class="flex flex-wrap gap-x-3 px-3 font-thin text-white">
       <p>Have an account?</p>
-      <a routerLink="/sign-in" class="w-fit font-extralight">Sign in</a>
+      <a
+        routerLink="/sign-in"
+        class="w-fit font-extralight active:text-gray-400"
+        >Sign in</a
+      >
     </div>
   </div>
 </div>

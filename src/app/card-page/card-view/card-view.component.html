@@ -1,0 +1,41 @@
+<div
+  class="flex w-full flex-col items-center px-3 sm:px-10 lg:flex-row xl:px-20"
+>
+  <div class="flex w-full flex-col items-center gap-5">
+    <div
+      class="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
+    >
+      <img
+        src="{{ card.photoUrl || '../../assets/avatar_placeholder.jpg' }}"
+        alt="card avatar"
+        class="size-64"
+      />
+      <div class="flex flex-col">
+        <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>
+        <span class="text-3xl font-thin text-gray-300">{{
+          card.jobTitle || "Job Title"
+        }}</span>
+      </div>
+    </div>
+    <div
+      class="flex w-full max-w-screen-lg flex-col items-center gap-3 px-5 lg:flex-row lg:items-start"
+    >
+      <div class="flex w-full flex-col">
+        <app-divider value="Bio" class="text-4xl" color="gray-500" />
+        <span class="text-2xl font-thin">
+          {{ card.bio || "Empty" }}
+        </span>
+      </div>
+      <div class="flex w-2/5 min-w-80 flex-col justify-center gap-4">
+        <app-divider value="Socials" class="text-4xl" color="gray-500" />
+        <ul class="w-full text-center text-2xl font-thin">
+          @for (social of card.socials; track social.socialName) {
+            {{ social.socialName }}: {{ social.value }}
+          } @empty {
+            <span>None</span>
+          }
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
