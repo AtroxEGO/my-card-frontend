@@ -8,4 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class DividerComponent {
   @Input() value!: string;
+  @Input() color: string = 'gray-300';
 }

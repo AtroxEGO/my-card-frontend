@@ -4,6 +4,7 @@ import { NavComponent } from './nav/nav.component';
 import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -22,15 +23,22 @@ export class HeaderComponent {
     });
   }
 
-  get isIndex() {
-    return this.currentUrl === '/';
+  get showAuthButtons() {
+    let showAuthButtons = false;
+    if (this.currentUrl === '/') showAuthButtons = true;
+    if (this.currentUrl.startsWith('/cards/')) showAuthButtons = true;
+    return showAuthButtons;
+  }
+
+  get transparentHeader() {
+    return this.currentUrl !== '/';
   }
 
   get bgColor() {
-    return this.isIndex ? 'bg-white' : 'bg-transparent';
+    return this.transparentHeader ? 'bg-transparent' : 'bg-white';
   }
 
   get textColor() {
-    return this.isIndex ? 'text-secondary' : 'text-white';
+    return this.transparentHeader ? 'text-white' : 'text-secondary';
   }
 }

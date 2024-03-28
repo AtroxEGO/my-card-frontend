@@ -1,7 +1,7 @@
 <div
-  class="w-100% flex h-fit items-center justify-between {{ bgColor }} {{
+  class="w-100% flex h-fit items-center justify-center {{ bgColor }} {{
     textColor
-  }} px-32 py-3 text-secondary"
+  }} px-32 py-3 text-secondary flex-col gap-4 md:flex-row md:justify-between"
 >
   <a
     class="flex select-none items-center justify-center gap-2 text-5xl font-thin hover:cursor-pointer"
@@ -11,15 +11,15 @@
     MyCard
   </a>
   <div class="flex items-center gap-4 text-xl">
-    @if (isIndex) {
-      <a routerLink="/sign-up">Sign up</a>
+    @if (showAuthButtons) {
+      <a routerLink="/sign-up" class="hover:text-gray-200">Sign&nbsp;up</a>
       <a
         class="rounded-md bg-primary px-12 py-2 text-2xl text-white hover:bg-blue-800"
         routerLink="/sign-in"
       >
-        Sign in
+        Sign&nbsp;in
       </a>
     }
-    <button>EN</button>
+    <button class="hover:text-gray-200">EN</button>
   </div>
 </div>

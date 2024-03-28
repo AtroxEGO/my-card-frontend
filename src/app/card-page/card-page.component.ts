@@ -3,11 +3,12 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Card, CardService } from '../shared/services/card.service';
 import { CommonModule } from '@angular/common';
+import { DividerComponent } from '../shared/components/divider/divider.component';
 
 @Component({
   selector: 'app-card-page',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, DividerComponent],
   templateUrl: './card-page.component.html',
 })
 export class CardPageComponent {

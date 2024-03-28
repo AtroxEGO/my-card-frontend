@@ -1,5 +1,51 @@
-<div class="flex w-full py-20">
-  <ng-container *ngIf="card$ | async as card">
+<div class="flex w-full py-10">
+  <!-- <ng-container *ngIf="card$ | async as card">
     <div>Card data: {{ card | json }}</div>
-  </ng-container>
+  </ng-container> -->
+  <div class="flex w-full flex-col items-center px-10 lg:flex-row xl:px-20">
+    <div class="flex w-full flex-col gap-5 md:w-3/4">
+      <div
+        class="flex flex-col items-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
+      >
+        <img
+          src="../../assets/avatar_placeholder.jpg"
+          alt="card avatar"
+          class="size-64"
+        />
+        <div class="flex flex-col">
+          <span class="text-6xl">Paweł Polakiewicz</span>
+          <span class="text-3xl font-thin text-gray-300"
+            >Founder &#64; MyCard</span
+          >
+        </div>
+      </div>
+      <div class="flex w-full flex-col px-5">
+        <!-- <span class="text-center text-3xl md:text-start">Bio</span> -->
+        <app-divider value="Bio" class="text-4xl" color="gray-500" />
+        <span class="text-2xl font-thin"
+          >Lorem ipsum dolor sit amet consectetur, adipisicing elit. Harum
+          tenetur veniam eius expedita nobis sapiente minus fugiat, atque
+          molestias provident repellat. Eveniet corporis quae ipsum nemo
+          reiciendis consectetur saepe harum, natus perferendis, optio sed atque
+          velit necessitatibus sit aut ullam in dignissimos odio ipsa molestias
+          tenetur unde? Ratione, numquam voluptatem. Libero recusandae, ad unde
+          iure doloremque, fugiat, expedita harum suscipit nam animi alias vero.
+          Mollitia facilis fuga ut voluptates, architecto quaerat quos sapiente
+          in dignissimos nobis maxime deleniti illum doloremque optio autem
+          suscipit, reprehenderit nesciunt. Fugiat eligendi ipsam vitae soluta
+          tenetur ut debitis quaerat, voluptas quam nostrum quod esse
+          reiciendis!</span
+        >
+      </div>
+    </div>
+    <div class="flex w-full flex-col justify-center gap-4 py-10 md:w-1/4">
+      <!-- <span class="text-4xl">Socials</span> -->
+      <app-divider value="Socials" class="text-4xl" color="gray-500" />
+      <ul class="w-full text-center text-2xl font-thin">
+        <li>Website</li>
+        <li>LinkedIn</li>
+        <li>Youtube</li>
+      </ul>
+    </div>
+  </div>
 </div>
