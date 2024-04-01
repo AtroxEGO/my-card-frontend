@@ -1,0 +1,21 @@
+<div class="flex items-center justify-center gap-2">
+  <div
+    class="text-6xl {{ getStyles() }} min-w-32"
+    [contentEditable]="editing"
+    spellcheck="false"
+    (keydown.enter)="toggleEdit()"
+    #input
+  >
+    {{ value }}
+  </div>
+  <img
+    [src]="
+      editing
+        ? '../../../assets/confirm-icon.svg'
+        : '../../../assets/edit-icon.svg'
+    "
+    alt="edit icon"
+    class="mt-2 size-8 cursor-pointer"
+    (click)="toggleEdit()"
+  />
+</div>

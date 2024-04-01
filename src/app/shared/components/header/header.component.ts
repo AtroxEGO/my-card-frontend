@@ -5,6 +5,7 @@ import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { Subject } from 'rxjs';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,10 @@ import { Subject } from 'rxjs';
 export class HeaderComponent {
   currentUrl!: string;
 
-  constructor(@Inject(Router) private router: Router) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+  ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.url;
@@ -40,5 +44,13 @@ export class HeaderComponent {
 
   get textColor() {
     return this.transparentHeader ? 'text-white' : 'text-secondary';
+  }
+
+  get isLoggedIn() {
+    return this.authService.isLoggedIn();
+  }
+
+  signOut() {
+    this.authService.signOut();
   }
 }

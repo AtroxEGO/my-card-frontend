@@ -8,6 +8,10 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { catchError, retry } from 'rxjs';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -21,17 +25,40 @@ import {
   ],
 })
 export class SignInFormComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+  ) {}
+
+  errorMessage: string = '';
 
   signInForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
+    email: ['email@example1.com', [Validators.required, Validators.email]],
+    password: ['Example123!', [Validators.required]],
   });
 
   onSubmit() {
-    console.log(this.signInForm.value);
-    console.log(this.signInForm.errors);
-    console.log(this.getControl('email').errors);
+    const value = this.signInForm.value;
+
+    this.authService.signIn(value.email!, value.password!).subscribe({
+      next: () => {
+        this.router.navigate(['/']);
+      },
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 401) {
+          this.errorMessage = 'Invalid email or password.';
+          return;
+        }
+
+        if (err.status === 429) {
+          this.errorMessage = 'Too many retries, try again in 60s.';
+          return;
+        }
+
+        this.errorMessage = 'Unexpected error, try again later.';
+      },
+    });
   }
 
   getControl(name: string) {

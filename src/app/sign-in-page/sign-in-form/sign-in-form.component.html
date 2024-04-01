@@ -11,17 +11,25 @@
       placeholder="Email"
       [control]="getControl('email')"
     />
-    <app-custom-password-input
-      name="password"
-      placeholder="Password"
-      id="password-input"
-      [control]="getControl('password')"
-    />
     <div>
-      <button class="text-xl font-extralight text-primary active:text-blue-700">
-        Forgot password?
-      </button>
+      <app-custom-password-input
+        name="password"
+        placeholder="Password"
+        id="password-input"
+        [control]="getControl('password')"
+      />
+      @if (errorMessage) {
+        <span class="text-lg font-light text-red-500">{{ errorMessage }}</span>
+      }
+      <div>
+        <button
+          class="text-xl font-extralight text-primary active:text-blue-700"
+        >
+          Forgot password?
+        </button>
+      </div>
     </div>
+
     <button
       type="submit"
       class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 active:bg-blue-700"

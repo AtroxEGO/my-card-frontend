@@ -32,7 +32,9 @@ export class CardPageComponent {
   ngOnInit() {
     const slug = this.route.snapshot.paramMap.get('slug')!;
     const slugParts = slug.split('-');
-    this.cardSlug = slugParts[slugParts.length - 1];
+    this.cardSlug = this.route.snapshot.queryParamMap.get('strict')
+      ? slug
+      : slugParts[slugParts.length - 1];
     this.cardService.getCard(this.cardSlug).subscribe((card) => {
       this.card = card;
 
@@ -40,10 +42,8 @@ export class CardPageComponent {
 
       const url =
         this.card?.fullName !== null
-          ? `/cards/${fullNameSlug}-${this.cardSlug}`
-          : `/cards/${this.cardSlug}`;
-
-      console.log(url);
+          ? `/cards/${fullNameSlug}-${card.slug}`
+          : `/cards/${card.slug}`;
 
       this.router.navigate([url]);
     });

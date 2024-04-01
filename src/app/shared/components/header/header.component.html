@@ -11,15 +11,25 @@
     MyCard
   </a>
   <div class="flex items-center gap-4 text-xl">
-    @if (showAuthButtons) {
-      <a routerLink="/sign-up" class="hover:text-gray-200">Sign&nbsp;up</a>
-      <a
+    @if (isLoggedIn) {
+      <button
         class="rounded-md bg-primary px-12 py-2 text-2xl text-white hover:bg-blue-800"
-        routerLink="/sign-in"
+        (click)="signOut()"
       >
-        Sign&nbsp;in
-      </a>
+        Logout
+      </button>
+    } @else {
+      @if (showAuthButtons) {
+        <a routerLink="/sign-up" class="hover:text-gray-200">Sign&nbsp;up</a>
+        <a
+          class="rounded-md bg-primary px-12 py-2 text-2xl text-white hover:bg-blue-800"
+          routerLink="/sign-in"
+        >
+          Sign&nbsp;in
+        </a>
+      }
     }
+
     <button class="hover:text-gray-200">EN</button>
   </div>
 </div>
