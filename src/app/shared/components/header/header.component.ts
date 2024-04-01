@@ -53,4 +53,11 @@ export class HeaderComponent {
   signOut() {
     this.authService.signOut();
   }
+
+  // navigateToUserCard() {
+  //   const userID = this.authService.getUserID();
+  //   this.router.navigate([`/cards/${userID}`], {
+  //     queryParams: { strict: true },
+  //   });
+  // }
 }

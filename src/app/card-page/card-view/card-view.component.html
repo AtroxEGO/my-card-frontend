@@ -5,11 +5,7 @@
     <div
       class="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
     >
-      <img
-        src="{{ card.photoUrl || '../../assets/avatar_placeholder.jpg' }}"
-        alt="card avatar"
-        class="size-64"
-      />
+      <app-card-avatar [photoUrl]="card.photoUrl" [isOwner]="isOwner()" />
       <div class="flex flex-col">
         <!-- <app-card-input-text /> -->
         <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>

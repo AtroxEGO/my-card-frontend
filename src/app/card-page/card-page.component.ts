@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { DividerComponent } from '../shared/components/divider/divider.component';
 import { CardViewComponent } from './card-view/card-view.component';
 import { NotFoundComponent } from '../shared/components/not-found/not-found.component';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-card-page',
@@ -21,7 +22,7 @@ import { NotFoundComponent } from '../shared/components/not-found/not-found.comp
 export class CardPageComponent {
   cardSlug: string = '';
   card!: Card;
-  error: string = '';
+  errorMessage!: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,17 +36,28 @@ export class CardPageComponent {
     this.cardSlug = this.route.snapshot.queryParamMap.get('strict')
       ? slug
       : slugParts[slugParts.length - 1];
-    this.cardService.getCard(this.cardSlug).subscribe((card) => {
-      this.card = card;
 
-      const fullNameSlug = this.slugify(this.card?.fullName || '');
+    this.cardService.getCard(this.cardSlug).subscribe({
+      next: (card) => {
+        this.card = card;
 
-      const url =
-        this.card?.fullName !== null
-          ? `/cards/${fullNameSlug}-${card.slug}`
-          : `/cards/${card.slug}`;
+        const fullNameSlug = this.slugify(this.card?.fullName || '');
 
-      this.router.navigate([url]);
+        const url =
+          this.card?.fullName !== null
+            ? `/cards/${fullNameSlug}-${card.slug}`
+            : `/cards/${card.slug}`;
+
+        this.router.navigate([url]);
+      },
+      error: (err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.errorMessage = "This card doesn't exist!";
+          return;
+        }
+
+        this.errorMessage = 'Unexpected Error, try again later.';
+      },
     });
   }
 
