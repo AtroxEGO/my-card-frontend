@@ -8,11 +8,19 @@ import {
 import { CustomInputComponent } from '../../../shared/components/forms/custom-input/custom-input.component';
 import { Card } from '../../../shared/services/card.service';
 import { CustomTextareaComponent } from '../../../shared/components/forms/custom-textarea/custom-textarea.component';
+import { DividerComponent } from '../../../shared/components/divider/divider.component';
+import { CustomFileInputComponent } from '../../../shared/components/forms/custom-file-input/custom-file-input.component';
 
 @Component({
   selector: 'app-card-edit-form',
   standalone: true,
-  imports: [ReactiveFormsModule, CustomInputComponent, CustomTextareaComponent],
+  imports: [
+    ReactiveFormsModule,
+    CustomInputComponent,
+    CustomTextareaComponent,
+    DividerComponent,
+    CustomFileInputComponent,
+  ],
   templateUrl: './card-edit-form.component.html',
 })
 export class CardEditFormComponent {

@@ -1,0 +1,25 @@
+<div class="flex w-48 flex-col gap-3">
+  @if (withPreview) {
+    <img
+      id="blah"
+      [src]="fileURL || 'assets/avatar_placeholder.jpg'"
+      alt="your avatar"
+      class="size-48 rounded-full"
+    />
+  }
+  <div
+    class="w-full cursor-pointer rounded-md bg-primary px-2 py-1 text-center text-white hover:bg-blue-600 active:bg-blue-700"
+    (click)="input.click()"
+  >
+    Change Avatar
+  </div>
+  <input
+    type="file"
+    name="Avatar"
+    id="avatar"
+    accept=".jpg,.png"
+    hidden
+    #input
+    (change)="readURL($event)"
+  />
+</div>
