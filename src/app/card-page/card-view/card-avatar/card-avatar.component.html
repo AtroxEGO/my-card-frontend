@@ -2,21 +2,25 @@
   class="relative rounded-full overflow-hidden size-64 flex justify-center items-center {{
     isOwner && 'cursor-pointer'
   }}"
-  [attr.title]="isOwner ? 'Click to change avatar.' : null"
-  (click)="isOwner && avatar.click()"
+  [attr.title]="isOwner ? 'Click to edit card.' : null"
 >
   <img
     src="{{ photoUrl || 'assets/avatar_placeholder.jpg' }}"
     alt="card avatar"
   />
   @if (isOwner) {
-    <div
+    <!-- <div
       class="absolute bottom-2 top-auto flex size-12 items-center justify-center rounded-full bg-white hover:bg-gray-300 active:bg-gray-400"
     >
       <img src="assets/camera-icon.svg" alt="camera-icon" class="size-6" />
+    </div> -->
+    <div
+      class="absolute top-auto flex size-64 select-none items-center justify-center rounded-full bg-gray-600 bg-opacity-0 text-xl opacity-0 hover:bg-opacity-60 hover:opacity-100"
+    >
+      <span>Edit Card</span>
     </div>
   }
-  <input
+  <!-- <input
     type="file"
     name="avatar"
     id="avatar"
@@ -24,5 +28,5 @@
     hidden
     accept=".jpg, .png"
     (change)="uploadAvatar($event)"
-  />
+  /> -->
 </div>

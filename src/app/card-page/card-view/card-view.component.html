@@ -5,12 +5,16 @@
     <div
       class="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
     >
-      <app-card-avatar [photoUrl]="card.photoUrl" [isOwner]="isOwner()" />
+      <app-card-avatar
+        [photoUrl]="card.photoUrl"
+        [isOwner]="isOwner()"
+        (click)="isOwner() && toggleEditForm(true)"
+      />
       <div class="flex flex-col">
         <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>
-        <span class="text-3xl font-thin text-gray-300">{{
-          card.jobTitle || "Job Title"
-        }}</span>
+        <span class="text-3xl font-thin text-gray-300">
+          {{ card.jobTitle || "Job Title" }}
+        </span>
       </div>
     </div>
     <div
@@ -44,3 +48,6 @@
     </div>
   </div>
 </div>
+@if (isEditing) {
+  <app-card-edit-form [card]="card" (formClosed)="toggleEditForm(false)" />
+}

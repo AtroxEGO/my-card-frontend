@@ -1,0 +1,19 @@
+<textarea
+  cols="30"
+  rows="3"
+  class="w-full rounded-md border {{
+    borderColor
+  }} px-4 py-2 focus-visible:outline-none min-h-10 max-h-40"
+  type="text"
+  name="{{ name }}"
+  id="{{ id }}"
+  [formControl]="control"
+  placeholder="{{ placeholder }}"
+></textarea>
+@if (showErrors) {
+  <div class="text-red-600">
+    @if (control.hasError("required")) {
+      <div>{{ placeholder }} is required!</div>
+    }
+  </div>
+}

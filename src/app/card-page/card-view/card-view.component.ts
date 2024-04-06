@@ -4,22 +4,33 @@ import { DividerComponent } from '../../shared/components/divider/divider.compon
 import { CardAvatarComponent } from './card-avatar/card-avatar.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { CardSocialItemComponent } from './card-social-item/card-social-item.component';
+import { CardEditFormComponent } from './card-edit-form/card-edit-form.component';
 
 @Component({
   selector: 'app-card-view',
   standalone: true,
-  imports: [DividerComponent, CardAvatarComponent, CardSocialItemComponent],
+  imports: [
+    DividerComponent,
+    CardAvatarComponent,
+    CardSocialItemComponent,
+    CardEditFormComponent,
+  ],
   templateUrl: './card-view.component.html',
 })
 export class CardViewComponent {
   constructor(private authService: AuthService) {}
 
   @Input({ required: true }) card!: Card;
+  isEditing: Boolean = true;
 
   isOwner() {
     const cardID = this.card.id;
     const userID = this.authService.getUserID();
 
     return cardID === userID;
+  }
+
+  toggleEditForm(state: boolean) {
+    this.isEditing = state;
   }
 }
