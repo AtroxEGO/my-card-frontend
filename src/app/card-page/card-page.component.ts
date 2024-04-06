@@ -70,7 +70,3 @@ export class CardPageComponent {
       .replace(/^-+|-+$/g, '');
   };
 }
-
-// Error
-// Path
-// Sign In

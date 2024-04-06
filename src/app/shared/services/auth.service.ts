@@ -16,10 +16,9 @@ export class AuthService {
 
   signIn(email: string, password: string) {
     const path = environment.apiBaseUrl + '/auth/login';
-    return this.http.post<AuthPayload>(path, { email, password }).pipe(
-      tap(this.setSession),
-      shareReplay(),
-    );
+    return this.http
+      .post<AuthPayload>(path, { email, password })
+      .pipe(tap(this.setSession), shareReplay());
   }
 
   private setSession(authResult: AuthPayload) {
@@ -49,6 +48,8 @@ export class AuthService {
   }
 
   getUserID() {
-    return localStorage.getItem('userID');
+    const isLoggedIn = this.isLoggedIn();
+    const userID = localStorage.getItem('userID');
+    return isLoggedIn ? userID : undefined;
   }
 }

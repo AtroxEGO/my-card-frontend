@@ -7,7 +7,6 @@
     >
       <app-card-avatar [photoUrl]="card.photoUrl" [isOwner]="isOwner()" />
       <div class="flex flex-col">
-        <!-- <app-card-input-text /> -->
         <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>
         <span class="text-3xl font-thin text-gray-300">{{
           card.jobTitle || "Job Title"
@@ -25,9 +24,18 @@
       </div>
       <div class="flex w-2/5 min-w-80 flex-col justify-center gap-4">
         <app-divider value="Socials" class="text-4xl" color="gray-500" />
-        <ul class="w-full text-center text-2xl font-thin">
-          @for (social of card.socials; track social.socialName) {
-            {{ social.socialName }}: {{ social.value }}
+        <ul
+          class="flex w-full flex-col items-center gap-1 text-center text-2xl font-thin"
+        >
+          @for (
+            social of card.socials;
+            track social.socialName;
+            let last = $last
+          ) {
+            <app-card-social-item class="w-full" [socialItem]="social" />
+            @if (!last) {
+              <app-divider color="gray-500" class="w-1/4" />
+            }
           } @empty {
             <span>None</span>
           }
