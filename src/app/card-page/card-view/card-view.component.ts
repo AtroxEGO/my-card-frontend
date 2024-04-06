@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Card } from '../../shared/services/card.service';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
-import { CardAvatarComponent } from '../card-avatar/card-avatar.component';
+import { CardAvatarComponent } from './card-avatar/card-avatar.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { CardSocialItemComponent } from './card-social-item/card-social-item.component';
 

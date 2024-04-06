@@ -5,8 +5,5 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './card-edit-form.component.html',
-  styleUrl: './card-edit-form.component.css'
 })
-export class CardEditFormComponent {
-
-}
+export class CardEditFormComponent {}
