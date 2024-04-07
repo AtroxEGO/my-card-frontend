@@ -33,16 +33,19 @@ export class CardEditFormComponent {
   ) {}
   @Input({ required: true }) card!: Card;
   @Output() formClosed = new EventEmitter<void>();
+  @Output() cardUpdated = new EventEmitter<Card>();
 
   cardForm = this.fb.group({
+    avatarFile: [null],
     fullName: [this.card?.fullName, [Validators.required]],
     jobTitle: [this.card?.jobTitle, [Validators.required]],
     bio: [this.card?.bio, [Validators.required]],
-    socials: [],
+    socials: [null],
   });
 
   ngOnInit() {
     this.cardForm.setValue({
+      avatarFile: null,
       fullName: this.card.fullName,
       jobTitle: this.card.jobTitle,
       bio: this.card.bio,
@@ -51,26 +54,25 @@ export class CardEditFormComponent {
   }
 
   onSubmit() {
-    if (this.cardForm.valid) {
-      this.cardService.patchCard(this.cardForm.value).subscribe({
-        next: () => {
-          this.formClosed.emit();
-          // this.router.navigate(['/']);
-        },
-        error: (err: HttpErrorResponse) => {
-          //   if (err.status === 401) {
-          //     this.errorMessage = 'Invalid email or password.';
-          //     return;
-          //   }
-          //   if (err.status === 429) {
-          //     this.errorMessage = 'Too many retries, try again in 60s.';
-          //     return;
-          //   }
-          //   this.errorMessage = 'Unexpected error, try again later.';
-          // },
-        },
-      });
-    }
+    console.log(this.cardForm.value);
+    if (!this.cardForm.valid) return;
+
+    const formData = new FormData();
+
+    Object.keys(this.cardForm.value).forEach((formControlName) => {
+      const value = this.cardForm.get(formControlName)?.value;
+      formData.append(formControlName, value);
+    });
+
+    this.cardService.patchCard(formData).subscribe({
+      next: (data) => {
+        this.formClosed.emit();
+        this.cardUpdated.emit(data.updatedCard);
+      },
+      error: (err: HttpErrorResponse) => {
+        // TODO
+      },
+    });
   }
 
   getControl(name: string) {

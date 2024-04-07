@@ -1,6 +1,10 @@
 <div class="flex w-full justify-center py-10">
   <ng-container *ngIf="card">
-    <app-card-view [card]="card" class="w-full" />
+    <app-card-view
+      [card]="card"
+      class="w-full"
+      (cardUpdated)="handleCardUpdate($event)"
+    />
   </ng-container>
 
   <ng-container #notFound *ngIf="errorMessage">

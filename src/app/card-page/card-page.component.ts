@@ -61,6 +61,10 @@ export class CardPageComponent {
     });
   }
 
+  handleCardUpdate(cardData: Card) {
+    this.card = cardData;
+  }
+
   private slugify = (value: string) => {
     return value
       .toLowerCase()

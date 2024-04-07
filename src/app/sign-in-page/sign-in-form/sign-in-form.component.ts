@@ -39,6 +39,8 @@ export class SignInFormComponent {
   });
 
   onSubmit() {
+    if (!this.signInForm.valid) return;
+
     const value = this.signInForm.value;
 
     this.authService.signIn(value.email!, value.password!).subscribe({

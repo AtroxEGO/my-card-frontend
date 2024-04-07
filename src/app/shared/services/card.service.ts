@@ -30,9 +30,10 @@ export class CardService {
   }
 
   patchCard(data: any) {
-    console.log(data);
     const userID = localStorage.getItem('userID');
     const path = environment.apiBaseUrl + '/cards/' + userID;
-    return this.http.patch<Card>(path, data).pipe(shareReplay());
+    return this.http
+      .patch<{ message: string; updatedCard: Card }>(path, data)
+      .pipe(shareReplay());
   }
 }

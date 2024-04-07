@@ -22,7 +22,7 @@
     >
       <div class="flex w-full flex-col">
         <app-divider value="Bio" class="text-4xl" color="gray-500" />
-        <span class="text-2xl font-thin">
+        <span class="whitespace-pre-wrap text-2xl font-thin">
           {{ card.bio || "Empty" }}
         </span>
       </div>
@@ -49,5 +49,9 @@
   </div>
 </div>
 @if (isEditing && card) {
-  <app-card-edit-form [card]="card" (formClosed)="toggleEditForm(false)" />
+  <app-card-edit-form
+    [card]="card"
+    (formClosed)="toggleEditForm(false)"
+    (cardUpdated)="handleCardUpdate($event)"
+  />
 }

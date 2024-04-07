@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from '../../shared/services/card.service';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
 import { CardAvatarComponent } from './card-avatar/card-avatar.component';
@@ -21,6 +21,7 @@ export class CardViewComponent {
   constructor(private authService: AuthService) {}
 
   @Input({ required: true }) card!: Card;
+  @Output() cardUpdated = new EventEmitter<Card>();
   isEditing: Boolean = true;
 
   isOwner() {
@@ -32,5 +33,9 @@ export class CardViewComponent {
 
   toggleEditForm(state: boolean) {
     this.isEditing = state;
+  }
+
+  handleCardUpdate(cardData: any) {
+    this.cardUpdated.emit(cardData);
   }
 }
