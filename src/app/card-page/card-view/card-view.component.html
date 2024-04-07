@@ -48,6 +48,6 @@
     </div>
   </div>
 </div>
-@if (isEditing) {
+@if (isEditing && card) {
   <app-card-edit-form [card]="card" (formClosed)="toggleEditForm(false)" />
 }

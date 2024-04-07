@@ -28,4 +28,11 @@ export class CardService {
     const path = environment.apiBaseUrl + '/cards/' + id;
     return this.http.get<Card>(path).pipe(shareReplay());
   }
+
+  patchCard(data: any) {
+    console.log(data);
+    const userID = localStorage.getItem('userID');
+    const path = environment.apiBaseUrl + '/cards/' + userID;
+    return this.http.patch<Card>(path, data).pipe(shareReplay());
+  }
 }
