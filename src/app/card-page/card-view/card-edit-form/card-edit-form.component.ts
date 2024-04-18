@@ -12,6 +12,7 @@ import { DividerComponent } from '../../../shared/components/divider/divider.com
 import { CustomFileInputComponent } from '../../../shared/components/forms/custom-file-input/custom-file-input.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { CardEditSocialComponent } from './card-edit-social/card-edit-social.component';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -23,6 +24,7 @@ import { CommonModule } from '@angular/common';
     DividerComponent,
     CustomFileInputComponent,
     CommonModule,
+    CardEditSocialComponent,
   ],
   templateUrl: './card-edit-form.component.html',
 })

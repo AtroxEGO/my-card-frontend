@@ -1,0 +1,55 @@
+<div class="flex flex-col gap-1">
+  @for (social of socials; track $index) {
+    <div class="flex items-center gap-2">
+      <div>
+        <img
+          src="assets/{{ social.socialName }}-icon.svg"
+          alt="{{ social.socialName }} icon"
+          class="size-8 invert"
+        />
+      </div>
+      <input
+        type="text"
+        [value]="social.value"
+        (change)="handleSocialChange(social.socialName, $event)"
+        placeholder="Your Link Here"
+        class="w-full rounded-md border px-4 py-2 focus-visible:outline-none"
+      />
+      <div
+        class="cursor-pointer"
+        (click)="handleDeleteSocial(social.socialName)"
+      >
+        <img
+          src="assets/remove-icon.svg"
+          alt="remove icon"
+          class="size-10 rounded-md border-primary hover:border-2"
+        />
+      </div>
+    </div>
+  }
+  @if (getAllowedSocials().length != 0) {
+    <div class="flex justify-center py-1">
+      <div class="flex w-fit items-center gap-2">
+        <select
+          class="max-w rounded-md border px-2 py-1 capitalize"
+          #socialSelect
+        >
+          @for (allowedSocial of getAllowedSocials(); track $index) {
+            <option>{{ allowedSocial }}</option>
+          }
+        </select>
+        <div
+          class="cursor-pointer"
+          (click)="handleCreateSocial(socialSelect.value)"
+        >
+          <img
+            src="assets/add-icon.svg"
+            alt="add icon"
+            class="size-7 min-w-6 rounded-md"
+          />
+        </div>
+      </div>
+    </div>
+  }
+  {{ socials | json }}
+</div>

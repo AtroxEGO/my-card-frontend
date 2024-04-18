@@ -1,5 +1,5 @@
 <div
-  class="fixed left-1/2 top-1/4 flex w-4/5 -translate-x-1/2 flex-col items-center gap-1 rounded-md bg-white px-4 py-2 text-secondary shadow-md sm:w-1/2 md:w-1/3 lg:w-1/4"
+  class="flex w-4/5 max-w-xl flex-col items-center gap-1 rounded-md bg-white px-4 py-2 text-secondary shadow-md sm:w-4/5 md:w-2/3 lg:w-1/2"
 >
   <div class="flex justify-between">
     <span class="text-2xl">Edit Card</span>
@@ -9,7 +9,7 @@
     class="flex flex-col gap-2"
     (ngSubmit)="onSubmit()"
   >
-    <div class="flex gap-8">
+    <div class="flex flex-col items-center gap-8 overflow-y-auto sm:flex-row">
       <app-custom-file-input
         [fileURL]="card.photoUrl"
         [withPreview]="true"
@@ -46,14 +46,14 @@
       </div>
     </div>
     <app-divider value="Socials" />
-    <span class="text-center italic">TODO</span>
-    <div class="flex w-full justify-end gap-2">
-      <button
+    <app-card-edit-social [card]="card" />
+    <div class="flex w-full flex-col justify-end gap-2 sm:flex-row">
+      <div
         (click)="handleClose()"
         class="rounded-md bg-gray-200 px-2 py-1 hover:bg-gray-300 active:bg-gray-400"
       >
         Cancel
-      </button>
+      </div>
       <button
         type="submit"
         class="rounded-md bg-primary px-3 py-1 text-white hover:bg-blue-600 active:bg-blue-700"

@@ -2,56 +2,58 @@
   class="flex w-full flex-col items-center px-3 sm:px-10 lg:flex-row xl:px-20"
 >
   <div class="flex w-full flex-col items-center gap-5">
-    <div
-      class="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
-    >
-      <app-card-avatar
-        [photoUrl]="card.photoUrl"
-        [isOwner]="isOwner()"
-        (click)="isOwner() && toggleEditForm(true)"
+    @if (isEditing && card) {
+      <app-card-edit-form
+        class="flex w-full justify-center"
+        [card]="card"
+        (formClosed)="toggleEditForm(false)"
+        (cardUpdated)="handleCardUpdate($event)"
       />
-      <div class="flex flex-col">
-        <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>
-        <span class="text-3xl font-thin text-gray-300">
-          {{ card.jobTitle || "Job Title" }}
-        </span>
+    } @else {
+      <div
+        class="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
+      >
+        <app-card-avatar
+          [photoUrl]="card.photoUrl"
+          [isOwner]="isOwner()"
+          (click)="isOwner() && toggleEditForm(true)"
+        />
+        <div class="flex flex-col">
+          <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>
+          <span class="text-3xl font-thin text-gray-300">
+            {{ card.jobTitle || "Job Title" }}
+          </span>
+        </div>
       </div>
-    </div>
-    <div
-      class="flex w-full max-w-screen-lg flex-col items-center gap-3 px-5 lg:flex-row lg:items-start"
-    >
-      <div class="flex w-full flex-col">
-        <app-divider value="Bio" class="text-4xl" color="gray-500" />
-        <span class="whitespace-pre-wrap text-2xl font-thin">
-          {{ card.bio || "Empty" }}
-        </span>
-      </div>
-      <div class="flex w-2/5 min-w-80 flex-col justify-center gap-4">
-        <app-divider value="Socials" class="text-4xl" color="gray-500" />
-        <ul
-          class="flex w-full flex-col items-center gap-1 text-center text-2xl font-thin"
-        >
-          @for (
-            social of card.socials;
-            track social.socialName;
-            let last = $last
-          ) {
-            <app-card-social-item class="w-full" [socialItem]="social" />
-            @if (!last) {
-              <app-divider color="gray-500" class="w-1/4" />
+      <div
+        class="flex w-full max-w-screen-lg flex-col items-center gap-3 px-5 lg:flex-row lg:items-start"
+      >
+        <div class="flex w-full flex-col">
+          <app-divider value="Bio" class="text-4xl" color="gray-500" />
+          <span class="whitespace-pre-wrap text-2xl font-thin">
+            {{ card.bio || "Empty" }}
+          </span>
+        </div>
+        <div class="flex w-2/5 min-w-80 flex-col justify-center gap-4">
+          <app-divider value="Socials" class="text-4xl" color="gray-500" />
+          <ul
+            class="flex w-full flex-col items-center gap-1 text-center text-2xl font-thin"
+          >
+            @for (
+              social of card.socials;
+              track social.socialName;
+              let last = $last
+            ) {
+              <app-card-social-item class="w-full" [socialItem]="social" />
+              @if (!last) {
+                <app-divider color="gray-500" class="w-1/4" />
+              }
+            } @empty {
+              <span>None</span>
             }
-          } @empty {
-            <span>None</span>
-          }
-        </ul>
+          </ul>
+        </div>
       </div>
-    </div>
+    }
   </div>
 </div>
-@if (isEditing && card) {
-  <app-card-edit-form
-    [card]="card"
-    (formClosed)="toggleEditForm(false)"
-    (cardUpdated)="handleCardUpdate($event)"
-  />
-}
