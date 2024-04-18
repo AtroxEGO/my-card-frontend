@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import removeAccents from 'remove-accents';
 import { Card, CardService } from '../shared/services/card.service';
 import { CommonModule } from '@angular/common';
 import { DividerComponent } from '../shared/components/divider/divider.component';
@@ -66,7 +66,7 @@ export class CardPageComponent {
   }
 
   private slugify = (value: string) => {
-    return value
+    return removeAccents(value)
       .toLowerCase()
       .trim()
       .replace(/[^\w\s-]/g, '')

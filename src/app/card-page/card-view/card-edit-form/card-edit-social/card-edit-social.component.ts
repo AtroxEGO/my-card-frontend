@@ -1,8 +1,7 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Card } from '../../../../shared/services/card.service';
 import { CommonModule } from '@angular/common';
 import { FormBuilder } from '@angular/forms';
-import { Observable } from 'rxjs';
 
 type Socials = {
   socialName: string;
@@ -16,8 +15,6 @@ type Socials = {
   templateUrl: './card-edit-social.component.html',
 })
 export class CardEditSocialComponent {
-  constructor(private fb: FormBuilder) {}
-
   allowedSocials = [
     'facebook',
     'youtube',
@@ -27,14 +24,14 @@ export class CardEditSocialComponent {
     'website',
   ];
 
-  @Input() card!: Card;
-  @Output() socials!: Socials;
+  @Input() socials!: Socials;
+  @Output() socialsChange = new EventEmitter<Socials>();
 
-  ngOnInit() {
-    this.socials = this.card.socials || [
-      { socialName: 'facebook', value: 'test' },
-    ];
-  }
+  // ngOnInit() {
+  //   this.socials = this.card.socials || [
+  //     { socialName: 'facebook', value: 'test' },
+  //   ];
+  // }
 
   getAllowedSocials() {
     const takenSocials: string[] =
