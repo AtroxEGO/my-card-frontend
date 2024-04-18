@@ -26,14 +26,22 @@ export class CardService {
 
   getCard(id: string): Observable<Card> {
     const path = environment.apiBaseUrl + '/cards/' + id;
-    return this.http.get<Card>(path).pipe(shareReplay());
+    return this.http
+      .get<Card>(path)
+      .pipe
+      // shareReplay()
+      ();
   }
 
   patchCard(data: any) {
+    // console.log(data.get('socials'));
     const userID = localStorage.getItem('userID');
     const path = environment.apiBaseUrl + '/cards/' + userID;
     return this.http
-      .patch<{ message: string; updatedCard: Card }>(path, data)
-      .pipe(shareReplay());
+      .patch<{
+        message: string;
+        updatedCard: Card;
+      }>(path, data)
+      .pipe();
   }
 }

@@ -12,9 +12,10 @@
   <div class="text-red-600">
     @if (control.hasError("required")) {
       <div>{{ placeholder }} is required!</div>
-    }
-    @if (control.hasError("email")) {
+    } @else if (control.hasError("email")) {
       <div>Enter correct email!</div>
+    } @else if (control.hasError("url")) {
+      <div>Link is invalid!</div>
     }
   </div>
 }

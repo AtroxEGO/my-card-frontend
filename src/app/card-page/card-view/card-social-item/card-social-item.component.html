@@ -1,13 +1,16 @@
 <a
   [href]="getLink()"
-  class="flex items-center justify-between gap-2 overflow-hidden hover:text-gray-300"
+  class="flex items-center justify-between gap-2 overflow-hidden hover:text-gray-300 [&:not(:hover)]:capitalize"
+  (mouseenter)="setHovered(true)"
+  (mouseleave)="setHovered(false)"
+  target="_blank"
 >
   <img
     src="../../../../assets/{{ socialItem.socialName }}-icon.svg"
     alt="{{ socialItem.socialName }} icon"
     class="size-8"
   />
-  <span class="capitalize">{{ socialItem.socialName }}</span>
+  <span>{{ getDisplayValue() }}</span>
   <img
     src="../../../../assets/arrow-icon.svg"
     alt="{{ socialItem.socialName }} icon"

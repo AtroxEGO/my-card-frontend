@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import {
+  FormArray,
   FormBuilder,
   FormControl,
+  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -42,34 +44,61 @@ export class CardEditFormComponent {
     fullName: [this.card?.fullName, [Validators.required]],
     jobTitle: [this.card?.jobTitle, [Validators.required]],
     bio: [this.card?.bio, [Validators.required]],
-    socials: [null],
+    socials: this.fb.array([]),
   });
 
   ngOnInit() {
-    this.cardForm.setValue({
-      avatarFile: null,
+    this.cardForm.patchValue({
       fullName: this.card.fullName,
       jobTitle: this.card.jobTitle,
       bio: this.card.bio,
-      socials: null,
+    });
+
+    this.card.socials?.forEach((social) => {
+      this.socials.push(
+        this.fb.group({
+          socialName: [social.socialName],
+          value: [social.value],
+        }),
+      );
+    });
+  }
+
+  uploadAvatar(avatarFile: File) {
+    const formData = new FormData();
+    formData.append('avatarFile', avatarFile);
+
+    this.cardService.patchCard(formData).subscribe({
+      next: (data) => {
+        this.cardUpdated.emit(data.updatedCard);
+        this.formClosed.emit();
+      },
+      error: (err: HttpErrorResponse) => {
+        // TODO
+      },
     });
   }
 
   onSubmit() {
-    console.log(this.cardForm.value);
     if (!this.cardForm.valid) return;
 
-    const formData = new FormData();
+    const avatarFile = this.cardForm.value.avatarFile;
 
-    Object.keys(this.cardForm.value).forEach((formControlName) => {
-      const value = this.cardForm.get(formControlName)?.value;
-      formData.append(formControlName, value);
-    });
+    if (avatarFile) {
+      this.uploadAvatar(avatarFile);
+    }
 
-    this.cardService.patchCard(formData).subscribe({
+    if (!this.didChange()) {
+      if (!avatarFile) this.formClosed.emit();
+      return;
+    }
+
+    this.cardService.patchCard(this.cardForm.value).subscribe({
       next: (data) => {
-        this.formClosed.emit();
         this.cardUpdated.emit(data.updatedCard);
+        if (!avatarFile) {
+          this.formClosed.emit();
+        }
       },
       error: (err: HttpErrorResponse) => {
         // TODO
@@ -81,8 +110,28 @@ export class CardEditFormComponent {
     return this.cardForm.get(name) as FormControl;
   }
 
+  get socials() {
+    return this.cardForm.get('socials') as FormArray;
+  }
+
   handleClose() {
     this.formClosed.emit();
     this.cardForm.reset();
+  }
+
+  didChange() {
+    const watchedAttributes = ['bio', 'jobTitle', 'fullName', 'socials'];
+    const oldData = this.card as { [key: string]: any };
+    const newData = this.cardForm.value as { [key: string]: any };
+
+    for (const attribute of watchedAttributes) {
+      const oldAttribute = JSON.stringify(oldData[attribute]);
+      const newAttribute = JSON.stringify(newData[attribute]);
+      if (oldAttribute != newAttribute) {
+        console.log(oldData[attribute], newData[attribute]);
+        return true;
+      }
+    }
+    return false;
   }
 }

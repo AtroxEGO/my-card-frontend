@@ -46,7 +46,7 @@
       </div>
     </div>
     <app-divider value="Socials" />
-    <app-card-edit-social [socials]="card.socials" />
+    <app-card-edit-social [socials]="card.socials" [control]="socials" />
     <div class="flex w-full flex-col justify-end gap-2 sm:flex-row">
       <div
         (click)="handleClose()"

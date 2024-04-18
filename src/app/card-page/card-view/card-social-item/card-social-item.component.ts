@@ -13,11 +13,22 @@ type SocialItem = {
 })
 export class CardSocialItemComponent {
   @Input({ required: true }) socialItem!: SocialItem;
+  hovered = false;
 
   getLink(): string {
     let prefix = '';
     if (this.socialItem.socialName === 'email') prefix = 'mailto:';
 
     return prefix + this.socialItem.value;
+  }
+
+  getDisplayValue() {
+    if (!this.hovered) return this.socialItem.socialName;
+
+    return this.socialItem.value;
+  }
+
+  setHovered(value: boolean) {
+    this.hovered = value;
   }
 }
