@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomInputComponent } from '../../../../shared/components/forms/custom-input/custom-input.component';
-import { getListOfValidators } from '../../../../shared/helpers/socials';
+import { getListOfValidators } from '../../../../shared/utils/socials';
 
 type Social = {
   socialName: string;

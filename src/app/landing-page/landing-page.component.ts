@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-landing-page',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './landing-page.component.html',
 })
 export class LandingPageComponent {

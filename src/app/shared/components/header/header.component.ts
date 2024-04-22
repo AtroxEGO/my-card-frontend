@@ -1,17 +1,14 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NavComponent } from './nav/nav.component';
-import { Inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
-import { Subject } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [NavComponent, RouterLink],
+  imports: [RouterLink],
 })
 export class HeaderComponent {
   currentUrl!: string;
@@ -53,11 +50,4 @@ export class HeaderComponent {
   signOut() {
     this.authService.signOut();
   }
-
-  // navigateToUserCard() {
-  //   const userID = this.authService.getUserID();
-  //   this.router.navigate([`/cards/${userID}`], {
-  //     queryParams: { strict: true },
-  //   });
-  // }
 }

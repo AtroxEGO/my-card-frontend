@@ -22,7 +22,7 @@ export class CardViewComponent {
 
   @Input({ required: true }) card!: Card;
   @Output() cardUpdated = new EventEmitter<Card>();
-  isEditing: Boolean = true;
+  isEditing: Boolean = false;
 
   isOwner() {
     const cardID = this.card.id;

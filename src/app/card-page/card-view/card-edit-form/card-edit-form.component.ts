@@ -14,8 +14,8 @@ import { CustomFileInputComponent } from '../../../shared/components/forms/custo
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CardEditSocialComponent } from './card-edit-social/card-edit-social.component';
-import { getListOfValidators } from '../../../shared/helpers/socials';
-import { getErrorArray } from '../../../shared/helpers/errors';
+import { getListOfValidators } from '../../../shared/utils/socials';
+import { getErrorArray } from '../../../shared/utils/errors';
 
 @Component({
   selector: 'app-card-edit-form',
