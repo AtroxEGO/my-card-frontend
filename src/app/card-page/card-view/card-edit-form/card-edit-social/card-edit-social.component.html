@@ -27,6 +27,9 @@
       </div>
     </div>
   }
+  <div class="text-red-500">
+    {{ control.errors }}
+  </div>
   @if (getAllowedSocials().length != 0) {
     <div class="flex justify-center py-1">
       <div class="flex w-fit items-center gap-2">

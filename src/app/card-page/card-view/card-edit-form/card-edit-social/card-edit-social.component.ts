@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Card } from '../../../../shared/services/card.service';
 import { CommonModule } from '@angular/common';
 import {
   FormArray,
@@ -9,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomInputComponent } from '../../../../shared/components/forms/custom-input/custom-input.component';
-import { urlValidator } from '../../../../shared/validators/url.directive';
+import { getListOfValidators } from '../../../../shared/helpers/socials';
 
 type Social = {
   socialName: string;
@@ -35,14 +34,7 @@ export class CardEditSocialComponent {
     'website',
   ];
 
-  @Input() socials!: Socials;
   @Input() control!: FormArray;
-
-  // ngOnInit() {
-  //   this.socials = this.card.socials || [
-  //     { socialName: 'facebook', value: 'test' },
-  //   ];
-  // }
 
   getAllowedSocials() {
     const takenSocials: string[] =
@@ -57,7 +49,7 @@ export class CardEditSocialComponent {
   handleCreateSocial(value: string) {
     const control = this.fb.group({
       socialName: [value, Validators.required],
-      value: ['', this.getListOfValidators(value)],
+      value: ['', getListOfValidators(value)],
     });
 
     this.control.push(control);
@@ -84,20 +76,5 @@ export class CardEditSocialComponent {
     let placeholderText = `${socialName.charAt(0).toUpperCase()}${socialName.slice(1)} link`;
 
     return placeholderText;
-  }
-
-  getListOfValidators(socialName: string) {
-    const validators = [];
-    validators.push(Validators.required);
-
-    if (socialName === 'email') {
-      validators.push(Validators.email);
-    }
-
-    if (socialName !== 'email') {
-      validators.push(urlValidator());
-    }
-
-    return validators;
   }
 }

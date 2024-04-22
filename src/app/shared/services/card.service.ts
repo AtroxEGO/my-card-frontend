@@ -26,11 +26,7 @@ export class CardService {
 
   getCard(id: string): Observable<Card> {
     const path = environment.apiBaseUrl + '/cards/' + id;
-    return this.http
-      .get<Card>(path)
-      .pipe
-      // shareReplay()
-      ();
+    return this.http.get<Card>(path).pipe(shareReplay());
   }
 
   patchCard(data: any) {
@@ -42,6 +38,6 @@ export class CardService {
         message: string;
         updatedCard: Card;
       }>(path, data)
-      .pipe();
+      .pipe(shareReplay());
   }
 }

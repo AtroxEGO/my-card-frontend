@@ -25,7 +25,9 @@ export class CardSocialItemComponent {
   getDisplayValue() {
     if (!this.hovered) return this.socialItem.socialName;
 
-    return this.socialItem.value;
+    return this.socialItem.value
+      .replace(/^(https?|ftp):\/\//, '')
+      .replace('www.', '');
   }
 
   setHovered(value: boolean) {

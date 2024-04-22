@@ -3,7 +3,6 @@ import {
   FormArray,
   FormBuilder,
   FormControl,
-  FormsModule,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -15,6 +14,8 @@ import { CustomFileInputComponent } from '../../../shared/components/forms/custo
 import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CardEditSocialComponent } from './card-edit-social/card-edit-social.component';
+import { getListOfValidators } from '../../../shared/helpers/socials';
+import { getErrorArray } from '../../../shared/helpers/errors';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -38,6 +39,7 @@ export class CardEditFormComponent {
   @Input({ required: true }) card!: Card;
   @Output() formClosed = new EventEmitter<void>();
   @Output() cardUpdated = new EventEmitter<Card>();
+  errorMessage = '';
 
   cardForm = this.fb.group({
     avatarFile: [null],
@@ -57,8 +59,8 @@ export class CardEditFormComponent {
     this.card.socials?.forEach((social) => {
       this.socials.push(
         this.fb.group({
-          socialName: [social.socialName],
-          value: [social.value],
+          socialName: [social.socialName, Validators.required],
+          value: [social.value, getListOfValidators(social.socialName)],
         }),
       );
     });
@@ -74,7 +76,13 @@ export class CardEditFormComponent {
         this.formClosed.emit();
       },
       error: (err: HttpErrorResponse) => {
-        // TODO
+        if (err.status === 400) {
+          const errors = getErrorArray(err);
+          errors.forEach((error) => {
+            this.cardForm.get(error.name)?.setErrors(error.errors);
+          });
+        }
+        this.errorMessage = err.message;
       },
     });
   }
@@ -101,7 +109,13 @@ export class CardEditFormComponent {
         }
       },
       error: (err: HttpErrorResponse) => {
-        // TODO
+        if (err.status === 400) {
+          const errors = getErrorArray(err);
+          errors.forEach((error) => {
+            this.cardForm.get(error.name)?.setErrors(error.errors);
+          });
+        }
+        this.errorMessage = err.message;
       },
     });
   }
