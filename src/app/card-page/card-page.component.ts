@@ -32,31 +32,43 @@ export class CardPageComponent {
   ) {}
 
   ngOnInit() {
-    const slug = this.route.snapshot.paramMap.get('slug')!;
-    const strict = this.route.snapshot.queryParamMap.get('strict');
-
-    this.cardId = getCardIdFromSlug(slug, strict);
+    this.setCardIdFromSlug();
 
     this.cardService.getCard(this.cardId).subscribe({
       next: (card) => {
         this.card = card;
 
-        const url = getCardSlugUrl(card.fullName, card.slug);
-
-        this.router.navigate([url]);
+        this.redirectToSlugUrl(card);
       },
       error: (err: HttpErrorResponse) => {
-        if (err.status === 404) {
-          this.errorMessage = "This card doesn't exist!";
-          return;
-        }
-
-        this.errorMessage = 'Unexpected Error, try again later.';
+        this.handleError(err);
       },
     });
   }
 
   handleCardUpdate(cardData: Card) {
     this.card = cardData;
+  }
+
+  setCardIdFromSlug() {
+    const slug = this.route.snapshot.paramMap.get('slug')!;
+    const strict = this.route.snapshot.queryParamMap.get('strict');
+
+    this.cardId = getCardIdFromSlug(slug, strict);
+  }
+
+  handleError(err: HttpErrorResponse) {
+    if (err.status === 404) {
+      this.errorMessage = "This card doesn't exist!";
+      return;
+    }
+
+    this.errorMessage = 'Unexpected Error, try again later.';
+  }
+
+  redirectToSlugUrl(card: Card) {
+    const url = getCardSlugUrl(card.fullName, card.slug);
+
+    this.router.navigate([url]);
   }
 }
