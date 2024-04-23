@@ -8,6 +8,9 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
+import { AuthService } from '../../shared/services/auth.service';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -21,7 +24,13 @@ import {
   ],
 })
 export class SignUpFormComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private authService: AuthService,
+    private router: Router,
+  ) {}
+
+  errorMessage = '';
 
   signUpForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -29,7 +38,27 @@ export class SignUpFormComponent {
     confirm: ['', [Validators.required]],
   });
 
-  onSubmit() {}
+  onSubmit() {
+    if (!this.signUpForm.valid) return;
+
+    const value = this.signUpForm.value;
+
+    this.authService
+      .signUp(value.email!, value.password!, value.confirm!)
+      .subscribe({
+        next: () => {
+          this.router.navigate(['/']);
+        },
+        error: (err: HttpErrorResponse) => {
+          if (err.status === 429) {
+            this.errorMessage = 'Too many retries, try again in 60s.';
+            return;
+          }
+
+          this.errorMessage = 'Unexpected error, try again later.';
+        },
+      });
+  }
 
   getControl(name: string) {
     return this.signUpForm.get(name) as FormControl;

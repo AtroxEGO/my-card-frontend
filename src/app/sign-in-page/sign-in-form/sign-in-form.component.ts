@@ -10,8 +10,8 @@ import {
 } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
-import { catchError, retry } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
+import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -22,6 +22,7 @@ import { HttpErrorResponse } from '@angular/common/http';
     CustomPasswordInputComponent,
     CustomInputComponent,
     ReactiveFormsModule,
+    GoogleAuthButtonComponent,
   ],
 })
 export class SignInFormComponent {
@@ -34,7 +35,7 @@ export class SignInFormComponent {
   errorMessage: string = '';
 
   signInForm = this.fb.group({
-    email: ['email@example1.com', [Validators.required, Validators.email]],
+    email: ['email@example.com', [Validators.required, Validators.email]],
     password: ['Example123!', [Validators.required]],
   });
 

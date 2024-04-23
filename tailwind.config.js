@@ -8,6 +8,7 @@ module.exports = {
         primary: "#1C4DDC",
       },
       fontFamily: {
+        roboto: ["Roboto", "arial", "sans-serif"],
         kanit: ["Kanit", "sans-serif"],
       },
     },

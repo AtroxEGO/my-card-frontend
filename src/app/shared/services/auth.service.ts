@@ -10,6 +10,11 @@ type AuthPayload = {
   accessToken: string;
 };
 
+type GoogleAuthPayload = {
+  status: string;
+  url: string;
+};
+
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   constructor(private http: HttpClient) {}
@@ -19,6 +24,18 @@ export class AuthService {
     return this.http
       .post<AuthPayload>(path, { email, password })
       .pipe(tap(this.setSession), shareReplay());
+  }
+
+  signUp(email: string, password: string, confirm: string) {
+    const path = environment.apiBaseUrl + '/users';
+    return this.http
+      .post<AuthPayload>(path, { email, password, confirm })
+      .pipe(tap(this.setSession), shareReplay());
+  }
+
+  signInByGoogle() {
+    const path = environment.apiBaseUrl + '/auth/google/login';
+    return this.http.get<GoogleAuthPayload>(path).pipe();
   }
 
   private setSession(authResult: AuthPayload) {

@@ -32,13 +32,13 @@
 
     <button
       type="submit"
-      class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 active:bg-blue-700"
+      class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 hover:shadow-md active:bg-blue-700"
     >
       Sign in
     </button>
   </form>
   <app-divider value="or" />
-  <button class="rounded-md border border-gray-500 py-2">
-    Sign in with Google
-  </button>
+  <div class="flex justify-center">
+    <app-google-auth-button />
+  </div>
 </div>
