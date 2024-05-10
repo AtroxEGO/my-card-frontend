@@ -35,6 +35,9 @@ dependencies:
   moment:
     specifier: ^2.30.1
     version: 2.30.1
+  ngx-clipboard:
+    specifier: ^16.0.0
+    version: 16.0.0(@angular/common@17.2.4)(@angular/core@17.2.4)
   ngx-cookie-service:
     specifier: ^17.1.0
     version: 17.1.0(@angular/common@17.2.4)(@angular/core@17.2.4)
@@ -5413,11 +5416,35 @@ packages:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
 
+  /ngx-clipboard@16.0.0(@angular/common@17.2.4)(@angular/core@17.2.4):
+    resolution: {integrity: sha512-rZ/Eo1PqiKMiyF8tdjhmUkoUu68f7OzBJ7YH1YFeh2RAaNrerTaW8XfFOzppSckjFQqA1fwGSYuTTJlDhDag5w==}
+    peerDependencies:
+      '@angular/common': '>=13.0.0'
+      '@angular/core': '>=13.0.0'
+    dependencies:
+      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      ngx-window-token: 7.0.0(@angular/common@17.2.4)(@angular/core@17.2.4)
+      tslib: 2.6.2
+    dev: false
+
   /ngx-cookie-service@17.1.0(@angular/common@17.2.4)(@angular/core@17.2.4):
     resolution: {integrity: sha512-m4YI9IEgTaEBDMCz7oeVsO6UX14EmCzg29cTL6yxW8f7oye9wv56egi+3C4wAVSRPkI+cWlqnIOr+XyHwYQYmg==}
     peerDependencies:
       '@angular/common': ^17.0.0
       '@angular/core': ^17.0.0
+    dependencies:
+      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      tslib: 2.6.2
+    dev: false
+
+  /ngx-window-token@7.0.0(@angular/common@17.2.4)(@angular/core@17.2.4):
+    resolution: {integrity: sha512-5+XfRVSY7Dciu8xyCNMkOlH2UfwR9W2P1Pirz7caaZgOZDjFbL8aEO2stjfJJm2FFf1D6dlVHNzhLWGk9HGkqA==}
+    engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
+    peerDependencies:
+      '@angular/common': '>=13.0.0'
+      '@angular/core': '>=13.0.0'
     dependencies:
       '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
       '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
