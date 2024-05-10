@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { AuthService } from './auth.service';
 
 export type Card = {
   id: string;
@@ -22,7 +23,10 @@ export type Card = {
 
 @Injectable({ providedIn: 'root' })
 export class CardService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+  ) {}
 
   getCard(id: string): Observable<Card> {
     const path = environment.apiBaseUrl + '/cards/' + id;
@@ -31,13 +35,13 @@ export class CardService {
 
   patchCard(data: any) {
     // console.log(data.get('socials'));
-    const userID = localStorage.getItem('userID');
+    const userID = this.authService.getUserID();
     const path = environment.apiBaseUrl + '/cards/' + userID;
     return this.http
       .patch<{
         message: string;
         updatedCard: Card;
-      }>(path, data)
+      }>(path, data, { withCredentials: true })
       .pipe(shareReplay());
   }
 }

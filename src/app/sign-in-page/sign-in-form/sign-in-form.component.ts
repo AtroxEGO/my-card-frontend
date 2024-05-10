@@ -55,10 +55,10 @@ export class SignInFormComponent {
         }
 
         if (err.status === 429) {
-          this.errorMessage = 'Too many retries, try again in 60s.';
+          this.errorMessage = 'Too many retries, try again later.';
           return;
         }
-
+        console.log(err);
         this.errorMessage = 'Unexpected error, try again later.';
       },
     });

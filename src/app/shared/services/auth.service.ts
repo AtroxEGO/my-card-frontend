@@ -2,12 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { catchError, tap } from 'rxjs/operators';
+import { tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
 import moment from 'moment';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 type AuthPayload = {
-  accessToken: string;
+  sessionToken: string;
 };
 
 type GoogleAuthPayload = {
@@ -17,7 +19,13 @@ type GoogleAuthPayload = {
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private cookieSerivce: CookieService,
+  ) {
+    this.setSession = this.setSession.bind(this);
+  }
 
   signIn(email: string, password: string) {
     const path = environment.apiBaseUrl + '/auth/login';
@@ -38,20 +46,20 @@ export class AuthService {
     return this.http.get<GoogleAuthPayload>(path).pipe();
   }
 
-  private setSession(authResult: AuthPayload) {
-    const accessToken = authResult.accessToken;
-    const tokenData = jwtDecode(accessToken);
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('expiresAt', tokenData.exp!.toString());
-    localStorage.setItem('userID', tokenData.sub!);
+  setSession(authResult: AuthPayload) {
+    const sessionToken = authResult.sessionToken;
+    this.cookieSerivce.set('sessionToken', sessionToken);
   }
 
   signOut() {
-    localStorage.removeItem('accessToken');
-    localStorage.removeItem('expiresAt');
+    this.cookieSerivce.delete('sessionToken');
+    this.router.navigate(['/sign-in']);
   }
 
-  public isLoggedIn() {
+  isLoggedIn() {
+    const sessionToken = this.getSessionToken();
+    if (!sessionToken) return false;
+
     return moment().isBefore(this.getExpiration());
   }
 
@@ -60,13 +68,23 @@ export class AuthService {
   }
 
   getExpiration() {
-    const expiration = localStorage.getItem('expiresAt');
+    const expiration = jwtDecode(this.getSessionToken()).exp!.toString();
+
     return moment(Number(expiration) * 1000);
+  }
+
+  getSessionToken() {
+    return this.cookieSerivce.get('sessionToken');
   }
 
   getUserID() {
     const isLoggedIn = this.isLoggedIn();
-    const userID = localStorage.getItem('userID');
+
+    const sessionToken = this.getSessionToken();
+
+    if (!sessionToken) return undefined;
+
+    const userID = jwtDecode(sessionToken).sub!;
     return isLoggedIn ? userID : undefined;
   }
 }

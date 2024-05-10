@@ -45,7 +45,7 @@ export class CardEditFormComponent {
     avatarFile: [null],
     fullName: [this.card?.fullName, [Validators.required]],
     jobTitle: [this.card?.jobTitle, [Validators.required]],
-    bio: [this.card?.bio, [Validators.required]],
+    bio: [this.card?.bio],
     socials: this.fb.array([]),
   });
 
@@ -82,7 +82,7 @@ export class CardEditFormComponent {
             this.cardForm.get(error.name)?.setErrors(error.errors);
           });
         }
-        this.errorMessage = err.message;
+        this.errorMessage = `${err.status}: ${err.statusText}`;
       },
     });
   }
@@ -115,7 +115,7 @@ export class CardEditFormComponent {
             this.cardForm.get(error.name)?.setErrors(error.errors);
           });
         }
-        this.errorMessage = err.message;
+        this.errorMessage = `${err.status}: ${err.statusText}`;
       },
     });
   }
