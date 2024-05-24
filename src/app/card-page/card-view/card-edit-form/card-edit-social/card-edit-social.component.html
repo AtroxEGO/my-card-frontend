@@ -34,7 +34,7 @@
     <div class="flex justify-center py-1">
       <div class="flex w-fit items-center gap-2">
         <select
-          class="max-w rounded-md border px-2 py-1 capitalize"
+          class="max-w cursor-pointer rounded-md border px-2 py-1 capitalize"
           #socialSelect
         >
           @for (allowedSocial of getAllowedSocials(); track $index) {
@@ -48,7 +48,7 @@
           <img
             src="assets/add-icon.svg"
             alt="add icon"
-            class="size-7 min-w-6 rounded-md"
+            class="size-7 min-w-6 rounded-md hover:scale-90"
           />
         </div>
       </div>

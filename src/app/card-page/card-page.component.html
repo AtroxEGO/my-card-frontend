@@ -8,6 +8,6 @@
   </ng-container>
 
   <ng-container #notFound *ngIf="errorMessage">
-    <app-not-found />
+    <app-error [message]="errorMessage" />
   </ng-container>
 </div>
