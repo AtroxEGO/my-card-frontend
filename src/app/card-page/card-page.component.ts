@@ -63,6 +63,11 @@ export class CardPageComponent {
       return;
     }
 
+    if (err.message) {
+      this.errorMessage = err.statusText;
+      return;
+    }
+
     this.errorMessage = 'Unexpected Error, try again later.';
   }
 

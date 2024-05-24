@@ -30,7 +30,9 @@ export class CardService {
 
   getCard(id: string): Observable<Card> {
     const path = environment.apiBaseUrl + '/cards/' + id;
-    return this.http.get<Card>(path).pipe(shareReplay());
+    return this.http
+      .get<Card>(path, { withCredentials: true })
+      .pipe(shareReplay());
   }
 
   patchCard(data: any) {

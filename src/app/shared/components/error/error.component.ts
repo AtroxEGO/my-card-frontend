@@ -7,5 +7,6 @@ import { Component, Input } from '@angular/core';
   templateUrl: './error.component.html',
 })
 export class NotFoundComponent {
-  @Input() message: string = 'Unexpected Error, try again later.';
+  @Input({ required: true }) message: string =
+    'Unexpected Error, try again later.';
 }

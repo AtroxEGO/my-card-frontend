@@ -23,22 +23,24 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private cookieSerivce: CookieService,
-  ) {
-    this.setSession = this.setSession.bind(this);
-  }
+  ) {}
 
   signIn(email: string, password: string) {
     const path = environment.apiBaseUrl + '/auth/login';
     return this.http
-      .post<AuthPayload>(path, { email, password })
-      .pipe(tap(this.setSession), shareReplay());
+      .post<AuthPayload>(path, { email, password }, { withCredentials: true })
+      .pipe(shareReplay());
   }
 
   signUp(email: string, password: string, confirm: string) {
     const path = environment.apiBaseUrl + '/users';
     return this.http
-      .post<AuthPayload>(path, { email, password, confirm })
-      .pipe(tap(this.setSession), shareReplay());
+      .post<AuthPayload>(
+        path,
+        { email, password, confirm },
+        { withCredentials: true },
+      )
+      .pipe(shareReplay());
   }
 
   signInByGoogle() {
@@ -46,13 +48,8 @@ export class AuthService {
     return this.http.get<GoogleAuthPayload>(path).pipe();
   }
 
-  setSession(authResult: AuthPayload) {
-    const sessionToken = authResult.sessionToken;
-    this.cookieSerivce.set('sessionToken', sessionToken);
-  }
-
   signOut() {
-    this.cookieSerivce.delete('sessionToken');
+    this.cookieSerivce.delete('sessionToken', '/');
     this.router.navigate(['/sign-in']);
   }
 
