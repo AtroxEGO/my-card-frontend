@@ -9,7 +9,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
 
@@ -30,14 +30,24 @@ export class SignInFormComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
   ) {}
+  errorMessage: string | null = '';
 
-  errorMessage: string = '';
+  ngOnInit(): void {
+    this.setErrorMessageFromQuery();
+  }
 
   signInForm = this.fb.group({
     email: ['email@example.com', [Validators.required, Validators.email]],
     password: ['Example123!', [Validators.required]],
   });
+
+  setErrorMessageFromQuery() {
+    this.route.queryParamMap.subscribe((params) => {
+      this.errorMessage = params.get('error');
+    });
+  }
 
   onSubmit() {
     if (!this.signInForm.valid) return;
@@ -46,22 +56,34 @@ export class SignInFormComponent {
 
     this.authService.signIn(value.email!, value.password!).subscribe({
       next: () => {
-        this.router.navigate(['/']);
+        this.navigateAfterLogin();
       },
       error: (err: HttpErrorResponse) => {
-        if (err.status === 401) {
-          this.errorMessage = 'Invalid email or password.';
-          return;
-        }
-
-        if (err.status === 429) {
-          this.errorMessage = 'Too many retries, try again later.';
-          return;
-        }
-        console.log(err);
-        this.errorMessage = 'Unexpected error, try again later.';
+        this.setErrorMessage(err);
       },
     });
+  }
+
+  navigateAfterLogin() {
+    this.route.queryParamMap.subscribe((params) => {
+      const origin = params.get('origin') || '';
+      const destinationURL = `/${origin}`;
+      this.router.navigate([destinationURL]);
+    });
+  }
+
+  setErrorMessage(error: HttpErrorResponse) {
+    if (error.status === 401) {
+      this.errorMessage = 'Invalid email or password.';
+      return;
+    }
+
+    if (error.status === 429) {
+      this.errorMessage = 'Too many retries, try again later.';
+      return;
+    }
+    console.log(error);
+    this.errorMessage = 'Unexpected error, try again later.';
   }
 
   getControl(name: string) {

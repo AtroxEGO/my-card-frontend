@@ -8,6 +8,7 @@ import { CardViewComponent } from './card-view/card-view.component';
 import { NotFoundComponent } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { getCardIdFromSlug, getCardSlugUrl } from '../shared/utils/card';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-card-page',
@@ -29,6 +30,7 @@ export class CardPageComponent {
     private route: ActivatedRoute,
     private cardService: CardService,
     private router: Router,
+    private titleService: Title,
   ) {}
 
   ngOnInit() {
@@ -37,8 +39,8 @@ export class CardPageComponent {
     this.cardService.getCard(this.cardId).subscribe({
       next: (card) => {
         this.card = card;
-
         this.redirectToSlugUrl(card);
+        this.titleService.setTitle(`MyCard | ${card.fullName}`);
       },
       error: (err: HttpErrorResponse) => {
         this.handleError(err);

@@ -11,7 +11,7 @@
       />
     } @else {
       <div
-        class="flex flex-col items-center justify-center gap-4 text-center md:flex-row md:gap-10 md:text-start"
+        class="flex flex-col items-center justify-center gap-4 overflow-clip text-center md:flex-row md:gap-10 md:text-start"
       >
         <app-card-avatar
           [photoUrl]="card.photoUrl"
@@ -19,8 +19,13 @@
           (click)="isOwner() && toggleEditForm(true)"
         />
         <div class="flex flex-col">
-          <span class="text-6xl">{{ card.fullName || "Full Name" }}</span>
-          <span class="text-3xl font-thin text-gray-300">
+          <span
+            class="max-h-80 max-w-xl overflow-x-hidden overflow-y-hidden text-ellipsis text-6xl"
+            >{{ card.fullName || "Full Name" }}</span
+          >
+          <span
+            class="max-h-32 max-w-xl overflow-x-hidden overflow-y-hidden text-ellipsis text-3xl font-thin text-gray-300"
+          >
             {{ card.jobTitle || "Job Title" }}
           </span>
         </div>
@@ -30,7 +35,10 @@
       >
         <div class="flex w-full flex-col">
           <app-divider value="Bio" class="text-4xl" color="gray-500" />
-          <span class="whitespace-pre-wrap text-2xl font-thin">
+          <!-- // TODO: Support MD? -->
+          <span
+            class="max-h-80 min-h-10 overflow-auto overflow-y-scroll text-ellipsis whitespace-pre-wrap text-2xl font-thin"
+          >
             {{ card.bio || "Empty" }}
           </span>
         </div>

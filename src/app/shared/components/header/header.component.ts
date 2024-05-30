@@ -3,12 +3,13 @@ import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
+import { HeaderButtonComponent } from './header-button/button.component';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [RouterLink],
+  imports: [RouterLink, HeaderButtonComponent],
 })
 export class HeaderComponent {
   currentUrl!: string;
