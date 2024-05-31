@@ -5,6 +5,8 @@ import { environment } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DividerComponent } from '../shared/components/divider/divider.component';
 import { Observable } from 'rxjs';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
+import { ErrorComponent } from '../shared/components/error/error.component';
 
 export type CountryData = {
   countryCode: string;
@@ -22,7 +24,7 @@ type AnalyticsData = {
 @Component({
   selector: 'app-analytics-page',
   standalone: true,
-  imports: [ChartComponent, DividerComponent],
+  imports: [ChartComponent, DividerComponent, SpinnerComponent, ErrorComponent],
   templateUrl: './analytics-page.component.html',
 })
 export class AnalyticsPageComponent {
@@ -30,14 +32,18 @@ export class AnalyticsPageComponent {
     private authService: AuthService,
     private httpClient: HttpClient,
   ) {}
-  loading = true;
+  isLoading = false;
   analytics: AnalyticsData | undefined;
+  errorMessage = '';
 
   async ngOnInit() {
     this.fetchAnalytics();
   }
 
   fetchAnalytics() {
+    const timeout = setTimeout(() => {
+      this.isLoading = true;
+    }, 300);
     const userID = this.authService.getUserID();
 
     const url = environment.apiBaseUrl + `/cards/${userID}/analytics`;
@@ -47,12 +53,28 @@ export class AnalyticsPageComponent {
       // }
       .subscribe({
         next: (analytics) => {
-          this.loading = false;
+          clearTimeout(timeout);
+          this.isLoading = false;
           this.analytics = analytics;
         },
         error: (err: HttpErrorResponse) => {
-          console.log(err);
+          clearTimeout(timeout);
+          this.handleError(err);
         },
       });
+  }
+
+  handleError(err: HttpErrorResponse) {
+    if (err.status === 404) {
+      this.errorMessage = "This card doesn't exist!";
+      return;
+    }
+
+    if (err.statusText != 'Unknown Error') {
+      this.errorMessage = err.statusText;
+      return;
+    }
+
+    this.errorMessage = 'Unexpected Error, try again later.';
   }
 }

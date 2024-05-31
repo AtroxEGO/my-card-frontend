@@ -5,7 +5,7 @@ import { Card, CardService } from '../shared/services/card.service';
 import { CommonModule } from '@angular/common';
 import { DividerComponent } from '../shared/components/divider/divider.component';
 import { CardViewComponent } from './card-view/card-view.component';
-import { NotFoundComponent } from '../shared/components/error/error.component';
+import { ErrorComponent } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { getCardIdFromSlug, getCardSlugUrl } from '../shared/utils/card';
 import { Title } from '@angular/platform-browser';
@@ -13,12 +13,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-card-page',
   standalone: true,
-  imports: [
-    CommonModule,
-    DividerComponent,
-    CardViewComponent,
-    NotFoundComponent,
-  ],
+  imports: [CommonModule, DividerComponent, CardViewComponent, ErrorComponent],
   templateUrl: './card-page.component.html',
 })
 export class CardPageComponent {
