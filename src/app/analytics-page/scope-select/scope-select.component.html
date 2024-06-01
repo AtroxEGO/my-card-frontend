@@ -1,0 +1,12 @@
+<div class="text-center sm:text-end">
+  <span class="text-gray-300">Time Period</span>
+  <div class="flex gap-2">
+    @for (option of options; track $index) {
+      <app-scope-select-btn
+        (click)="changeSelected(option)"
+        [selected]="selected === option"
+        >{{ option }}</app-scope-select-btn
+      >
+    }
+  </div>
+</div>

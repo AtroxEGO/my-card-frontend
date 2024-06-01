@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { ChartComponent } from './chart/chart.component';
 import { AuthService } from '../shared/services/auth.service';
 import { environment } from '../../environments/environment';
@@ -7,6 +7,12 @@ import { DividerComponent } from '../shared/components/divider/divider.component
 import { Observable } from 'rxjs';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { ErrorComponent } from '../shared/components/error/error.component';
+import { QRCodeComponent, QRCodeModule } from 'angularx-qrcode';
+import { SafeUrl } from '@angular/platform-browser';
+import {
+  PeriodOptions,
+  ScopeSelectComponent,
+} from './scope-select/scope-select.component';
 
 export type CountryData = {
   countryCode: string;
@@ -24,7 +30,14 @@ type AnalyticsData = {
 @Component({
   selector: 'app-analytics-page',
   standalone: true,
-  imports: [ChartComponent, DividerComponent, SpinnerComponent, ErrorComponent],
+  imports: [
+    ChartComponent,
+    DividerComponent,
+    SpinnerComponent,
+    ErrorComponent,
+    QRCodeModule,
+    ScopeSelectComponent,
+  ],
   templateUrl: './analytics-page.component.html',
 })
 export class AnalyticsPageComponent {
@@ -35,8 +48,16 @@ export class AnalyticsPageComponent {
   isLoading = false;
   analytics: AnalyticsData | undefined;
   errorMessage = '';
+  qrCodeURL =
+    'https://www.my-card.polakiewicz.com/card/pawel-polakiewicz-128398';
+  qrCodeDownloadURL: SafeUrl = '';
+  selectedPeriod: PeriodOptions = '1m';
 
   async ngOnInit() {
+    this.fetchAnalytics();
+  }
+
+  handleScopeChange() {
     this.fetchAnalytics();
   }
 
@@ -46,7 +67,9 @@ export class AnalyticsPageComponent {
     }, 300);
     const userID = this.authService.getUserID();
 
-    const url = environment.apiBaseUrl + `/cards/${userID}/analytics`;
+    const url =
+      environment.apiBaseUrl +
+      `/cards/${userID}/analytics?scope=${this.selectedPeriod}`;
 
     this.httpClient
       .get<AnalyticsData>(url, { withCredentials: true })
@@ -76,5 +99,10 @@ export class AnalyticsPageComponent {
     }
 
     this.errorMessage = 'Unexpected Error, try again later.';
+  }
+
+  onChangeURL(url: SafeUrl) {
+    console.log(url);
+    this.qrCodeDownloadURL = url;
   }
 }

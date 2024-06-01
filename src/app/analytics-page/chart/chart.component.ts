@@ -16,6 +16,10 @@ export class ChartComponent {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['data'] && changes['data'].currentValue != null) {
+      if (this.chart) {
+        this.chart.destroy();
+        this.chart = undefined;
+      }
       this.createLabels();
       this.createVisitAmounts();
       this.createChart();

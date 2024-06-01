@@ -17,6 +17,7 @@ import { CardEditFormComponent } from './card-edit-form/card-edit-form.component
   ],
   templateUrl: './card-view.component.html',
 })
+// TODO: Share (QR + Link), VCard?
 export class CardViewComponent {
   constructor(private authService: AuthService) {}
 

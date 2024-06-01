@@ -9,7 +9,6 @@ import { CardService } from '../../../services/card.service';
   templateUrl: './custom-file-input.component.html',
 })
 export class CustomFileInputComponent {
-  constructor(private cardService: CardService) {}
   @Input() withPreview: Boolean = true;
   @Input({ required: true }) control: FormControl = new FormControl('');
   @Input() fileURL: string = '';
@@ -23,9 +22,6 @@ export class CustomFileInputComponent {
 
     this.readURL(file);
 
-    // const formData = new FormData();
-    // formData.append('avatarFile', file);
-    // this.cardService.patchCard(formData).subscribe();
     this.control.patchValue(file);
   }
 

@@ -1,10 +1,10 @@
 <div class="flex w-48 flex-col gap-3">
   @if (withPreview) {
     <img
-      id="blah"
       [src]="fileURL || 'assets/avatar_placeholder.jpg'"
       alt="your avatar"
-      class="size-48 rounded-full"
+      class="size-48 cursor-pointer rounded-full"
+      (click)="input.click()"
     />
   }
   <div
