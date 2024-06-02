@@ -1,0 +1,78 @@
+<div class="w-full text-black">
+  <div class="rounded-md bg-white px-5 py-2">
+    <div class="flex justify-between pb-1">
+      <span class="text-2xl">Share Card</span>
+    </div>
+    <qrcode
+      (qrCodeURL)="onChangeURL($event)"
+      [qrdata]="cardURL"
+      [width]="256"
+      [errorCorrectionLevel]="'M'"
+      [margin]="0"
+      alt="QR Code"
+      imageSrc="./assets/logo-frame.svg"
+      [imageWidth]="70"
+      [imageHeight]="70"
+      [ariaLabel]="'QR Code image with the link to the card.'"
+    ></qrcode>
+    <div class="flex items-center justify-between py-2">
+      <a
+        [href]="qrCodeDownloadURL"
+        download="qrcode"
+        class="rounded-md bg-primary px-3 py-1 text-white hover:bg-blue-800"
+        >Download QR</a
+      >
+      <span>OR</span>
+      <button
+        (click)="handleCopy()"
+        class="w-24 rounded-md bg-primary px-3 py-1 text-white hover:bg-blue-800"
+      >
+        {{ copyButtonText }}
+      </button>
+    </div>
+    <div class="flex w-full justify-end">
+      <button
+        (click)="handleClose()"
+        class="cursor-pointer rounded-md bg-gray-200 px-2 py-1 hover:bg-gray-300 active:bg-gray-400"
+      >
+        Back
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- <div
+  class="flex w-4/5 max-w-xl flex-col items-center gap-1 rounded-md bg-white px-4 py-2 text-secondary shadow-md sm:w-4/5 md:w-2/3 lg:w-1/2"
+>
+  <div class="flex justify-between">
+    <span class="text-2xl">Edit Card</span>
+  </div>
+
+  <div class="flex flex-col items-center gap-8 overflow-y-auto sm:flex-row">
+    Hello Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente non
+    temporibus ex, repellat commodi nemo ea magnam nulla veritatis quae quas
+    saepe necessitatibus accusantium quo culpa recusandae consequatur blanditiis
+    odit autem eos ducimus esse. Repellendus perferendis nulla cumque, dolor
+    incidunt excepturi quaerat laborum quo delectus ad molestiae minima modi
+    officiis non illum quam. Cum sed distinctio in sint minima magni
+    exercitationem a unde accusantium voluptates officia tempora doloribus
+    consectetur molestias omnis, dolor ad perspiciatis rem necessitatibus
+    adipisci ratione accusamus quod saepe aliquid? Atque non maxime officia
+    cupiditate laudantium dolorem mollitia nesciunt iste doloremque iusto. Hic
+    omnis ullam culpa a ipsam.
+  </div>
+
+  <div class="flex w-full flex-col justify-end gap-2 sm:flex-row">
+    <div
+      class="cursor-pointer rounded-md bg-gray-200 px-2 py-1 hover:bg-gray-300 active:bg-gray-400"
+    >
+      Cancel
+    </div>
+    <button
+      type="submit"
+      class="rounded-md bg-primary px-3 py-1 text-white hover:bg-blue-600 active:bg-blue-700"
+    >
+      Save
+    </button>
+  </div>
+</div> -->

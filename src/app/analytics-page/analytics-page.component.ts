@@ -48,9 +48,6 @@ export class AnalyticsPageComponent {
   isLoading = false;
   analytics: AnalyticsData | undefined;
   errorMessage = '';
-  qrCodeURL =
-    'https://www.my-card.polakiewicz.com/card/pawel-polakiewicz-128398';
-  qrCodeDownloadURL: SafeUrl = '';
   selectedPeriod: PeriodOptions = '1m';
 
   async ngOnInit() {
@@ -99,10 +96,5 @@ export class AnalyticsPageComponent {
     }
 
     this.errorMessage = 'Unexpected Error, try again later.';
-  }
-
-  onChangeURL(url: SafeUrl) {
-    console.log(url);
-    this.qrCodeDownloadURL = url;
   }
 }

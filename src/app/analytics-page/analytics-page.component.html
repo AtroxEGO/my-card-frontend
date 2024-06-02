@@ -13,47 +13,34 @@
             (selectedChange)="handleScopeChange()"
           />
         </div>
-        @if (analytics) {
-          <div class="flex w-full flex-wrap justify-center">
-            <div class="w-full max-w-64">
-              <app-divider value="Visits" class="text-2xl" color="gray-500" />
-              <div class="flex flex-col items-center text-end">
-                <div class="items-en flex flex-col">
-                  <span>Total: {{ analytics.visits.total }}</span>
-                  <span>Unique: {{ analytics.visits.unique }}</span>
-                </div>
+      }
+      @if (isLoading) {
+        <app-spinner />
+      } @else if (analytics) {
+        <div class="flex w-full flex-wrap justify-center">
+          <div class="w-full max-w-64">
+            <app-divider value="Visits" class="text-2xl" color="gray-500" />
+            <div class="flex flex-col items-center text-end">
+              <div class="items-en flex flex-col">
+                <span>Total: {{ analytics.visits.total }}</span>
+                <span>Unique: {{ analytics.visits.unique }}</span>
               </div>
             </div>
-            <div class="flex w-full max-w-md flex-col items-center">
-              <app-divider
-                value="Countries"
-                class="w-full text-2xl"
-                color="gray-500"
-              />
-              @if (analytics.visits.countries.length > 0) {
-                <app-chart [data]="analytics.visits.countries"></app-chart>
-              } @else {
-                <span>No Data!</span>
-              }
-            </div>
           </div>
-        } @else if (isLoading) {
-          <app-spinner />
-        }
+          <div class="flex w-full max-w-md flex-col items-center">
+            <app-divider
+              value="Countries"
+              class="w-full text-2xl"
+              color="gray-500"
+            />
+            @if (analytics.visits.countries.length > 0) {
+              <app-chart [data]="analytics.visits.countries"></app-chart>
+            } @else {
+              <span>No Data!</span>
+            }
+          </div>
+        </div>
       }
-      <!-- <qrcode
-        (qrCodeURL)="onChangeURL($event)"
-        [qrdata]="qrCodeURL"
-        [width]="256"
-        [errorCorrectionLevel]="'M'"
-        [margin]="1"
-        alt="QR Code"
-        imageSrc="./assets/logo-frame.svg"
-        [imageWidth]="70"
-        [imageHeight]="70"
-        [ariaLabel]="'QR Code image with the link to users card.'"
-      ></qrcode>
-      <a [href]="qrCodeDownloadURL" download="qrcode">Download</a> -->
     </div>
   </div>
 </div>

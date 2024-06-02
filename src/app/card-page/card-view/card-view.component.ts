@@ -5,6 +5,10 @@ import { CardAvatarComponent } from './card-avatar/card-avatar.component';
 import { AuthService } from '../../shared/services/auth.service';
 import { CardSocialItemComponent } from './card-social-item/card-social-item.component';
 import { CardEditFormComponent } from './card-edit-form/card-edit-form.component';
+import { CardShareComponent } from './card-share/card-share.component';
+import { getCardSlugUrl } from '../../shared/utils/card';
+
+export type UserState = 'default' | 'editing' | 'sharing';
 
 @Component({
   selector: 'app-card-view',
@@ -14,6 +18,7 @@ import { CardEditFormComponent } from './card-edit-form/card-edit-form.component
     CardAvatarComponent,
     CardSocialItemComponent,
     CardEditFormComponent,
+    CardShareComponent,
   ],
   templateUrl: './card-view.component.html',
 })
@@ -24,16 +29,18 @@ export class CardViewComponent {
   @Input({ required: true }) card!: Card;
   @Output() cardUpdated = new EventEmitter<Card>();
   isEditing: Boolean = false;
+  isSharing: Boolean = false;
+  userState: UserState = 'default';
+
+  setUserState(state: UserState) {
+    this.userState = state;
+  }
 
   isOwner() {
     const cardID = this.card.id;
     const userID = this.authService.getUserID();
 
     return cardID === userID;
-  }
-
-  toggleEditForm(state: boolean) {
-    this.isEditing = state;
   }
 
   handleCardUpdate(cardData: any) {
