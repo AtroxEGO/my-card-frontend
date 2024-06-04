@@ -8,7 +8,6 @@ import { CardEditFormComponent } from './card-edit-form/card-edit-form.component
 import { CardShareComponent } from './card-share/card-share.component';
 import { CommonModule } from '@angular/common';
 import {
-  Socials,
   vCard,
   vCardEncoding,
   vCardService,
