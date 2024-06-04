@@ -32,6 +32,7 @@ export class CardEditSocialComponent {
     'instagram',
     'email',
     'website',
+    'phone',
   ];
 
   @Input() control!: FormArray;
@@ -73,8 +74,13 @@ export class CardEditSocialComponent {
   }
 
   getPlaceholderText(socialName: string) {
-    let placeholderText = `${socialName.charAt(0).toUpperCase()}${socialName.slice(1)} link`;
-
-    return placeholderText;
+    switch (socialName) {
+      case 'email':
+        return 'Email Address';
+      case 'phone':
+        return 'Phone Number';
+      default:
+        return `${socialName.charAt(0).toUpperCase()}${socialName.slice(1)} Link`;
+    }
   }
 }

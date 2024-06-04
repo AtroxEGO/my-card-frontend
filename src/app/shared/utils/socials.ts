@@ -5,12 +5,20 @@ export const getListOfValidators = (socialName: string) => {
   const validators = [];
   validators.push(Validators.required);
 
-  if (socialName === 'email') {
-    validators.push(Validators.email);
-  }
-
-  if (socialName !== 'email') {
-    validators.push(urlValidator());
+  switch (socialName) {
+    case 'email': {
+      validators.push(Validators.email);
+      break;
+    }
+    case 'phone': {
+      // TODO: Add Regex For Phone Number
+      // validators.push(Validators.)
+      break;
+    }
+    default: {
+      validators.push(urlValidator());
+      break;
+    }
   }
 
   return validators;

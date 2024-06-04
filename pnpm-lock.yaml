@@ -47,6 +47,9 @@ dependencies:
   ngx-cookie-service:
     specifier: ^17.1.0
     version: 17.1.0(@angular/common@17.2.4)(@angular/core@17.2.4)
+  ngx-vcard:
+    specifier: ^4.1.19
+    version: 4.1.19(@angular/common@17.2.4)(@angular/core@17.2.4)
   remove-accents:
     specifier: ^0.5.0
     version: 0.5.0
@@ -56,6 +59,12 @@ dependencies:
   tslib:
     specifier: ^2.3.0
     version: 2.6.2
+  vcards-js:
+    specifier: ^2.10.0
+    version: 2.10.0
+  vcards-ts:
+    specifier: ^1.0.7
+    version: 1.0.7
   zone.js:
     specifier: ~0.14.3
     version: 0.14.4
@@ -5477,6 +5486,17 @@ packages:
       tslib: 2.6.2
     dev: false
 
+  /ngx-vcard@4.1.19(@angular/common@17.2.4)(@angular/core@17.2.4):
+    resolution: {integrity: sha512-8BnZo+siws/ZZARjYtt+RmcufTYtk2832mGlPS0Jw+U4EmYePWXGK4/N/73XZ5rGRHtmcMfRKi/1HFcPJXQgXw==}
+    peerDependencies:
+      '@angular/common': '>=5.x <18.0.0'
+      '@angular/core': '>=5.x <18.0.0'
+    dependencies:
+      '@angular/common': 17.2.4(@angular/core@17.2.4)(rxjs@7.8.1)
+      '@angular/core': 17.2.4(rxjs@7.8.1)(zone.js@0.14.4)
+      tslib: 2.6.2
+    dev: false
+
   /ngx-window-token@7.0.0(@angular/common@17.2.4)(@angular/core@17.2.4):
     resolution: {integrity: sha512-5+XfRVSY7Dciu8xyCNMkOlH2UfwR9W2P1Pirz7caaZgOZDjFbL8aEO2stjfJJm2FFf1D6dlVHNzhLWGk9HGkqA==}
     engines: {node: ^14.20.0 || ^16.13.0 || >=18.10.0}
@@ -7265,6 +7285,14 @@ packages:
     resolution: {integrity: sha512-BNGbWLfd0eUPabhkXUVm0j8uuvREyTh5ovRa/dyow/BqAbZJyC+5fU+IzQOzmAKzYqYRAISoRhdQr3eIZ/PXqg==}
     engines: {node: '>= 0.8'}
     dev: true
+
+  /vcards-js@2.10.0:
+    resolution: {integrity: sha512-nah+xbVInVJaO6+C5PEUqaougmv8BN8aa7ZCtmVQcX6eWIZGRukckFtseXSI7KD7/nXtwkJe624y42T0r+L+AQ==}
+    dev: false
+
+  /vcards-ts@1.0.7:
+    resolution: {integrity: sha512-5jMFMkUsRJ/I9QjvRPhJv/zH74puJR1BPo2XXXwrDtBkRbFUxQN6+R4zE28Ylkxtx+m9FrUqQSaMNOPK4YV0tA==}
+    dev: false
 
   /vite@5.0.12(less@4.2.0)(sass@1.70.0)(terser@5.27.0):
     resolution: {integrity: sha512-4hsnEkG3q0N4Tzf1+t6NdN9dg/L3BM+q8SWgbSPnJvrgH2kgdyzfVJwbR1ic69/4uMJJ/3dqDZZE5/WwqW8U1w==}

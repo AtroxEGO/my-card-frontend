@@ -61,7 +61,7 @@
           <div class="flex w-2/5 min-w-80 flex-col justify-center gap-4">
             <app-divider value="Socials" class="text-4xl" color="gray-500" />
             <ul
-              class="flex w-full flex-col items-center gap-1 text-center text-2xl font-thin"
+              class="flex max-h-60 w-full flex-col items-center gap-1 overflow-y-scroll text-center text-2xl font-thin"
             >
               @for (
                 social of card.socials;
@@ -76,6 +76,14 @@
                 <span>None</span>
               }
             </ul>
+            <div class="flex justify-center">
+              <button
+                class="rounded-sm bg-primary px-3 py-1 text-lg hover:bg-blue-800"
+                (click)="handleAddToContactsClick()"
+              >
+                Add To Contacts
+              </button>
+            </div>
           </div>
         </div>
       }

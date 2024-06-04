@@ -19,7 +19,10 @@ export class CardSocialItemComponent {
   copied = false;
 
   handleClick() {
-    if (this.socialItem.socialName === 'email') {
+    if (
+      this.socialItem.socialName === 'email' ||
+      this.socialItem.socialName === 'phone'
+    ) {
       this.clipboardService.copy(this.socialItem.value);
       this.copied = true;
       return;
