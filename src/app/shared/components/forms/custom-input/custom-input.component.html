@@ -13,9 +13,11 @@
     @if (control.hasError("required")) {
       <div>{{ placeholder }} is required!</div>
     } @else if (control.hasError("email")) {
-      <div>Enter correct email!</div>
+      <div>Enter correct {{ placeholder }}!</div>
     } @else if (control.hasError("url")) {
-      <div>Link is invalid!</div>
+      <div>{{ placeholder }} is invalid!</div>
+    } @else if (control.hasError("pattern")) {
+      <div>Enter correct {{ placeholder }}!</div>
     }
   </div>
 }
