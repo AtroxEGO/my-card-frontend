@@ -17,7 +17,7 @@
       />
       <div class="flex flex-col gap-2">
         <div>
-          <app-divider value="Full&nbsp;Name" />
+          <app-divider value="Full&nbsp;Name" class="text-gray-700" />
           <app-custom-input
             name="Full Name"
             [control]="getControl('fullName')"
@@ -26,7 +26,7 @@
           />
         </div>
         <div>
-          <app-divider value="Job&nbsp;Title" />
+          <app-divider value="Job&nbsp;Title" class="text-gray-700" />
           <app-custom-input
             name="Job Title"
             [control]="getControl('jobTitle')"
@@ -35,7 +35,7 @@
           />
         </div>
         <div>
-          <app-divider value="Bio" />
+          <app-divider value="Bio" class="text-gray-700" />
           <app-custom-textarea
             name="Bio"
             [control]="getControl('bio')"
@@ -45,7 +45,7 @@
         </div>
       </div>
     </div>
-    <app-divider value="Socials" />
+    <app-divider value="Socials" class="text-gray-700" />
     <app-card-edit-social [control]="socials" />
     <span class="text-red-500">{{ errorMessage }}</span>
     <div class="flex w-full flex-col justify-end gap-2 sm:flex-row">
