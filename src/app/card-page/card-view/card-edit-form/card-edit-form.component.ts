@@ -5,18 +5,18 @@ import {
   FormControl,
   FormGroup,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { CustomInputComponent } from '../../../shared/components/forms/custom-input/custom-input.component';
 import { Card, CardService } from '../../../shared/services/card.service';
 import { CustomTextareaComponent } from '../../../shared/components/forms/custom-textarea/custom-textarea.component';
 import { DividerComponent } from '../../../shared/components/divider/divider.component';
 import { CustomFileInputComponent } from '../../../shared/components/forms/custom-file-input/custom-file-input.component';
-import { HttpErrorResponse } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
 import { CardEditSocialComponent } from './card-edit-social/card-edit-social.component';
 import { getListOfValidators } from '../../../shared/utils/socials';
-import { getErrorArray } from '../../../shared/utils/errors';
+import { requiredValidator } from '../../../shared/validators/required.directive';
+import { errorService } from '../../../shared/services/error.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -36,6 +36,7 @@ export class CardEditFormComponent {
   constructor(
     private fb: FormBuilder,
     private cardService: CardService,
+    private errorService: errorService,
   ) {}
   @Input({ required: true }) card!: Card;
   @Output() formClosed = new EventEmitter<void>();
@@ -44,8 +45,8 @@ export class CardEditFormComponent {
 
   cardForm = this.fb.group({
     avatarFile: [null],
-    fullName: [this.card?.fullName, [Validators.required]],
-    jobTitle: [this.card?.jobTitle, [Validators.required]],
+    fullName: [this.card?.fullName, [requiredValidator()]],
+    jobTitle: [this.card?.jobTitle, [requiredValidator()]],
     bio: [this.card?.bio],
     socials: this.fb.array([]),
   });
@@ -60,7 +61,7 @@ export class CardEditFormComponent {
     this.card.socials?.forEach((social) => {
       this.socials.push(
         this.fb.group({
-          socialName: [social.socialName, Validators.required],
+          socialName: [social.socialName, requiredValidator()],
           value: [social.value, getListOfValidators(social.socialName)],
         }),
       );
@@ -78,13 +79,10 @@ export class CardEditFormComponent {
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 400) {
-          const errors = getErrorArray(err);
-          errors.forEach((error) => {
-            this.cardForm.get(error.name)?.setErrors(error.errors);
-          });
+          this.errorService.setFormErrorFromHttpError(err, this.cardForm);
           return;
         }
-        this.errorMessage = `${err.status}: ${err.statusText}`;
+        this.errorMessage = this.errorService.formatError(err);
       },
     });
   }
@@ -112,7 +110,7 @@ export class CardEditFormComponent {
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 400) {
-          const errors = getErrorArray(err);
+          const errors = this.errorService.getErrorArray(err);
           errors.forEach((error) => {
             console.log(error);
             if (error.name.startsWith('socials')) {
@@ -132,7 +130,7 @@ export class CardEditFormComponent {
           });
           return;
         }
-        this.errorMessage = `${err.status}: ${err.statusText}`;
+        this.errorMessage = this.errorService.formatError(err);
       },
     });
   }

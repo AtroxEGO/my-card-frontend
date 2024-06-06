@@ -1,10 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
 import { QRCodeModule } from 'angularx-qrcode';
-import { UserState } from '../card-view.component';
 import { ClipboardService } from 'ngx-clipboard';
-import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-card-share',
   standalone: true,

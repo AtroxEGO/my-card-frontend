@@ -9,6 +9,7 @@ import { ErrorComponent } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { getCardIdFromSlug, getCardSlugUrl } from '../shared/utils/card';
 import { Title } from '@angular/platform-browser';
+import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
 
 @Component({
   selector: 'app-card-page',
@@ -56,16 +57,18 @@ export class CardPageComponent {
 
   handleError(err: HttpErrorResponse) {
     if (err.status === 404) {
-      this.errorMessage = "This card doesn't exist!";
+      this.errorMessage = CardErrorCodes.NOT_FOUND;
       return;
     }
 
+    // TODO
     if (err.message) {
-      this.errorMessage = err.statusText;
+      // this.errorMessage = err.statusText;
+      this.errorMessage = 'TODO!!!';
       return;
     }
 
-    this.errorMessage = 'Unexpected Error, try again later.';
+    this.errorMessage = GeneralErrorCodes.UNEXPECTED;
   }
 
   redirectToSlugUrl(card: Card) {

@@ -1,18 +1,15 @@
-import { Validators } from '@angular/forms';
 import { urlValidator } from '../validators/url.directive';
 import { phoneNumberValidator } from '../validators/phone.directive';
-
-const phoneRegex = new RegExp(
-  '^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]{8,15}$',
-);
+import { emailValidator } from '../validators/email.directive';
+import { requiredValidator } from '../validators/required.directive';
 
 export const getListOfValidators = (socialName: string) => {
   const validators = [];
-  validators.push(Validators.required);
+  validators.push(requiredValidator());
 
   switch (socialName) {
     case 'email': {
-      validators.push(Validators.email);
+      validators.push(emailValidator());
       break;
     }
     case 'phone': {
@@ -27,4 +24,3 @@ export const getListOfValidators = (socialName: string) => {
 
   return validators;
 };
-// {name: 'socials.linkedin', errors: Array(1)}

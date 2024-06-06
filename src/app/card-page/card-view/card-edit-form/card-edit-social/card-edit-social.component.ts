@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {
   FormArray,
@@ -14,8 +14,6 @@ type Social = {
   socialName: string;
   value: string;
 };
-
-type Socials = Social[];
 
 @Component({
   selector: 'app-card-edit-social',

@@ -23,6 +23,9 @@
       id="confirm-input"
       [control]="getControl('confirm')"
     />
+    @if (errorMessage) {
+      <span class="text-lg font-light text-red-500">{{ errorMessage }}</span>
+    }
     <button
       type="submit"
       class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 active:bg-blue-700"

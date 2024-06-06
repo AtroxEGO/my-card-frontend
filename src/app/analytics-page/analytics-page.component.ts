@@ -13,6 +13,7 @@ import {
   PeriodOptions,
   ScopeSelectComponent,
 } from './scope-select/scope-select.component';
+import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
 
 export type CountryData = {
   countryCode: string;
@@ -86,15 +87,17 @@ export class AnalyticsPageComponent {
 
   handleError(err: HttpErrorResponse) {
     if (err.status === 404) {
-      this.errorMessage = "This card doesn't exist!";
+      this.errorMessage = CardErrorCodes.NOT_FOUND;
       return;
     }
 
     if (err.statusText != 'Unknown Error') {
-      this.errorMessage = err.statusText;
+      // this.errorMessage = err.statusText;
+      // TODO
+      this.errorMessage = 'TODO!!!';
       return;
     }
 
-    this.errorMessage = 'Unexpected Error, try again later.';
+    this.errorMessage = GeneralErrorCodes.UNEXPECTED;
   }
 }

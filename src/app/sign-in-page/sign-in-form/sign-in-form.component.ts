@@ -12,6 +12,8 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
+import { AuthErrorCodes } from '../../shared/errors/errorCodes';
+import { errorService } from '../../shared/services/error.service';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -31,6 +33,7 @@ export class SignInFormComponent {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
+    private errorService: errorService,
   ) {}
   errorMessage: string | null = '';
 
@@ -73,17 +76,13 @@ export class SignInFormComponent {
   }
 
   setErrorMessage(error: HttpErrorResponse) {
-    if (error.status === 401) {
-      this.errorMessage = 'Invalid email or password.';
-      return;
+    switch (error.status) {
+      case 401:
+        this.errorMessage = AuthErrorCodes.INVALID_CREDENTIALS;
+        break;
+      default:
+        this.errorMessage = this.errorService.formatError(error);
     }
-
-    if (error.status === 429) {
-      this.errorMessage = 'Too many retries, try again later.';
-      return;
-    }
-    console.log(error);
-    this.errorMessage = 'Unexpected error, try again later.';
   }
 
   getControl(name: string) {

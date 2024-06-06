@@ -11,6 +11,10 @@ import {
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { GeneralErrorCodes } from '../../shared/errors/errorCodes';
+import { emailValidator } from '../../shared/validators/email.directive';
+import { requiredValidator } from '../../shared/validators/required.directive';
+import { errorService } from '../../shared/services/error.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -28,14 +32,15 @@ export class SignUpFormComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private errorService: errorService,
   ) {}
 
   errorMessage = '';
 
   signUpForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required]],
-    confirm: ['', [Validators.required]],
+    email: ['', [requiredValidator(), emailValidator()]],
+    password: ['', [requiredValidator()]],
+    confirm: ['', [requiredValidator()]],
   });
 
   onSubmit() {
@@ -50,12 +55,11 @@ export class SignUpFormComponent {
           this.router.navigate(['/']);
         },
         error: (err: HttpErrorResponse) => {
-          if (err.status === 429) {
-            this.errorMessage = 'Too many retries, try again in 60s.';
+          if (err.status === 400) {
+            this.errorService.setFormErrorFromHttpError(err, this.signUpForm);
             return;
           }
-
-          this.errorMessage = 'Unexpected error, try again later.';
+          this.errorMessage = this.errorService.formatError(err);
         },
       });
   }
