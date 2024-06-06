@@ -3,6 +3,7 @@ import {
   FormArray,
   FormBuilder,
   FormControl,
+  FormGroup,
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
@@ -81,6 +82,7 @@ export class CardEditFormComponent {
           errors.forEach((error) => {
             this.cardForm.get(error.name)?.setErrors(error.errors);
           });
+          return;
         }
         this.errorMessage = `${err.status}: ${err.statusText}`;
       },
@@ -112,8 +114,23 @@ export class CardEditFormComponent {
         if (err.status === 400) {
           const errors = getErrorArray(err);
           errors.forEach((error) => {
+            console.log(error);
+            if (error.name.startsWith('socials')) {
+              const socialsControl = this.cardForm.get('socials') as FormArray;
+
+              const inputControl = socialsControl.controls.find(
+                (control) =>
+                  control.value.socialName === error.name.split('.')[1],
+              ) as FormGroup;
+
+              inputControl.get('value')?.setErrors(error.errors);
+
+              return;
+            }
+
             this.cardForm.get(error.name)?.setErrors(error.errors);
           });
+          return;
         }
         this.errorMessage = `${err.status}: ${err.statusText}`;
       },

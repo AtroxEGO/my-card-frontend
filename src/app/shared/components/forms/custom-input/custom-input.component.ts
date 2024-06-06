@@ -20,7 +20,16 @@ export class CustomInputComponent {
   @Input({ required: true }) control: FormControl = new FormControl('');
 
   get showErrors(): boolean {
-    return this.control.invalid && this.formDirective.submitted;
+    return (
+      this.control.invalid &&
+      this.formDirective.submitted &&
+      !!this.control.errors
+    );
+  }
+
+  getErrors(): Array<string> {
+    const errorsArray = Object.values(this.control.errors as Array<string>);
+    return errorsArray;
   }
 
   get borderColor() {

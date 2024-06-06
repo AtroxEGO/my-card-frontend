@@ -1,5 +1,6 @@
 import { Validators } from '@angular/forms';
 import { urlValidator } from '../validators/url.directive';
+import { phoneNumberValidator } from '../validators/phone.directive';
 
 const phoneRegex = new RegExp(
   '^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-s./0-9]{8,15}$',
@@ -15,7 +16,7 @@ export const getListOfValidators = (socialName: string) => {
       break;
     }
     case 'phone': {
-      validators.push(Validators.pattern(phoneRegex));
+      validators.push(phoneNumberValidator());
       break;
     }
     default: {
@@ -26,3 +27,4 @@ export const getListOfValidators = (socialName: string) => {
 
   return validators;
 };
+// {name: 'socials.linkedin', errors: Array(1)}

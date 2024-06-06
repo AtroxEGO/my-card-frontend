@@ -36,7 +36,7 @@ export class CardViewComponent {
 
   @Input({ required: true }) card!: Card;
   @Output() cardUpdated = new EventEmitter<Card>();
-  userState: UserState = 'default';
+  userState: UserState = 'editing';
 
   setUserState(state: UserState) {
     this.userState = state;

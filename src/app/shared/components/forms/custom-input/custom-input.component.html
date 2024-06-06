@@ -10,14 +10,8 @@
 />
 @if (showErrors) {
   <div class="text-red-600">
-    @if (control.hasError("required")) {
-      <div>{{ placeholder }} is required!</div>
-    } @else if (control.hasError("email")) {
-      <div>Enter correct {{ placeholder }}!</div>
-    } @else if (control.hasError("url")) {
-      <div>{{ placeholder }} is invalid!</div>
-    } @else if (control.hasError("pattern")) {
-      <div>Enter correct {{ placeholder }}!</div>
+    @for (error of getErrors(); track $index) {
+      {{ error }}
     }
   </div>
 }
