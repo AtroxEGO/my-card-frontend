@@ -8,7 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { CustomInputComponent } from '../../../../shared/components/forms/custom-input/custom-input.component';
-import { getListOfValidators } from '../../../../shared/utils/socials';
+import { CardService } from '../../../../shared/services/card.service';
 
 type Social = {
   socialName: string;
@@ -22,7 +22,10 @@ type Social = {
   templateUrl: './card-edit-social.component.html',
 })
 export class CardEditSocialComponent {
-  constructor(private fb: FormBuilder) {}
+  constructor(
+    private fb: FormBuilder,
+    private cardService: CardService,
+  ) {}
   allowedSocials = [
     'facebook',
     'youtube',
@@ -48,7 +51,7 @@ export class CardEditSocialComponent {
   handleCreateSocial(value: string) {
     const control = this.fb.group({
       socialName: [value, Validators.required],
-      value: ['', getListOfValidators(value)],
+      value: ['', this.cardService.getListOfSocialValidators(value)],
     });
 
     this.control.push(control);

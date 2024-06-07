@@ -13,9 +13,8 @@ import { DividerComponent } from '../../../shared/components/divider/divider.com
 import { CustomFileInputComponent } from '../../../shared/components/forms/custom-file-input/custom-file-input.component';
 import { CommonModule } from '@angular/common';
 import { CardEditSocialComponent } from './card-edit-social/card-edit-social.component';
-import { getListOfValidators } from '../../../shared/utils/socials';
 import { requiredValidator } from '../../../shared/validators/required.directive';
-import { errorService } from '../../../shared/services/error.service';
+import { ErrorService } from '../../../shared/services/error.service';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
@@ -36,7 +35,7 @@ export class CardEditFormComponent {
   constructor(
     private fb: FormBuilder,
     private cardService: CardService,
-    private errorService: errorService,
+    private errorService: ErrorService,
   ) {}
   @Input({ required: true }) card!: Card;
   @Output() formClosed = new EventEmitter<void>();
@@ -62,7 +61,10 @@ export class CardEditFormComponent {
       this.socials.push(
         this.fb.group({
           socialName: [social.socialName, requiredValidator()],
-          value: [social.value, getListOfValidators(social.socialName)],
+          value: [
+            social.value,
+            this.cardService.getListOfSocialValidators(social.socialName),
+          ],
         }),
       );
     });

@@ -2,19 +2,13 @@ import { Component } from '@angular/core';
 import { CustomInputComponent } from '../../shared/components/forms/custom-input/custom-input.component';
 import { CustomPasswordInputComponent } from '../../shared/components/forms/custom-password-input/custom-password-input.component';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
-import {
-  FormBuilder,
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
-import { GeneralErrorCodes } from '../../shared/errors/errorCodes';
 import { emailValidator } from '../../shared/validators/email.directive';
 import { requiredValidator } from '../../shared/validators/required.directive';
-import { errorService } from '../../shared/services/error.service';
+import { ErrorService } from '../../shared/services/error.service';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -32,7 +26,7 @@ export class SignUpFormComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
-    private errorService: errorService,
+    private errorService: ErrorService,
   ) {}
 
   errorMessage = '';

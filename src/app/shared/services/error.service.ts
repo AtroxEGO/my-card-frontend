@@ -4,7 +4,7 @@ import { AuthErrorCodes, GeneralErrorCodes } from '../errors/errorCodes';
 import { FormGroup } from '@angular/forms';
 
 @Injectable({ providedIn: 'root' })
-export class errorService {
+export class ErrorService {
   constructor() {}
 
   getErrorArray(err: HttpErrorResponse) {
@@ -28,7 +28,8 @@ export class errorService {
 
       case 429:
         return GeneralErrorCodes.TOO_MANY_RETRIES;
-
+      case 0:
+        return GeneralErrorCodes.SERVICE_DOWN;
       default:
         return GeneralErrorCodes.UNEXPECTED;
     }

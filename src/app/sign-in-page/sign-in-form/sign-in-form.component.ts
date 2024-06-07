@@ -13,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
 import { AuthErrorCodes } from '../../shared/errors/errorCodes';
-import { errorService } from '../../shared/services/error.service';
+import { ErrorService } from '../../shared/services/error.service';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -33,7 +33,7 @@ export class SignInFormComponent {
     private authService: AuthService,
     private router: Router,
     private route: ActivatedRoute,
-    private errorService: errorService,
+    private errorService: ErrorService,
   ) {}
   errorMessage: string | null = '';
 

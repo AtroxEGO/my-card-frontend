@@ -7,9 +7,9 @@ import { DividerComponent } from '../shared/components/divider/divider.component
 import { CardViewComponent } from './card-view/card-view.component';
 import { ErrorComponent } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
-import { getCardIdFromSlug, getCardSlugUrl } from '../shared/utils/card';
 import { Title } from '@angular/platform-browser';
 import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
+import { ErrorService } from '../shared/services/error.service';
 
 @Component({
   selector: 'app-card-page',
@@ -27,6 +27,7 @@ export class CardPageComponent {
     private cardService: CardService,
     private router: Router,
     private titleService: Title,
+    private errorService: ErrorService,
   ) {}
 
   ngOnInit() {
@@ -39,7 +40,7 @@ export class CardPageComponent {
         this.titleService.setTitle(`MyCard | ${card.fullName}`);
       },
       error: (err: HttpErrorResponse) => {
-        this.handleError(err);
+        this.errorMessage = this.errorService.formatError(err);
       },
     });
   }
@@ -52,27 +53,11 @@ export class CardPageComponent {
     const slug = this.route.snapshot.paramMap.get('slug')!;
     const strict = this.route.snapshot.queryParamMap.get('strict');
 
-    this.cardId = getCardIdFromSlug(slug, strict);
-  }
-
-  handleError(err: HttpErrorResponse) {
-    if (err.status === 404) {
-      this.errorMessage = CardErrorCodes.NOT_FOUND;
-      return;
-    }
-
-    // TODO
-    if (err.message) {
-      // this.errorMessage = err.statusText;
-      this.errorMessage = 'TODO!!!';
-      return;
-    }
-
-    this.errorMessage = GeneralErrorCodes.UNEXPECTED;
+    this.cardId = this.cardService.getCardIdFromSlug(slug, strict);
   }
 
   redirectToSlugUrl(card: Card) {
-    const url = getCardSlugUrl(card.fullName, card.slug);
+    const url = this.cardService.getCardSlugUrl(card.fullName, card.slug);
 
     this.router.navigate([url]);
   }
