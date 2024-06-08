@@ -17,7 +17,7 @@
         "components.header.card" | translate
       }}</app-header-button>
       <div class="h-7 w-0 border-l border-gray-500 opacity-70"></div>
-      <app-header-button (click)="signOut()" customStyle="default">
+      <app-header-button (click)="signOut()">
         {{ "components.header.logout" | translate }}
       </app-header-button>
       <!-- <div class="h-7 w-0 border-l border-gray-500 opacity-70"></div> -->
@@ -26,7 +26,7 @@
         <app-header-button link="/sign-up">{{
           "components.header.sign-up" | translate
         }}</app-header-button>
-        <app-header-button link="/sign-in" customStyle="default">{{
+        <app-header-button link="/sign-in" customStyle="primary">{{
           "components.header.sign-in" | translate
         }}</app-header-button>
       }
