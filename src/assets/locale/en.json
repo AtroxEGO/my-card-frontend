@@ -72,6 +72,7 @@
     },
     "card": {
       "header": "Edit Card",
+      "edit-card": "Edit Card",
       "change-avatar": "Change Avatar",
       "socials": {
         "email-placeholder": "Email Address",

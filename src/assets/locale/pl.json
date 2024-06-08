@@ -36,7 +36,7 @@
       "share": "Udostępnij",
       "full-name-placeholder": "Pełne imię i nazwisko",
       "job-title-placeholder": "Stanowisko",
-      "bio-placeholder": "Puste",
+      "bio-placeholder": "Pusto...",
       "socials-placeholder": "Brak"
     },
     "analytics": {
@@ -71,7 +71,8 @@
       "forgot-password": "Zapomniałeś hasła?"
     },
     "card": {
-      "header": "Edytuj Kartę",
+      "header": "Edytuj Wizytówke",
+      "edit-card": "Edytuj Wizytówke",
       "change-avatar": "Zmień Avatar",
       "socials": {
         "email-placeholder": "Adres Email",
@@ -91,14 +92,14 @@
       "required": "To pole jest wymagane"
     },
     "card": {
-      "not_found": "Karta nie znaleziona"
+      "not_found": "Nie znaleziono wizytówki!"
     },
     "general": {
       "invalidCredentails": "Email lub hasło jest nieprawidłowe!",
       "unauthorized": "Nieautoryzowany dostęp",
       "serviceDown": "Usługa jest obecnie niedostępna",
       "badRequest": "Błędne żądanie",
-      "tooManyRetries": "Za dużo prób",
+      "tooManyRetries": "Za dużo prób, spróbuj ponownie poźniej.",
       "unexpected": "Nieoczekiwany błąd"
     }
   }

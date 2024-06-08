@@ -5,6 +5,7 @@ import { NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HeaderButtonComponent } from './header-button/button.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-header',
@@ -19,6 +20,7 @@ export class HeaderComponent {
     private router: Router,
     private authService: AuthService,
     private translateService: TranslateService,
+    private cookieService: CookieService,
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -66,8 +68,9 @@ export class HeaderComponent {
     const curentLanguageIndex = avaiableLanguages.findIndex(
       (value) => value === currentLanguage,
     );
-    this.translateService.use(
-      avaiableLanguages[curentLanguageIndex + 1] || avaiableLanguages[0],
-    );
+    const newLanguage =
+      avaiableLanguages[curentLanguageIndex + 1] || avaiableLanguages[0];
+    this.cookieService.set('user-preferred-lang', newLanguage);
+    this.translateService.use(newLanguage);
   }
 }
