@@ -18,14 +18,15 @@ export class ErrorService {
     return errorArray;
   }
 
+  // Transforms error into string used as translation key
   formatError(err: HttpErrorResponse) {
     switch (err.status) {
       case 400:
         return GeneralErrorCodes.BAD_REQUEST;
-
       case 401:
         return AuthErrorCodes.UNAUTHORIZED;
-
+      case 404:
+        return GeneralErrorCodes.NOT_FOUND;
       case 429:
         return GeneralErrorCodes.TOO_MANY_RETRIES;
       case 0:

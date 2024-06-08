@@ -4,11 +4,13 @@ import { CustomPasswordInputComponent } from '../../shared/components/forms/cust
 import { DividerComponent } from '../../shared/components/divider/divider.component';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { emailValidator } from '../../shared/validators/email.directive';
 import { requiredValidator } from '../../shared/validators/required.directive';
 import { ErrorService } from '../../shared/services/error.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -19,6 +21,8 @@ import { ErrorService } from '../../shared/services/error.service';
     CustomInputComponent,
     CustomPasswordInputComponent,
     ReactiveFormsModule,
+    TranslateModule,
+    GoogleAuthButtonComponent,
   ],
 })
 export class SignUpFormComponent {
@@ -26,16 +30,21 @@ export class SignUpFormComponent {
     private fb: FormBuilder,
     private authService: AuthService,
     private router: Router,
+    private route: ActivatedRoute,
     private errorService: ErrorService,
   ) {}
 
-  errorMessage = '';
+  errorMessage: string | null = '';
 
   signUpForm = this.fb.group({
     email: ['', [requiredValidator(), emailValidator()]],
     password: ['', [requiredValidator()]],
     confirm: ['', [requiredValidator()]],
   });
+
+  ngOnInit() {
+    this.setErrorMessageFromQuery();
+  }
 
   onSubmit() {
     if (!this.signUpForm.valid) return;
@@ -56,6 +65,12 @@ export class SignUpFormComponent {
           this.errorMessage = this.errorService.formatError(err);
         },
       });
+  }
+
+  setErrorMessageFromQuery() {
+    this.route.queryParamMap.subscribe((params) => {
+      this.errorMessage = params.get('error');
+    });
   }
 
   getControl(name: string) {

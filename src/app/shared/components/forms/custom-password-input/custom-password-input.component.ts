@@ -4,11 +4,12 @@ import {
   FormGroupDirective,
   ReactiveFormsModule,
 } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-custom-password-input',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './custom-password-input.component.html',
 })
 export class CustomPasswordInputComponent {
@@ -25,7 +26,9 @@ export class CustomPasswordInputComponent {
   }
 
   get toggleButtonText() {
-    return this.isShown ? 'Hide' : 'Show';
+    return this.isShown
+      ? 'forms.auth.password-input-visibility-button-hidden'
+      : 'forms.auth.password-input-visibility-button-visible';
   }
 
   get showErrors(): boolean {

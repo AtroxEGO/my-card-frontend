@@ -14,6 +14,7 @@ import {
   ScopeSelectComponent,
 } from './scope-select/scope-select.component';
 import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
+import { TranslateModule } from '@ngx-translate/core';
 
 export type CountryData = {
   countryCode: string;
@@ -38,6 +39,7 @@ type AnalyticsData = {
     ErrorComponent,
     QRCodeModule,
     ScopeSelectComponent,
+    TranslateModule,
   ],
   templateUrl: './analytics-page.component.html',
 })

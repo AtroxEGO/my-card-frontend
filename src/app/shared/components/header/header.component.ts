@@ -4,12 +4,13 @@ import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { HeaderButtonComponent } from './header-button/button.component';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
   standalone: true,
-  imports: [RouterLink, HeaderButtonComponent],
+  imports: [RouterLink, HeaderButtonComponent, TranslateModule],
 })
 export class HeaderComponent {
   currentUrl!: string;
@@ -17,6 +18,7 @@ export class HeaderComponent {
   constructor(
     private router: Router,
     private authService: AuthService,
+    private translateService: TranslateService,
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
@@ -50,5 +52,22 @@ export class HeaderComponent {
 
   signOut() {
     this.authService.signOut();
+  }
+
+  getCurrentLanguage() {
+    const currentLanguage = this.translateService.currentLang;
+
+    return currentLanguage;
+  }
+
+  handleLanguageToggle() {
+    const currentLanguage = this.translateService.currentLang;
+    const avaiableLanguages = this.translateService.langs;
+    const curentLanguageIndex = avaiableLanguages.findIndex(
+      (value) => value === currentLanguage,
+    );
+    this.translateService.use(
+      avaiableLanguages[curentLanguageIndex + 1] || avaiableLanguages[0],
+    );
   }
 }

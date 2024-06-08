@@ -16,6 +16,7 @@ import { CardEditSocialComponent } from './card-edit-social/card-edit-social.com
 import { requiredValidator } from '../../../shared/validators/required.directive';
 import { ErrorService } from '../../../shared/services/error.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -28,6 +29,7 @@ import { HttpErrorResponse } from '@angular/common/http';
     CustomFileInputComponent,
     CommonModule,
     CardEditSocialComponent,
+    TranslateModule,
   ],
   templateUrl: './card-edit-form.component.html',
 })

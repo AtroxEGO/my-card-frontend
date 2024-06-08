@@ -1,7 +1,9 @@
 <div class="flex items-center">
   <div class="m-2 h-0 w-full border-t border-{{ color }}"></div>
   @if (value) {
-    {{ value }}
+    <span class="whitespace-nowrap">
+      {{ value | translate }}
+    </span>
     <div class="m-2 h-0 w-full border-t border-{{ color }}"></div>
   }
 </div>

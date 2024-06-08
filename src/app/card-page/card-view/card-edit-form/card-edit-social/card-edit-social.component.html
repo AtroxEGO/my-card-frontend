@@ -12,7 +12,10 @@
         [name]="social.socialName"
         [control]="getValueControl(social.socialName)"
         [id]="social.socialName"
-        [placeholder]="getPlaceholderText(social.socialName)"
+        placeholder="{{
+          getPlaceholderText(social.socialName)
+            | translate: getUppercaseSocialName(social.socialName)
+        }}"
         class="w-full placeholder:capitalize"
       />
       <div

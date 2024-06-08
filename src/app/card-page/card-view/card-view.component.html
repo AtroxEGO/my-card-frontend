@@ -27,20 +27,26 @@
             <span
               class="max-h-80 max-w-xl overflow-x-hidden overflow-y-hidden text-ellipsis text-6xl"
             >
-              {{ card.fullName || "Full Name" }}
+              {{
+                card.fullName || "pages.card.full-name-placeholder" | translate
+              }}
             </span>
 
             <span
               class="max-h-32 max-w-xl overflow-x-hidden overflow-y-hidden text-ellipsis text-3xl font-thin text-gray-300"
             >
-              {{ card.jobTitle || "Job Title" }}
+              {{
+                card.jobTitle || "pages.card.job-title-placeholder" | translate
+              }}
             </span>
             <div class="flex w-full justify-center md:justify-start">
               <button
                 class="flex items-center gap-1 text-gray-400"
                 (click)="setUserState('sharing')"
               >
-                <span class="text-xl">Share</span>
+                <span class="text-xl">{{
+                  "pages.card.share" | translate
+                }}</span>
                 <img src="../../../assets/share-icon.svg" class="size-6" />
               </button>
             </div>
@@ -50,15 +56,23 @@
           class="flex w-full max-w-screen-lg flex-col items-center gap-3 px-5 lg:flex-row lg:items-start"
         >
           <div class="flex w-full flex-col">
-            <app-divider value="Bio" class="text-4xl" color="gray-500" />
+            <app-divider
+              value="{{ 'pages.card.bio' | translate }}"
+              class="text-4xl"
+              color="gray-500"
+            />
             <span
               class="max-h-80 min-h-10 overflow-auto overflow-y-scroll text-ellipsis whitespace-pre-wrap pr-2 text-2xl font-thin"
             >
-              {{ card.bio || "Empty" }}
+              {{ card.bio || "pages.card.bio-placeholder" | translate }}
             </span>
           </div>
           <div class="flex w-2/5 min-w-80 flex-col justify-center gap-4">
-            <app-divider value="Socials" class="text-4xl" color="gray-500" />
+            <app-divider
+              value="{{ 'pages.card.socials' | translate }}"
+              class="text-4xl"
+              color="gray-500"
+            />
             <ul
               class="flex max-h-60 w-full flex-col items-center gap-1 overflow-y-scroll text-center text-2xl font-thin"
             >
@@ -72,7 +86,7 @@
                   <app-divider color="gray-500" class="w-1/4" />
                 }
               } @empty {
-                <span>None</span>
+                <span>{{ "pages.card.socials-placeholder" | translate }}</span>
               }
             </ul>
             <div class="flex justify-center">
@@ -80,7 +94,7 @@
                 class="rounded-sm bg-primary px-3 py-1 text-lg hover:bg-blue-800"
                 (click)="handleAddToContactsClick()"
               >
-                Add To Contacts
+                {{ "pages.card.add-to-contacts" | translate }}
               </button>
             </div>
           </div>

@@ -1,5 +1,7 @@
 <div class="flex flex-col gap-3 rounded-lg bg-white px-8 pb-7 pt-5">
-  <h1 class="text-4xl">Sign up</h1>
+  <h1 class="text-4xl">
+    {{ "forms.auth.sign-up-header" | translate }}
+  </h1>
   <form
     [formGroup]="signUpForm"
     (ngSubmit)="onSubmit()"
@@ -8,33 +10,35 @@
     <app-custom-input
       id="email-input"
       name="email"
-      placeholder="Email"
+      placeholder="forms.auth.email-input-placeholder"
       [control]="getControl('email')"
     />
     <app-custom-password-input
       name="password"
-      placeholder="Password"
+      placeholder="forms.auth.password-input-placeholder"
       id="password-input"
       [control]="getControl('password')"
     />
     <app-custom-password-input
       name="confirm"
-      placeholder="Confirm password"
+      placeholder="forms.auth.confirm-input-placeholder"
       id="confirm-input"
       [control]="getControl('confirm')"
     />
     @if (errorMessage) {
-      <span class="text-lg font-light text-red-500">{{ errorMessage }}</span>
+      <span class="text-lg font-light text-red-500">{{
+        errorMessage | translate
+      }}</span>
     }
     <button
       type="submit"
       class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 active:bg-blue-700"
     >
-      Sign up
+      {{ "forms.auth.sign-up-button" | translate }}
     </button>
   </form>
-  <app-divider value="or" />
-  <button class="rounded-md border border-gray-500 py-2">
-    Sign up with Google
-  </button>
+  <app-divider value="forms.auth.divider-text" />
+  <div class="flex justify-center">
+    <app-google-auth-button />
+  </div>
 </div>

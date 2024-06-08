@@ -9,20 +9,30 @@
   </app-header-button>
   <div class="flex items-center gap-4 text-xl">
     @if (isLoggedIn) {
-      <app-header-button link="/analytics">Analytics</app-header-button>
+      <app-header-button link="/analytics">{{
+        "components.header.analytics" | translate
+      }}</app-header-button>
       <div class="h-7 w-0 border-l border-gray-500 opacity-70"></div>
-      <app-header-button link="/">Card</app-header-button>
+      <app-header-button link="/">{{
+        "components.header.card" | translate
+      }}</app-header-button>
       <app-header-button (click)="signOut()" customStyle="primary">
-        Logout
+        {{ "components.header.logout" | translate }}
       </app-header-button>
     } @else {
       @if (showAuthButtons) {
-        <app-header-button link="/sign-up">Sign&nbsp;up</app-header-button>
-        <app-header-button link="/sign-in" customStyle="primary"
-          >Sign&nbsp;in</app-header-button
-        >
+        <app-header-button link="/sign-up">{{
+          "components.header.sign-up" | translate
+        }}</app-header-button>
+        <app-header-button link="/sign-in" customStyle="primary">{{
+          "components.header.sign-in" | translate
+        }}</app-header-button>
       }
     }
-    <app-header-button>EN</app-header-button>
+    <app-header-button
+      class="size-6 uppercase"
+      (click)="handleLanguageToggle()"
+      >{{ getCurrentLanguage() }}</app-header-button
+    >
   </div>
 </div>

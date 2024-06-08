@@ -40,6 +40,10 @@ export class CardPageComponent {
         this.titleService.setTitle(`MyCard | ${card.fullName}`);
       },
       error: (err: HttpErrorResponse) => {
+        if (err.status === 404) {
+          this.errorMessage = CardErrorCodes.NOT_FOUND;
+          return;
+        }
         this.errorMessage = this.errorService.formatError(err);
       },
     });

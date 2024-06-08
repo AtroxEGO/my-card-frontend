@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { CardService } from '../../../services/card.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-custom-file-input',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, TranslateModule],
   templateUrl: './custom-file-input.component.html',
 })
 export class CustomFileInputComponent {

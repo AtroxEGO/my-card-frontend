@@ -12,6 +12,7 @@ import {
   vCardEncoding,
   vCardService,
 } from '../../shared/services/vCard.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 export type UserState = 'default' | 'editing' | 'sharing';
 
@@ -25,6 +26,7 @@ export type UserState = 'default' | 'editing' | 'sharing';
     CardEditFormComponent,
     CardShareComponent,
     CommonModule,
+    TranslateModule,
   ],
   templateUrl: './card-view.component.html',
 })

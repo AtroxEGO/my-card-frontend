@@ -1,5 +1,7 @@
 <div class="text-center sm:text-end">
-  <span class="text-gray-300">Time Period</span>
+  <span class="text-gray-300">{{
+    "pages.analytics.period-selector.time-period" | translate
+  }}</span>
   <div class="flex gap-2">
     @for (option of options; track $index) {
       <app-scope-select-btn

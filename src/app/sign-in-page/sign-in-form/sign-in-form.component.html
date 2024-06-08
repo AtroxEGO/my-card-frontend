@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-3 rounded-lg bg-white px-8 pb-7 pt-5">
-  <h1 class="text-4xl">Sign in</h1>
+  <h1 class="text-4xl">{{ "forms.auth.sign-in-header" | translate }}</h1>
   <form
     [formGroup]="signInForm"
     class="flex flex-col gap-3"
@@ -8,24 +8,26 @@
     <app-custom-input
       id="email-input"
       name="email"
-      placeholder="Email"
+      placeholder="forms.auth.email-input-placeholder"
       [control]="getControl('email')"
     />
     <div>
       <app-custom-password-input
         name="password"
-        placeholder="Password"
+        placeholder="forms.auth.password-input-placeholder"
         id="password-input"
         [control]="getControl('password')"
       />
       @if (errorMessage) {
-        <span class="text-lg font-light text-red-500">{{ errorMessage }}</span>
+        <span class="text-lg font-light text-red-500">{{
+          errorMessage | translate
+        }}</span>
       }
       <div>
         <button
           class="text-xl font-extralight text-primary active:text-blue-700"
         >
-          Forgot password?
+          {{ "forms.auth.forgot-password" | translate }}
         </button>
       </div>
     </div>
@@ -34,10 +36,10 @@
       type="submit"
       class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 hover:shadow-md active:bg-blue-700"
     >
-      Sign in
+      {{ "forms.auth.sign-in-button" | translate }}
     </button>
   </form>
-  <app-divider value="or" />
+  <app-divider value="forms.auth.divider-text" />
   <div class="flex justify-center">
     <app-google-auth-button />
   </div>

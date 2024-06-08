@@ -16,6 +16,7 @@ export enum AuthErrorCodes {
 }
 
 export enum GeneralErrorCodes {
+  NOT_FOUND = 'errors.general.notFound',
   SERVICE_DOWN = 'errors.general.serviceDown',
   BAD_REQUEST = 'errors.general.badRequest',
   TOO_MANY_RETRIES = 'errors.general.tooManyRetries',

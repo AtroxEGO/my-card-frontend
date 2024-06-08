@@ -2,12 +2,14 @@
   <div class="flex h-full w-full max-w-3xl items-center justify-center">
     <div class="flex h-full w-full flex-col items-center gap-5">
       @if (errorMessage) {
-        <app-error [message]="errorMessage" />
+        <app-error [message]="errorMessage | translate" />
       } @else {
         <div
           class="flex w-full flex-col flex-wrap items-center justify-center gap-2 px-5 sm:flex-row sm:justify-between"
         >
-          <h1 class="max-h-80 text-5xl">Analytics</h1>
+          <h1 class="max-h-80 text-5xl">
+            {{ "pages.analytics.header" | translate }}
+          </h1>
           <app-scope-select
             [(selected)]="selectedPeriod"
             (selectedChange)="handleScopeChange()"
@@ -19,24 +21,39 @@
       } @else if (analytics) {
         <div class="flex w-full flex-wrap justify-center">
           <div class="w-full max-w-64">
-            <app-divider value="Visits" class="text-2xl" color="gray-500" />
+            <!-- // TODO: Make headers?? -->
+            <app-divider
+              value="{{ 'pages.analytics.visits.header' | translate }}"
+              class="text-2xl"
+              color="gray-500"
+            />
             <div class="flex flex-col items-center text-end">
               <div class="items-en flex flex-col">
-                <span>Total: {{ analytics.visits.total }}</span>
-                <span>Unique: {{ analytics.visits.unique }}</span>
+                <!-- <span>Total: {{ analytics.visits.total }}</span> -->
+                <span>
+                  {{
+                    "pages.analytics.visits.total" | translate: analytics.visits
+                  }}
+                </span>
+                <span>
+                  {{
+                    "pages.analytics.visits.unique"
+                      | translate: analytics.visits
+                  }}
+                </span>
               </div>
             </div>
           </div>
           <div class="flex w-full max-w-md flex-col items-center">
             <app-divider
-              value="Countries"
+              value="{{ 'pages.analytics.countries.header' | translate }}"
               class="w-full text-2xl"
               color="gray-500"
             />
             @if (analytics.visits.countries.length > 0) {
               <app-chart [data]="analytics.visits.countries"></app-chart>
             } @else {
-              <span>No Data!</span>
+              <span>{{ "pages.analytics.countries.no-data" | translate }}</span>
             }
           </div>
         </div>

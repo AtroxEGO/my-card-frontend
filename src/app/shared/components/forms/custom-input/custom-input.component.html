@@ -6,12 +6,12 @@
   name="{{ name }}"
   id="{{ id }}"
   [formControl]="control"
-  placeholder="{{ placeholder }}"
+  placeholder="{{ placeholder | translate }}"
 />
 @if (showErrors) {
   <div class="text-red-600">
     @for (error of getErrors(); track $index) {
-      {{ error }}
+      {{ error | translate }}
     }
   </div>
 }

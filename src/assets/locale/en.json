@@ -1,0 +1,106 @@
+{
+  "components": {
+    "header": {
+      "analytics": "Analytics",
+      "card": "Card",
+      "sign-up": "Sign Up",
+      "sign-in": "Sign In",
+      "logout": "Logout"
+    }
+  },
+  "pages": {
+    "landing-page": {
+      "hero": "We focus on <strong>virtual business cards</strong>, providing users with customizable digital cards to represent their <strong>professional identities</strong>. Users can design and share these digital cards easily, offering a <strong>modern alternative</strong> to traditional printed business cards.",
+      "quote": "\"My Business, MyCard\"",
+      "features": {
+        "eco-friendly": "Eco-Friendly",
+        "convenient": "Convenient",
+        "analitycs": "Analitycs",
+        "accessible": "Accessible",
+        "up-to-date": "Up-To-Date"
+      },
+      "call-to-action": "Get started"
+    },
+    "sign-up": {
+      "have-account": "Have an account?",
+      "sign-in": "Sign In"
+    },
+    "sign-in": {
+      "dont-have-account": "Don't have an account?",
+      "sign-up": "Sign Up"
+    },
+    "card": {
+      "bio": "Bio",
+      "socials": "Socials",
+      "add-to-contacts": "Add To Contacts",
+      "share": "Share",
+      "full-name-placeholder": "Full Name",
+      "job-title-placeholder": "Job Title",
+      "bio-placeholder": "Empty",
+      "socials-placeholder": "None"
+    },
+    "analytics": {
+      "header": "Analytics",
+      "period-selector": {
+        "time-period": "Time Period"
+      },
+      "visits": {
+        "header": "Visits",
+        "total": "Total: {{total}}",
+        "unique": "Unique: {{unique}}"
+      },
+      "countries": {
+        "header": "Countries",
+        "no-data": "No Data!"
+      }
+    }
+  },
+  "forms": {
+    "auth": {
+      "sign-in-header": "Sign In",
+      "sign-up-header": "Sign Up",
+      "email-input-placeholder": "Email",
+      "password-input-placeholder": "Password",
+      "password-input-visibility-button-visible": "Show",
+      "password-input-visibility-button-hidden": "Hide",
+      "confirm-input-placeholder": "Confirm password",
+      "sign-up-button": "Sign up",
+      "sign-in-button": "Sign in",
+      "divider-text": "or",
+      "google-login-button": "Sign up with Google",
+      "forgot-password": "Forgot password?"
+    },
+    "card": {
+      "header": "Edit Card",
+      "change-avatar": "Change Avatar",
+      "socials": {
+        "email-placeholder": "Email Address",
+        "phone-placeholder": "Phone Number",
+        "link-placeholder": "{{socialName}} Link"
+      }
+    },
+    "close": "Close",
+    "save": "Save"
+  },
+  "errors": {
+    "invalid": {
+      "email": "Invalid email address",
+      "phone": "Invalid phone number",
+      "link": "Invalid link",
+      "color": "Invalid color",
+      "required": "This field is required"
+    },
+    "card": {
+      "not_found": "Card not found"
+    },
+    "general": {
+      "notFound": "Requested resource was not found!",
+      "invalidCredentails": "Email or password is incorrect!",
+      "unauthorized": "Unauthorized access",
+      "serviceDown": "Service is currently down",
+      "badRequest": "Bad request",
+      "tooManyRetries": "Too many retries",
+      "unexpected": "Unexpected error"
+    }
+  }
+}

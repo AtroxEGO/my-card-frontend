@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { CustomInputComponent } from '../../../../shared/components/forms/custom-input/custom-input.component';
 import { CardService } from '../../../../shared/services/card.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 type Social = {
   socialName: string;
@@ -18,7 +19,7 @@ type Social = {
 @Component({
   selector: 'app-card-edit-social',
   standalone: true,
-  imports: [CommonModule, CustomInputComponent],
+  imports: [CommonModule, CustomInputComponent, TranslateModule],
   templateUrl: './card-edit-social.component.html',
 })
 export class CardEditSocialComponent {
@@ -35,6 +36,7 @@ export class CardEditSocialComponent {
     'website',
     'phone',
   ];
+  socialName = 'test';
 
   @Input() control!: FormArray;
 
@@ -74,14 +76,20 @@ export class CardEditSocialComponent {
     return valueControl;
   }
 
+  getUppercaseSocialName(socialName: string) {
+    return {
+      socialName: `${socialName.charAt(0).toUpperCase()}${socialName.slice(1)}`,
+    };
+  }
+
   getPlaceholderText(socialName: string) {
     switch (socialName) {
       case 'email':
-        return 'Email Address';
+        return 'forms.card.socials.email-placeholder';
       case 'phone':
-        return 'Phone Number';
+        return 'forms.card.socials.phone-placeholder';
       default:
-        return `${socialName.charAt(0).toUpperCase()}${socialName.slice(1)} Link`;
+        return 'forms.card.socials.link-placeholder';
     }
   }
 }

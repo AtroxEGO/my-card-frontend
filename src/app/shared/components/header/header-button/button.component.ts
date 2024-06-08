@@ -16,10 +16,11 @@ export class HeaderButtonComponent {
   @Input() link?: string;
 
   buttonStyles = {
-    default: 'hover:text-gray-400 active:text-gray-500 cursor-pointer',
+    default:
+      'hover:text-gray-400 active:text-gray-500 cursor-pointer select-none whitespace-nowrap',
     primary:
-      'rounded-md bg-primary px-12 py-2 text-2xl text-white hover:bg-blue-800 active:bg-blue-600 cursor-pointer',
-    logo: `flex select-none items-center justify-center gap-2 text-5xl font-thin hover:cursor-pointer`,
+      'rounded-md bg-primary px-12 py-2 text-2xl text-white hover:bg-blue-800 active:bg-blue-600 cursor-pointer select-none whitespace-nowrap',
+    logo: `flex select-none items-center justify-center gap-2 text-5xl font-thin hover:cursor-pointer whitespace-nowrap`,
   };
 
   navigateToLink() {

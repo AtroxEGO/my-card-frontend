@@ -1,0 +1,105 @@
+{
+  "components": {
+    "header": {
+      "analytics": "Analityka",
+      "card": "Wizytówka",
+      "sign-up": "Zarejestruj się",
+      "sign-in": "Zaloguj się",
+      "logout": "Wyloguj się"
+    }
+  },
+  "pages": {
+    "landing-page": {
+      "hero": "Skupiamy się na <strong>wirtualnych wizytówkach</strong>, oferując użytkownikom dostosowywalne cyfrowe karty do reprezentowania ich <strong>tożsamości zawodowej</strong>. Użytkownicy mogą łatwo projektować i udostępniać te cyfrowe karty, oferując <strong>nowoczesną alternatywę</strong> dla tradycyjnych drukowanych wizytówek.",
+      "quote": "\"Mój Biznes, MyCard\"",
+      "features": {
+        "eco-friendly": "Przyjazność dla środowiska",
+        "convenient": "Wygodność",
+        "analitycs": "Analityka",
+        "accessible": "Dostępność",
+        "up-to-date": "Aktualność"
+      },
+      "call-to-action": "Zacznij teraz"
+    },
+    "sign-up": {
+      "have-account": "Masz konto?",
+      "sign-in": "Zaloguj się"
+    },
+    "sign-in": {
+      "dont-have-account": "Nie masz konta?",
+      "sign-up": "Zarejestruj się"
+    },
+    "card": {
+      "bio": "Biografia",
+      "socials": "Social Media",
+      "add-to-contacts": "Dodaj do kontaktów",
+      "share": "Udostępnij",
+      "full-name-placeholder": "Pełne imię i nazwisko",
+      "job-title-placeholder": "Stanowisko",
+      "bio-placeholder": "Puste",
+      "socials-placeholder": "Brak"
+    },
+    "analytics": {
+      "header": "Analiza",
+      "period-selector": {
+        "time-period": "Okres czasu"
+      },
+      "visits": {
+        "header": "Odwiedziny",
+        "total": "Razem: {{total}}",
+        "unique": "Unikalne: {{unique}}"
+      },
+      "countries": {
+        "header": "Kraje",
+        "no-data": "Brak danych!"
+      }
+    }
+  },
+  "forms": {
+    "auth": {
+      "sign-in-header": "Zaloguj się",
+      "sign-up-header": "Zarejestruj się",
+      "email-input-placeholder": "Email",
+      "password-input-placeholder": "Hasło",
+      "password-input-visibility-button-visible": "Pokaż",
+      "password-input-visibility-button-hidden": "Ukryj",
+      "confirm-input-placeholder": "Potwierdź hasło",
+      "sign-up-button": "Zarejestruj się",
+      "sign-in-button": "Zaloguj się",
+      "divider-text": "lub",
+      "google-login-button": "Kontynuuj z Google",
+      "forgot-password": "Zapomniałeś hasła?"
+    },
+    "card": {
+      "header": "Edytuj Kartę",
+      "change-avatar": "Zmień Avatar",
+      "socials": {
+        "email-placeholder": "Adres Email",
+        "phone-placeholder": "Numer Telefonu",
+        "link-placeholder": "{{socialName}} Link"
+      }
+    },
+    "close": "Zamknij",
+    "save": "Zapisz"
+  },
+  "errors": {
+    "invalid": {
+      "email": "Nieprawidłowy adres email",
+      "phone": "Nieprawidłowy numer telefonu",
+      "link": "Nieprawidłowy link",
+      "color": "Nieprawidłowy kolor",
+      "required": "To pole jest wymagane"
+    },
+    "card": {
+      "not_found": "Karta nie znaleziona"
+    },
+    "general": {
+      "invalidCredentails": "Email lub hasło jest nieprawidłowe!",
+      "unauthorized": "Nieautoryzowany dostęp",
+      "serviceDown": "Usługa jest obecnie niedostępna",
+      "badRequest": "Błędne żądanie",
+      "tooManyRetries": "Za dużo prób",
+      "unexpected": "Nieoczekiwany błąd"
+    }
+  }
+}

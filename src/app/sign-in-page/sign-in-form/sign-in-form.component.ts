@@ -14,6 +14,9 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
 import { AuthErrorCodes } from '../../shared/errors/errorCodes';
 import { ErrorService } from '../../shared/services/error.service';
+import { TranslateModule } from '@ngx-translate/core';
+import { requiredValidator } from '../../shared/validators/required.directive';
+import { emailValidator } from '../../shared/validators/email.directive';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -25,6 +28,7 @@ import { ErrorService } from '../../shared/services/error.service';
     CustomInputComponent,
     ReactiveFormsModule,
     GoogleAuthButtonComponent,
+    TranslateModule,
   ],
 })
 export class SignInFormComponent {
@@ -42,8 +46,8 @@ export class SignInFormComponent {
   }
 
   signInForm = this.fb.group({
-    email: ['email@example.com', [Validators.required, Validators.email]],
-    password: ['Example123!', [Validators.required]],
+    email: ['email@example.com', [requiredValidator(), emailValidator()]],
+    password: ['Example123!', [requiredValidator()]],
   });
 
   setErrorMessageFromQuery() {

@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ScopeSelectBtnComponent } from './scope-select-btn/scope-select-btn.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 export type PeriodOptions = '24h' | '7d' | '1m' | '1y';
 
 @Component({
   selector: 'app-scope-select',
   standalone: true,
-  imports: [ScopeSelectBtnComponent],
+  imports: [ScopeSelectBtnComponent, TranslateModule],
   templateUrl: './scope-select.component.html',
 })
 export class ScopeSelectComponent {
