@@ -25,6 +25,10 @@ export class ChartComponent {
     await this.registerTranslationLocales();
 
     this.reloadChart();
+
+    this.translateService.onLangChange.subscribe(() => {
+      this.reloadChart();
+    });
   }
 
   async registerTranslationLocales() {

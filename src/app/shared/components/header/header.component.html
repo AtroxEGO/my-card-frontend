@@ -16,15 +16,17 @@
       <app-header-button link="/">{{
         "components.header.card" | translate
       }}</app-header-button>
-      <app-header-button (click)="signOut()" customStyle="primary">
+      <div class="h-7 w-0 border-l border-gray-500 opacity-70"></div>
+      <app-header-button (click)="signOut()" customStyle="default">
         {{ "components.header.logout" | translate }}
       </app-header-button>
+      <!-- <div class="h-7 w-0 border-l border-gray-500 opacity-70"></div> -->
     } @else {
       @if (showAuthButtons) {
         <app-header-button link="/sign-up">{{
           "components.header.sign-up" | translate
         }}</app-header-button>
-        <app-header-button link="/sign-in" customStyle="primary">{{
+        <app-header-button link="/sign-in" customStyle="default">{{
           "components.header.sign-in" | translate
         }}</app-header-button>
       }
