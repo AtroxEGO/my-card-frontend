@@ -40,18 +40,20 @@
       "socials-placeholder": "Brak"
     },
     "analytics": {
-      "header": "Analiza",
+      "header": "Analityka",
       "period-selector": {
         "time-period": "Okres czasu"
       },
       "visits": {
-        "header": "Odwiedziny",
-        "total": "Razem: {{total}}",
+        "header": "Wyświetlenia",
+        "total": "Łącznie: {{total}}",
         "unique": "Unikalne: {{unique}}"
       },
       "countries": {
         "header": "Kraje",
-        "no-data": "Brak danych!"
+        "visits": "Liczba",
+        "no-data": "Brak danych!",
+        "unknown-country": "Nieznane"
       }
     }
   },

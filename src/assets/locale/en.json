@@ -51,7 +51,9 @@
       },
       "countries": {
         "header": "Countries",
-        "no-data": "No Data!"
+        "visits": "Visits",
+        "no-data": "No Data!",
+        "unknown-country": "Unknown"
       }
     }
   },
