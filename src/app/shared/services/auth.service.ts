@@ -49,7 +49,7 @@ export class AuthService {
   }
 
   signOut() {
-    this.cookieSerivce.delete('sessionToken', '/', '*');
+    this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
     this.router.navigate(['/sign-in']);
   }
 
@@ -86,5 +86,12 @@ export class AuthService {
 
     const userID = jwtDecode(sessionToken).sub!;
     return isLoggedIn ? userID : undefined;
+  }
+
+  getCookieDomain() {
+    if (environment.production) {
+      return '.polakiewicz.com';
+    }
+    return 'localhost';
   }
 }
