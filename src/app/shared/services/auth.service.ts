@@ -57,6 +57,9 @@ export class AuthService {
     const sessionToken = this.getSessionToken();
     if (!sessionToken) return false;
 
+    console.log(
+      `Checking is logged in: \n Token: ${sessionToken}\n IsLoggedIn: ${moment().isBefore(this.getExpiration())}`,
+    );
     return moment().isBefore(this.getExpiration());
   }
 
