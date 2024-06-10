@@ -10,6 +10,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
 import { ErrorService } from '../shared/services/error.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-card-page',
@@ -28,16 +29,18 @@ export class CardPageComponent {
     private router: Router,
     private titleService: Title,
     private errorService: ErrorService,
+    private translateService: TranslateService,
   ) {}
 
   ngOnInit() {
     this.setCardIdFromSlug();
+    this.setTranslatedPageTitle();
 
     this.cardService.getCard(this.cardId).subscribe({
       next: (card) => {
         this.card = card;
         this.redirectToSlugUrl(card);
-        this.titleService.setTitle(`MyCard | ${card.fullName}`);
+        this.setTranslatedPageTitle();
       },
       error: (err: HttpErrorResponse) => {
         if (err.status === 404) {
@@ -47,6 +50,18 @@ export class CardPageComponent {
         this.errorMessage = this.errorService.formatError(err);
       },
     });
+  }
+
+  setTranslatedPageTitle() {
+    if (this.card?.fullName) {
+      this.titleService.setTitle(`MyCard | ${this.card.fullName}`);
+    } else {
+      this.translateService
+        .get('components.header.card')
+        .subscribe((translation) => {
+          this.titleService.setTitle(`MyCard | ${translation}`);
+        });
+    }
   }
 
   handleCardUpdate(cardData: Card) {
