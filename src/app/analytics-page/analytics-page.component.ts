@@ -15,6 +15,7 @@ import {
 } from './scope-select/scope-select.component';
 import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
 import { TranslateModule } from '@ngx-translate/core';
+import { ErrorService } from '../shared/services/error.service';
 
 export type CountryData = {
   countryCode: string;
@@ -47,6 +48,7 @@ export class AnalyticsPageComponent {
   constructor(
     private authService: AuthService,
     private httpClient: HttpClient,
+    private errorService: ErrorService,
   ) {}
   isLoading = false;
   analytics: AnalyticsData | undefined;
@@ -93,13 +95,6 @@ export class AnalyticsPageComponent {
       return;
     }
 
-    if (err.statusText != 'Unknown Error') {
-      // this.errorMessage = err.statusText;
-      // TODO
-      this.errorMessage = 'TODO!!!';
-      return;
-    }
-
-    this.errorMessage = GeneralErrorCodes.UNEXPECTED;
+    this.errorMessage = this.errorService.formatError(err);
   }
 }

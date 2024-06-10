@@ -31,6 +31,8 @@ export class ErrorService {
         return GeneralErrorCodes.NOT_FOUND;
       case 429:
         return GeneralErrorCodes.TOO_MANY_RETRIES;
+      case 502:
+        return GeneralErrorCodes.SERVICE_DOWN;
       case 0:
         return GeneralErrorCodes.SERVICE_DOWN;
       default:

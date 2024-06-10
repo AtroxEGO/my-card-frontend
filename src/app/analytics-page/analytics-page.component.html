@@ -16,7 +16,7 @@
           />
         </div>
       }
-      @if (isLoading) {
+      @if (isLoading && !errorMessage) {
         <app-spinner />
       } @else if (analytics) {
         <div class="flex w-full flex-wrap justify-center">
