@@ -13,6 +13,7 @@ export enum CardErrorCodes {
 export enum AuthErrorCodes {
   INVALID_CREDENTIALS = 'errors.general.invalidCredentails',
   UNAUTHORIZED = 'errors.general.unauthorized',
+  FORBIDDEN = 'errors.general.forbidden',
 }
 
 export enum GeneralErrorCodes {

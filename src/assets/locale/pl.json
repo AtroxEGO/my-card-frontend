@@ -102,7 +102,8 @@
       "serviceDown": "Usługa jest obecnie niedostępna",
       "badRequest": "Błędne żądanie",
       "tooManyRetries": "Za dużo prób, spróbuj ponownie poźniej.",
-      "unexpected": "Nieoczekiwany błąd"
+      "unexpected": "Nieoczekiwany błąd",
+      "forbidden": "Dostęp jest zabroniony!"
     }
   }
 }

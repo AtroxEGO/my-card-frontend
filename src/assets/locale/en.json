@@ -94,7 +94,7 @@
       "required": "This field is required"
     },
     "card": {
-      "not_found": "Card not found"
+      "not_found": "Card was not found!"
     },
     "general": {
       "notFound": "Requested resource was not found!",
@@ -103,7 +103,8 @@
       "serviceDown": "Service is currently down",
       "badRequest": "Bad request",
       "tooManyRetries": "Too many retries",
-      "unexpected": "Unexpected error"
+      "unexpected": "Unexpected error",
+      "forbidden": "Access is forbidden!"
     }
   }
 }

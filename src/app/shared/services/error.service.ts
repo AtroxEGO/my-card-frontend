@@ -25,6 +25,8 @@ export class ErrorService {
         return GeneralErrorCodes.BAD_REQUEST;
       case 401:
         return AuthErrorCodes.UNAUTHORIZED;
+      case 403:
+        return AuthErrorCodes.FORBIDDEN;
       case 404:
         return GeneralErrorCodes.NOT_FOUND;
       case 429:
