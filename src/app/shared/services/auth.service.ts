@@ -50,6 +50,8 @@ export class AuthService {
 
   signOut() {
     this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
+    this.cookieSerivce.delete('sessionToken');
+    this.cookieSerivce.delete('sessionToken', '/');
     this.router.navigate(['/sign-in']);
   }
 

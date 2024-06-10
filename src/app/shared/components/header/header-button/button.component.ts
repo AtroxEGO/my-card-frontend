@@ -20,7 +20,7 @@ export class HeaderButtonComponent {
       'hover:text-gray-400 active:text-gray-500 cursor-pointer select-none whitespace-nowrap',
     primary:
       'rounded-md bg-primary px-10 py-2 text-2xl text-white hover:bg-blue-800 active:bg-blue-600 cursor-pointer select-none whitespace-nowrap',
-    logo: `flex select-none items-center justify-center gap-2 text-5xl font-thin hover:cursor-pointer whitespace-nowrap`,
+    logo: `flex select-none items-center justify-center gap-2 px-10 text-5xl font-thin hover:cursor-pointer whitespace-nowrap`,
   };
 
   navigateToLink() {
