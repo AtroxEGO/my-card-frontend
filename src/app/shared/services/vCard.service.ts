@@ -58,12 +58,14 @@ export class vCardService {
     vCardString += 'FN' + encoding + ':' + vCard.fullName + '\n';
 
     // Add Photo
-    if (vCard.photo) {
-      vCardString +=
-        'PHOTO;ENCODING=b;TYPE=JPEG:' +
-        (await this.getBase64Photo(vCard.photo)) +
-        '\n';
-    }
+    // if (vCard.photo) {
+    vCardString +=
+      'PHOTO;ENCODING=b;TYPE=JPEG:' +
+      (await this.getBase64Photo(
+        vCard.photo || { data: '/assets/avatar_placeholder.jpg', type: 'url' },
+      )) +
+      '\n';
+    // }
 
     if (vCard.phone) {
       vCardString += 'TEL;VALUE=uri:tel:' + vCard.phone + '\n';
