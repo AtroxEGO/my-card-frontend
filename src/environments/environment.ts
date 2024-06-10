@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiBaseUrl: 'https://api.polakiewicz.online',
+  apiBaseUrl: 'https://api.my-card.polakiewicz.online',
 };
