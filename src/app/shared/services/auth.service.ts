@@ -51,17 +51,19 @@ export class AuthService {
   signOut() {
     this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
     this.cookieSerivce.delete('sessionToken');
+    this.cookieSerivce.deleteAll('/', '.polakiewicz.online');
     this.cookieSerivce.delete('sessionToken', '/');
     this.router.navigate(['/sign-in']);
+    this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
+    this.cookieSerivce.delete('sessionToken');
+    this.cookieSerivce.deleteAll('/', '.polakiewicz.online');
+    this.cookieSerivce.delete('sessionToken', '/');
   }
 
   isLoggedIn() {
     const sessionToken = this.getSessionToken();
     if (!sessionToken) return false;
 
-    console.log(
-      `Checking is logged in: \n Token: ${sessionToken}\n IsLoggedIn: ${moment().isBefore(this.getExpiration())}`,
-    );
     return moment().isBefore(this.getExpiration());
   }
 
