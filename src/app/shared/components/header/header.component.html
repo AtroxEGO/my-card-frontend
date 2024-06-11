@@ -4,7 +4,7 @@
   }} px-32 py-3 text-secondary flex-col gap-8 md:flex-row md:justify-between"
 >
   <app-header-button customStyle="logo" link="/" class="w-fit">
-    <img src="../../../assets/logo-frame.svg" alt="logo" class="w-16" />
+    <img src="../../../assets/images/logo-frame.svg" alt="logo" class="w-16" />
     <span>MyCard</span>
   </app-header-button>
   <div class="flex items-center gap-4 px-2 text-xl">
@@ -31,10 +31,11 @@
         }}</app-header-button>
       }
     }
-    <app-header-button
-      class="size-6 uppercase"
+    <button
+      class="size-6 cursor-pointer select-none whitespace-nowrap uppercase hover:text-gray-400 active:text-gray-500"
       (click)="handleLanguageToggle()"
-      >{{ getCurrentLanguage() }}</app-header-button
     >
+      {{ getCurrentLanguage() }}
+    </button>
   </div>
 </div>

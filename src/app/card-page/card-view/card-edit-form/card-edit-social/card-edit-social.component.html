@@ -3,7 +3,7 @@
     <div class="flex gap-2">
       <div class="my-1">
         <img
-          src="assets/{{ social.socialName }}-icon.svg"
+          src="assets/icons/{{ social.socialName }}-icon.svg"
           alt="{{ social.socialName }} icon"
           class="size-8 invert"
         />
@@ -11,7 +11,7 @@
       <app-custom-input
         [name]="social.socialName"
         [control]="getValueControl(social.socialName)"
-        [id]="social.socialName"
+        [inputID]="social.socialName"
         placeholder="{{
           getPlaceholderText(social.socialName)
             | translate: getUppercaseSocialName(social.socialName)
@@ -23,7 +23,7 @@
         (click)="handleDeleteSocial(social.socialName)"
       >
         <img
-          src="assets/remove-icon.svg"
+          src="assets/icons/remove-icon.svg"
           alt="remove icon"
           class="size-10 rounded-md border-primary hover:border-2"
         />
@@ -49,7 +49,7 @@
           (click)="handleCreateSocial(socialSelect.value)"
         >
           <img
-            src="assets/add-icon.svg"
+            src="assets/icons/add-icon.svg"
             alt="add icon"
             class="size-7 min-w-6 rounded-md hover:scale-90"
           />

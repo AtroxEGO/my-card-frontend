@@ -6,7 +6,7 @@
     (ngSubmit)="onSubmit()"
   >
     <app-custom-input
-      id="email-input"
+      inputID="email-input"
       name="email"
       placeholder="forms.auth.email-input-placeholder"
       [control]="getControl('email')"
@@ -15,7 +15,7 @@
       <app-custom-password-input
         name="password"
         placeholder="forms.auth.password-input-placeholder"
-        id="password-input"
+        inputID="password-input"
         [control]="getControl('password')"
       />
       @if (errorMessage) {

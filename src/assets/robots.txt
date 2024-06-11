@@ -1,0 +1,9 @@
+User-agent: *
+Disallow: /cards/
+Disallow: /analytics/
+
+Allow: /
+Allow: /sign-in
+Allow: /sign-up
+
+Sitemap: https://my-card.polakiewicz.online/assets/sitemap.xml

@@ -40,7 +40,6 @@ export class ChartComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes);
     if (
       changes['data'] &&
       changes['data'].currentValue != null &&

@@ -28,6 +28,7 @@
     "moment": "^2.30.1",
     "ngx-clipboard": "^16.0.0",
     "ngx-cookie-service": "^17.1.0",
+    "ngx-sitemap": "^1.0.0",
     "remove-accents": "^0.5.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
