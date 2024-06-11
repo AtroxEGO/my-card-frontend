@@ -1,9 +1,8 @@
-<a
+<span
   (click)="handleClick()"
   class="flex w-full cursor-pointer items-center justify-between gap-2 overflow-hidden hover:text-gray-300 [&:not(:hover)]:capitalize"
   (mouseenter)="setHovered(true)"
   (mouseleave)="setHovered(false)"
-  target="_blank"
 >
   <img
     src="../../../../assets/icons/{{ socialItem.socialName }}-icon.svg"
@@ -16,4 +15,4 @@
     alt="{{ socialItem.socialName }} icon"
     class="size-5"
   />
-</a>
+</span>
