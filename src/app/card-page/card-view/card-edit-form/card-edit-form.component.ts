@@ -144,7 +144,6 @@ export class CardEditFormComponent {
     if (err.status === 400) {
       const errors = this.errorService.getErrorArray(err);
       errors.forEach((error) => {
-        console.log(error);
         if (error.name.startsWith('socials')) {
           const socialsControl = this.cardForm.get('socials') as FormArray;
 
@@ -173,7 +172,6 @@ export class CardEditFormComponent {
       const oldAttribute = JSON.stringify(oldData[attribute]);
       const newAttribute = JSON.stringify(newData[attribute]);
       if (oldAttribute != newAttribute) {
-        console.log(oldData[attribute], newData[attribute]);
         return true;
       }
     }

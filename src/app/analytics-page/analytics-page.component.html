@@ -21,7 +21,6 @@
       } @else if (analytics) {
         <div class="flex w-full flex-wrap justify-center">
           <div class="w-full max-w-64">
-            <!-- // TODO: Make headers?? -->
             <app-divider
               value="{{ 'pages.analytics.visits.header' | translate }}"
               class="text-2xl"
@@ -29,7 +28,6 @@
             />
             <div class="flex flex-col items-center text-end">
               <div class="items-en flex flex-col">
-                <!-- <span>Total: {{ analytics.visits.total }}</span> -->
                 <span>
                   {{
                     "pages.analytics.visits.total" | translate: analytics.visits

@@ -41,7 +41,6 @@ export class CardService {
   }
 
   patchCard(data: any) {
-    // console.log(data.get('socials'));
     const userID = this.authService.getUserID();
     const path = environment.apiBaseUrl + '/cards/' + userID;
     return this.http

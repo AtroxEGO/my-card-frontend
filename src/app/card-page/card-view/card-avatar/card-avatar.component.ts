@@ -10,10 +10,4 @@ import { TranslateModule } from '@ngx-translate/core';
 export class CardAvatarComponent {
   @Input() photoUrl: string = '';
   @Input({ required: true }) isOwner!: boolean;
-
-  uploadAvatar($event: Event) {
-    const target = $event.target as HTMLInputElement;
-    const file = target.files?.item(0);
-    console.log(file);
-  }
 }

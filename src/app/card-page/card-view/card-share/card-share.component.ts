@@ -16,7 +16,6 @@ export class CardShareComponent {
   copyButtonText = 'Copy URL';
 
   onChangeURL(url: SafeUrl) {
-    console.log(url);
     this.qrCodeDownloadURL = url;
   }
 
