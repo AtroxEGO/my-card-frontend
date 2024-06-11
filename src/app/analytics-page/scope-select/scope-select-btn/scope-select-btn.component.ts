@@ -11,7 +11,7 @@ export class ScopeSelectBtnComponent {
 
   getColor() {
     if (this.selected) {
-      return 'bg-[#FF7E00] hover:bg-[#d96b00] text-white';
+      return 'bg-primary hover:bg-blue-800 text-white';
     }
 
     return 'bg-white hover:bg-slate-200';

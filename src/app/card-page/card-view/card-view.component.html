@@ -50,6 +50,7 @@
                 <img
                   src="../../../assets/icons/share-icon.svg"
                   class="size-6"
+                  alt="share-icon"
                 />
               </button>
             </div>
@@ -76,7 +77,7 @@
               class="text-4xl"
               color="gray-500"
             />
-            <ul
+            <div
               class="flex max-h-60 w-full flex-col items-center gap-1 overflow-y-scroll text-center text-2xl font-thin"
             >
               @for (
@@ -91,7 +92,7 @@
               } @empty {
                 <span>{{ "pages.card.socials-placeholder" | translate }}</span>
               }
-            </ul>
+            </div>
             <div class="flex justify-center">
               <button
                 class="rounded-sm bg-primary px-3 py-1 text-lg hover:bg-blue-800"
