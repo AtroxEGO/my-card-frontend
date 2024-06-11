@@ -65,16 +65,22 @@
     <div class="flex w-full flex-col justify-end gap-2 sm:flex-row">
       <div
         (click)="handleClose()"
-        class="cursor-pointer rounded-md bg-gray-200 px-2 py-1 text-center hover:bg-gray-300 active:bg-gray-400"
+        class="flex min-h-8 min-w-20 cursor-pointer items-center justify-center rounded-md bg-gray-200 px-2 py-1 text-center hover:bg-gray-300 active:bg-gray-400"
       >
         {{ "forms.close" | translate }}
       </div>
-      <button
-        type="submit"
-        class="rounded-md bg-primary px-3 py-1 text-white hover:bg-blue-600 active:bg-blue-700"
+      <app-loading-button
+        spinnerSize="small"
+        [isLoading]="isAvatarUploading || isFormUploading"
+        [rounded]="false"
+        [padding]="{ x: 5, y: 1 }"
       >
         {{ "forms.save" | translate }}
-      </button>
+      </app-loading-button>
+      <!-- <button
+        type="submit"
+        class="rounded-md bg-primary px-3 py-1 text-white hover:bg-blue-600 active:bg-blue-700"
+      ></button> -->
     </div>
   </form>
 </div>

@@ -31,13 +31,9 @@
         </button>
       </div>
     </div>
-    <!-- // TODO: Loading -->
-    <button
-      type="submit"
-      class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 hover:shadow-md active:bg-blue-700"
-    >
+    <app-loading-button [isLoading]="isLoading">
       {{ "forms.auth.sign-in-button" | translate }}
-    </button>
+    </app-loading-button>
   </form>
   <app-divider value="forms.auth.divider-text" />
   <div class="flex justify-center">

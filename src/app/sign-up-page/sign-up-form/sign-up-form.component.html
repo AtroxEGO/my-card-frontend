@@ -30,12 +30,9 @@
         errorMessage | translate
       }}</span>
     }
-    <button
-      type="submit"
-      class="rounded-full bg-primary py-2 text-white hover:bg-blue-800 active:bg-blue-700"
-    >
+    <app-loading-button [isLoading]="isLoading">
       {{ "forms.auth.sign-up-button" | translate }}
-    </button>
+    </app-loading-button>
   </form>
   <app-divider value="forms.auth.divider-text" />
   <div class="flex justify-center">

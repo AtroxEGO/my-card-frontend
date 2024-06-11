@@ -17,6 +17,7 @@ import { requiredValidator } from '../../../shared/validators/required.directive
 import { ErrorService } from '../../../shared/services/error.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { TranslateModule } from '@ngx-translate/core';
+import { LoadingButtonComponent } from '../../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
   selector: 'app-card-edit-form',
@@ -30,6 +31,7 @@ import { TranslateModule } from '@ngx-translate/core';
     CommonModule,
     CardEditSocialComponent,
     TranslateModule,
+    LoadingButtonComponent,
   ],
   templateUrl: './card-edit-form.component.html',
 })
@@ -43,6 +45,8 @@ export class CardEditFormComponent {
   @Output() formClosed = new EventEmitter<void>();
   @Output() cardUpdated = new EventEmitter<Card>();
   errorMessage = '';
+  isFormUploading: boolean = false;
+  isAvatarUploading: boolean = false;
 
   cardForm = this.fb.group({
     avatarFile: [null],
@@ -73,15 +77,18 @@ export class CardEditFormComponent {
   }
 
   uploadAvatar(avatarFile: File) {
+    this.isAvatarUploading = true;
     const formData = new FormData();
     formData.append('avatarFile', avatarFile);
 
     this.cardService.patchCard(formData).subscribe({
       next: (data) => {
+        this.isAvatarUploading = false;
         this.cardUpdated.emit(data.updatedCard);
         this.formClosed.emit();
       },
       error: (err: HttpErrorResponse) => {
+        this.isAvatarUploading = false;
         if (err.status === 400) {
           this.errorService.setFormErrorFromHttpError(err, this.cardForm);
           return;
@@ -104,37 +111,17 @@ export class CardEditFormComponent {
       if (!avatarFile) this.formClosed.emit();
       return;
     }
-
+    this.isFormUploading = true;
     this.cardService.patchCard(this.cardForm.value).subscribe({
       next: (data) => {
+        this.isFormUploading = false;
         this.cardUpdated.emit(data.updatedCard);
         if (!avatarFile) {
           this.formClosed.emit();
         }
       },
       error: (err: HttpErrorResponse) => {
-        if (err.status === 400) {
-          const errors = this.errorService.getErrorArray(err);
-          errors.forEach((error) => {
-            console.log(error);
-            if (error.name.startsWith('socials')) {
-              const socialsControl = this.cardForm.get('socials') as FormArray;
-
-              const inputControl = socialsControl.controls.find(
-                (control) =>
-                  control.value.socialName === error.name.split('.')[1],
-              ) as FormGroup;
-
-              inputControl.get('value')?.setErrors(error.errors);
-
-              return;
-            }
-
-            this.cardForm.get(error.name)?.setErrors(error.errors);
-          });
-          return;
-        }
-        this.errorMessage = this.errorService.formatError(err);
+        this.handleFormUploadErrors(err);
       },
     });
   }
@@ -150,6 +137,31 @@ export class CardEditFormComponent {
   handleClose() {
     this.formClosed.emit();
     this.cardForm.reset();
+  }
+
+  handleFormUploadErrors(err: HttpErrorResponse) {
+    this.isFormUploading = false;
+    if (err.status === 400) {
+      const errors = this.errorService.getErrorArray(err);
+      errors.forEach((error) => {
+        console.log(error);
+        if (error.name.startsWith('socials')) {
+          const socialsControl = this.cardForm.get('socials') as FormArray;
+
+          const inputControl = socialsControl.controls.find(
+            (control) => control.value.socialName === error.name.split('.')[1],
+          ) as FormGroup;
+
+          inputControl.get('value')?.setErrors(error.errors);
+
+          return;
+        }
+
+        this.cardForm.get(error.name)?.setErrors(error.errors);
+      });
+      return;
+    }
+    this.errorMessage = this.errorService.formatError(err);
   }
 
   didChange() {

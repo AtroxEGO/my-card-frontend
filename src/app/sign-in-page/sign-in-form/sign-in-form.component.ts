@@ -17,6 +17,8 @@ import { ErrorService } from '../../shared/services/error.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { requiredValidator } from '../../shared/validators/required.directive';
 import { emailValidator } from '../../shared/validators/email.directive';
+import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
+import { LoadingButtonComponent } from '../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
   selector: 'app-sign-in-form',
@@ -29,6 +31,8 @@ import { emailValidator } from '../../shared/validators/email.directive';
     ReactiveFormsModule,
     GoogleAuthButtonComponent,
     TranslateModule,
+    SpinnerComponent,
+    LoadingButtonComponent,
   ],
 })
 export class SignInFormComponent {
@@ -40,6 +44,7 @@ export class SignInFormComponent {
     private errorService: ErrorService,
   ) {}
   errorMessage: string | null = '';
+  isLoading: boolean = false;
 
   ngOnInit(): void {
     this.setErrorMessageFromQuery();
@@ -58,14 +63,17 @@ export class SignInFormComponent {
 
   onSubmit() {
     if (!this.signInForm.valid) return;
+    this.isLoading = true;
 
     const value = this.signInForm.value;
 
     this.authService.signIn(value.email!, value.password!).subscribe({
       next: () => {
+        this.isLoading = false;
         this.navigateAfterLogin();
       },
       error: (err: HttpErrorResponse) => {
+        this.isLoading = false;
         this.setErrorMessage(err);
       },
     });

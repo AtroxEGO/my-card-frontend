@@ -91,7 +91,14 @@
       "phone": "Invalid phone number",
       "link": "Invalid link",
       "color": "Invalid color",
-      "required": "This field is required"
+      "required": "This field is required",
+      "password": {
+        "tooShort": "8 characters is required!",
+        "upperCaseRequired": "Uppercase letter is required!",
+        "lowerCaseRequired": "Lowercase letter is required!",
+        "numberRequired": "Number is required!",
+        "doNotMatch": "Passwords do not match!"
+      }
     },
     "card": {
       "not_found": "Card was not found!"
@@ -100,10 +107,10 @@
       "notFound": "Requested resource was not found!",
       "invalidCredentails": "Email or password is incorrect!",
       "unauthorized": "Unauthorized access",
-      "serviceDown": "Service is currently down",
+      "serviceDown": "Service is currently down.",
       "badRequest": "Bad request",
-      "tooManyRetries": "Too many retries",
-      "unexpected": "Unexpected error",
+      "tooManyRetries": "Too many retries, try again later.",
+      "unexpected": "Unexpected error.",
       "forbidden": "Access is forbidden!"
     }
   }

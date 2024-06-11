@@ -4,6 +4,11 @@ export enum ValidationErrorsCodes {
   INVALID_LINK = 'errors.invalid.link',
   INVALID_COLOR = 'errors.invalid.color',
   REQUIRED = 'errors.invalid.required',
+  PASSWORD_TOO_SHORT = 'errors.invalid.password.tooShort',
+  PASSWORD_UPPER_CASE_REQUIRED = 'errors.invalid.password.upperCaseRequired',
+  PASSWORD_LOWER_CASE_REQUIRED = 'errors.invalid.password.lowerCaseRequired',
+  PASSWORD_NUMBER_REQUIRED = 'errors.invalid.password.numberRequired',
+  PASSWORD_DO_NOT_MATCH = 'errors.invalid.password.doNotMatch',
 }
 
 export enum CardErrorCodes {

@@ -1,0 +1,15 @@
+<button
+  type="submit"
+  [disabled]="isLoading"
+  class="flex w-full justify-center items-center {{
+    rounded ? 'rounded-full' : 'rounded-md'
+  }} bg-primary px-{{ padding.x }} py-{{
+    padding.y
+  }} text-white hover:bg-blue-800 hover:shadow-md active:bg-blue-700 disabled:bg-blue-900 min-w-20 min-h-8"
+>
+  @if (isLoading) {
+    <app-spinner [size]="spinnerSize"></app-spinner>
+  } @else {
+    <ng-content></ng-content>
+  }
+</button>

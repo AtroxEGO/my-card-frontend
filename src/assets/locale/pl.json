@@ -91,7 +91,14 @@
       "phone": "Nieprawidłowy numer telefonu",
       "link": "Nieprawidłowy link",
       "color": "Nieprawidłowy kolor",
-      "required": "To pole jest wymagane"
+      "required": "To pole jest wymagane",
+      "password": {
+        "tooShort": "Miniumum 8 znaków!",
+        "upperCaseRequired": "1 Duża litera!",
+        "lowerCaseRequired": "1 Mała litera!",
+        "numberRequired": "Cyfra jest wymagana!",
+        "doNotMatch": "Hasła są różne!"
+      }
     },
     "card": {
       "not_found": "Nie znaleziono wizytówki!"

@@ -11,6 +11,7 @@ import { requiredValidator } from '../../shared/validators/required.directive';
 import { ErrorService } from '../../shared/services/error.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-auth-button/google-auth-button.component';
+import { LoadingButtonComponent } from '../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
   selector: 'app-sign-up-form',
@@ -23,6 +24,7 @@ import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-
     ReactiveFormsModule,
     TranslateModule,
     GoogleAuthButtonComponent,
+    LoadingButtonComponent,
   ],
 })
 export class SignUpFormComponent {
@@ -35,6 +37,7 @@ export class SignUpFormComponent {
   ) {}
 
   errorMessage: string | null = '';
+  isLoading: boolean = false;
 
   signUpForm = this.fb.group({
     email: ['', [requiredValidator(), emailValidator()]],
@@ -49,15 +52,19 @@ export class SignUpFormComponent {
   onSubmit() {
     if (!this.signUpForm.valid) return;
 
+    this.isLoading = true;
+
     const value = this.signUpForm.value;
 
     this.authService
       .signUp(value.email!, value.password!, value.confirm!)
       .subscribe({
         next: () => {
+          this.isLoading = false;
           this.router.navigate(['/']);
         },
         error: (err: HttpErrorResponse) => {
+          this.isLoading = false;
           if (err.status === 400) {
             this.errorService.setFormErrorFromHttpError(err, this.signUpForm);
             return;
