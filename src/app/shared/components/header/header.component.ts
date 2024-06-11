@@ -73,4 +73,8 @@ export class HeaderComponent {
     this.cookieService.set('user-preferred-lang', newLanguage);
     this.translateService.use(newLanguage);
   }
+
+  navigateToHome() {
+    this.router.navigate(['/']);
+  }
 }
