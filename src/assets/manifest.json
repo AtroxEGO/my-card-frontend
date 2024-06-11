@@ -4,8 +4,8 @@
   "description": "Create and share your virtual business card with ease.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1B2135",
-  "theme_color": "#1C4DDC",
+  "background_color": "#1C4DDC",
+  "theme_color": "#1B2135",
   "icons": [
     {
       "src": "/assets/images/icon-192x192.png",
