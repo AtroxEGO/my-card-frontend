@@ -22,10 +22,12 @@
       "call-to-action": "Get started"
     },
     "sign-up": {
+      "title": "MyCard | Sign up",
       "have-account": "Have an account?",
       "sign-in": "Sign In"
     },
     "sign-in": {
+      "title": "MyCard | Sign in",
       "dont-have-account": "Don't have an account?",
       "sign-up": "Sign Up"
     },
@@ -40,6 +42,7 @@
       "socials-placeholder": "None"
     },
     "analytics": {
+      "title": "MyCard | Analytics",
       "header": "Analytics",
       "period-selector": {
         "time-period": "Time Period"

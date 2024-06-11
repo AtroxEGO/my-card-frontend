@@ -8,13 +8,13 @@ import { Observable } from 'rxjs';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { ErrorComponent } from '../shared/components/error/error.component';
 import { QRCodeComponent, QRCodeModule } from 'angularx-qrcode';
-import { SafeUrl } from '@angular/platform-browser';
+import { SafeUrl, Title } from '@angular/platform-browser';
 import {
   PeriodOptions,
   ScopeSelectComponent,
 } from './scope-select/scope-select.component';
 import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ErrorService } from '../shared/services/error.service';
 
 export type CountryData = {
@@ -49,6 +49,8 @@ export class AnalyticsPageComponent {
     private authService: AuthService,
     private httpClient: HttpClient,
     private errorService: ErrorService,
+    private translateService: TranslateService,
+    private titleService: Title,
   ) {}
   isLoading = false;
   analytics: AnalyticsData | undefined;
@@ -57,6 +59,9 @@ export class AnalyticsPageComponent {
 
   async ngOnInit() {
     this.fetchAnalytics();
+    this.translateService.get('pages.analytics.title').subscribe((title) => {
+      this.titleService.setTitle(title);
+    });
   }
 
   handleScopeChange() {
