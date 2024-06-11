@@ -51,8 +51,8 @@ export class SignInFormComponent {
   }
 
   signInForm = this.fb.group({
-    email: ['email@example.com', [requiredValidator(), emailValidator()]],
-    password: ['Example123!', [requiredValidator()]],
+    email: ['', [requiredValidator(), emailValidator()]],
+    password: ['', [requiredValidator()]],
   });
 
   setErrorMessageFromQuery() {
