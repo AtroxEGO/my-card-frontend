@@ -101,6 +101,9 @@
         "lowerCaseRequired": "Lowercase letter is required!",
         "numberRequired": "Number is required!",
         "doNotMatch": "Passwords do not match!"
+      },
+      "file": {
+        "sizeTooBig": "File size has to be lower than 4MB"
       }
     },
     "card": {

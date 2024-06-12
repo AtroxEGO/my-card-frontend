@@ -101,6 +101,9 @@
         "lowerCaseRequired": "1 Mała litera!",
         "numberRequired": "Cyfra jest wymagana!",
         "doNotMatch": "Hasła są różne!"
+      },
+      "file": {
+        "sizeTooBig": "Rozmiar pliku musi być mniejszy niż 4MB"
       }
     },
     "card": {

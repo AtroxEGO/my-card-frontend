@@ -89,6 +89,12 @@ export class CardEditFormComponent {
       },
       error: (err: HttpErrorResponse) => {
         this.isAvatarUploading = false;
+
+        if (err.error) {
+          this.errorMessage = err.error.message;
+          return;
+        }
+
         if (err.status === 400) {
           this.errorService.setFormErrorFromHttpError(err, this.cardForm);
           return;
@@ -141,6 +147,10 @@ export class CardEditFormComponent {
 
   handleFormUploadErrors(err: HttpErrorResponse) {
     this.isFormUploading = false;
+    if (err.error) {
+      this.errorMessage = err.message;
+      return;
+    }
     if (err.status === 400) {
       const errors = this.errorService.getErrorArray(err);
       errors.forEach((error) => {
