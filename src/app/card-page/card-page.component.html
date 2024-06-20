@@ -6,6 +6,9 @@
       (cardUpdated)="handleCardUpdate($event)"
     />
   </ng-container>
+  <ng-container #notFound *ngIf="isLoading">
+    <app-spinner size="big" />
+  </ng-container>
 
   <ng-container #notFound *ngIf="errorMessage">
     <app-error [message]="errorMessage" />

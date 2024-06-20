@@ -11,17 +11,25 @@ import { Title } from '@angular/platform-browser';
 import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
 import { ErrorService } from '../shared/services/error.service';
 import { TranslateService } from '@ngx-translate/core';
+import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 @Component({
   selector: 'app-card-page',
   standalone: true,
-  imports: [CommonModule, DividerComponent, CardViewComponent, ErrorComponent],
+  imports: [
+    CommonModule,
+    DividerComponent,
+    CardViewComponent,
+    ErrorComponent,
+    SpinnerComponent,
+  ],
   templateUrl: './card-page.component.html',
 })
 export class CardPageComponent {
   cardId: string = '';
   card!: Card;
   errorMessage!: string;
+  isLoading: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,6 +41,10 @@ export class CardPageComponent {
   ) {}
 
   ngOnInit() {
+    const timeout = setTimeout(() => {
+      this.isLoading = true;
+    }, 300);
+
     this.setCardIdFromSlug();
     this.setTranslatedPageTitle();
 
@@ -41,8 +53,12 @@ export class CardPageComponent {
         this.card = card;
         this.redirectToSlugUrl(card);
         this.setTranslatedPageTitle();
+        clearTimeout(timeout);
+        this.isLoading = false;
       },
       error: (err: HttpErrorResponse) => {
+        clearTimeout(timeout);
+        this.isLoading = false;
         if (err.status === 404) {
           this.errorMessage = CardErrorCodes.NOT_FOUND;
           return;
