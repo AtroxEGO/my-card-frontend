@@ -9,12 +9,10 @@ Welcome to the MyCard frontend application! This project is built using Angular 
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
   - [Running the Application](#running-the-application)
-- [Project Structure](#project-structure)
 - [Customization](#customization)
 - [Authentication](#authentication)
 - [Analytics](#analytics)
 - [Localization](#localization)
-- [Contributing](#contributing)
 - [License](#license)
 
 ## Features
