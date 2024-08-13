@@ -1,27 +1,100 @@
-# MyCardFrontend
+# MyCard | Frontend
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.2.3.
+Welcome to the MyCard frontend application! This project is built using Angular and Tailwind CSS, providing a sleek and responsive user interface for sharing virtual business cards. Below, you'll find detailed information about the project, how to get started, and various other details.
 
-## Development server
+## Table of Contents
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- [Features](#features)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Running the Application](#running-the-application)
+- [Project Structure](#project-structure)
+- [Customization](#customization)
+- [Authentication](#authentication)
+- [Analytics](#analytics)
+- [Localization](#localization)
+- [Contributing](#contributing)
+- [License](#license)
 
-## Code scaffolding
+## Features
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+- **Virtual Business Cards:** Easily share your personalized virtual business card via URL or QR code.
+- **vCard Integration:** Allow others to directly add your contact information to their address book.
+- **Custom Analytics:** Track the number of views your card receives, along with the country of origin of each viewer, visualized using Chart.js.
+- **Responsive Design:** Built with Tailwind CSS to ensure a great experience on both desktop and mobile devices.
+- **JWT Authentication:** Secure your application and personalize user experiences with JSON Web Token (JWT) authentication.
+- **Localization Support:** The application supports translation in two languages: English (EN) and Polish (PL).
 
-## Build
+## Getting Started
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Prerequisites
 
-## Running unit tests
+Before you begin, ensure you have met the following requirements:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- **Node.js** (v14.x or later)
+- **npm** (v6.x or later) or **yarn** (v1.x or later)
+- **Angular CLI** (v12.x or later) installed globally
+- **Git** for version control
 
-## Running end-to-end tests
+### Installation
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+1. **Clone the repository:**
 
-## Further help
+   ```bash
+   git clone https://github.com/AtroxEGO/my-card-frontend
+   cd my-card-frontend
+   ```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+2. **Install dependencies:**
+
+   Using npm:
+
+   ```bash
+   npm install
+   ```
+
+   Or using yarn:
+
+   ```bash
+   yarn install
+   ```
+
+### Running the Application
+
+To start the development server, run:
+
+```bash
+ng serve
+```
+
+Open your browser and navigate to `http://localhost:4200`. The application will automatically reload if you change any of the source files.
+
+## Customization
+
+### Tailwind CSS
+
+You can customize the design by modifying the Tailwind CSS configuration in `tailwind.config.js`. This allows you to add custom themes, colors, and other design elements.
+
+## Authentication
+
+Authentication is handled using JSON Web Tokens (JWT). The `AuthService` in `src/app/shared/services/auth.service.ts` manages login, logout, and token storage. The `AuthGuard` ensures that only authenticated users can access certain routes.
+
+## Analytics
+
+Custom analytics are implemented to track:
+
+- **Number of views**: How many times your business card has been viewed.
+- **Country of origin**: The geographical location of each viewer.
+
+This data is fetched from the backend and visualized using Chart.js, providing insights into your virtual card's reach.
+
+## Localization
+
+The application supports translation into two languages: **English (EN)** and **Polish (PL)**. Language files are stored in the `src/assets/locale/` directory, where you can add or modify translations. The default language can be configured in the application's settings.
+
+## License
+
+This project is licensed under the MIT License. See the `LICENSE` file for more details.
+
+---
