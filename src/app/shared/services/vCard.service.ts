@@ -98,7 +98,7 @@ export class vCardService {
     let base64PhotoData = '';
 
     if (photo.type === 'url') {
-      base64PhotoData = await this.fetchBase64Image(photo.data);
+      base64PhotoData = (await this.fetchBase64Image(photo.data)) || '';
     } else base64PhotoData = photo.data;
 
     // remove the prefix ('data:image/jpeg;base64,')
@@ -107,15 +107,20 @@ export class vCardService {
     return photoDataParts[photoDataParts.length - 1];
   }
 
-  async fetchBase64Image(url: string): Promise<string> {
-    const response = await fetch(url);
-    const blob = await response.blob();
-    return new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onloadend = () => resolve(reader.result as string);
-      reader.onerror = reject;
-      reader.readAsDataURL(blob);
-    });
+  async fetchBase64Image(url: string): Promise<string | undefined> {
+    try {
+      const response = await fetch(url);
+
+      const blob = await response.blob();
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result as string);
+        reader.onerror = reject;
+        reader.readAsDataURL(blob);
+      });
+    } catch (error) {
+      return;
+    }
   }
 
   formatSocialsForVCard(socialUrls: Socials) {
