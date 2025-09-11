@@ -20,6 +20,7 @@
     "@angular/router": "^17.2.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@vercel/analytics": "^1.5.0",
     "angularx-qrcode": "^17.0.1",
     "chart.js": "^4.4.3",
     "depcheck": "^1.4.7",
