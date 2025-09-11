@@ -6,4 +6,4 @@ Allow: /sign-in
 Allow: /sign-up
 Allow: /cards/*
 
-Sitemap: https://my-card.polakiewicz.online/assets/sitemap.xml
+Sitemap: https://ebusinesscards.online/assets/sitemap.xml
