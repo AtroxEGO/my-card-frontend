@@ -65,7 +65,7 @@ export class CardService {
 
     const url =
       fullName !== null || ''
-        ? `/cards/${fullNameSlug}-${cardID}`
+        ? `/cards/${cardID}/${fullNameSlug}`
         : `/cards/${cardID}`;
 
     return url;
