@@ -15,7 +15,6 @@ export function TranslateServerLoader() {
   return {
     getTranslation: (lang: string) => {
       const filePath = `./src/assets/locale/${lang}.json`;
-      console.warn(filePath);
       const content = readFileSync(filePath, 'utf8');
       const response = new ReplaySubject();
       response.next(JSON.parse(content));

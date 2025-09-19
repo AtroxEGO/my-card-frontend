@@ -23,7 +23,6 @@ export class HeaderComponent {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.url;
-        console.warn(this.currentUrl);
       }
     });
   }
@@ -36,15 +35,10 @@ export class HeaderComponent {
   }
 
   get transparentHeader() {
-    console.warn('should be transparent', this.currentUrl !== '/');
     return this.currentUrl !== '/';
   }
 
   get bgColor() {
-    console.warn(
-      'bg color',
-      this.transparentHeader ? 'bg-transparent' : 'bg-white',
-    );
     return this.transparentHeader ? 'bg-transparent' : 'bg-white';
   }
 
