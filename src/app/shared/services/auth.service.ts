@@ -53,12 +53,12 @@ export class AuthService {
 
     this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
     this.cookieSerivce.delete('sessionToken');
-    this.cookieSerivce.deleteAll('/', '.polakiewicz.online');
+    this.cookieSerivce.deleteAll('/', 'ebusinesscards.online');
     this.cookieSerivce.delete('sessionToken', '/');
     this.router.navigate(['/sign-in']);
     this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
     this.cookieSerivce.delete('sessionToken');
-    this.cookieSerivce.deleteAll('/', '.polakiewicz.online');
+    this.cookieSerivce.deleteAll('/', 'ebusinesscards.online');
     this.cookieSerivce.delete('sessionToken', '/');
     console.warn('token removed');
     console.warn(this.cookieSerivce.get('sessionToken'));
