@@ -1,5 +1,7 @@
 <div
-  class="w-100% flex h-fit items-center justify-center {{ bgColor }} {{
+  [class.bg-transparent]="transparentHeader"
+  [class.bg-white]="!transparentHeader"
+  class="w-100% flex h-fit items-center justify-center {{
     textColor
   }} px-32 py-3 pb-4 text-secondary flex-col gap-4 md:gap-8 md:flex-row md:justify-between"
 >
