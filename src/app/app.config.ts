@@ -11,6 +11,7 @@ import { authInterceptor } from './shared/interceptors/auth.interceptor';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { inject } from '@vercel/analytics';
+import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/locale/', '.json');
@@ -35,6 +36,6 @@ export const appConfig: ApplicationConfig = {
       useFactory: () => {
         inject({ mode: isDevMode() ? 'development' : 'production' });
       },
-    },
+    }, provideClientHydration(withEventReplay()),
   ],
 };
