@@ -17,18 +17,17 @@ import { TranslateModule } from '@ngx-translate/core';
 export type UserState = 'default' | 'editing' | 'sharing';
 
 @Component({
-  selector: 'app-card-view',
-  standalone: true,
-  imports: [
-    DividerComponent,
-    CardAvatarComponent,
-    CardSocialItemComponent,
-    CardEditFormComponent,
-    CardShareComponent,
-    CommonModule,
-    TranslateModule,
-  ],
-  templateUrl: './card-view.component.html',
+    selector: 'app-card-view',
+    imports: [
+        DividerComponent,
+        CardAvatarComponent,
+        CardSocialItemComponent,
+        CardEditFormComponent,
+        CardShareComponent,
+        CommonModule,
+        TranslateModule,
+    ],
+    templateUrl: './card-view.component.html'
 })
 export class CardViewComponent {
   constructor(

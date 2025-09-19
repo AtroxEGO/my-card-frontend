@@ -4,10 +4,9 @@ import { Router, RouterLink } from '@angular/router';
 type HeaderButtonStyles = 'default' | 'primary' | 'logo';
 
 @Component({
-  selector: 'app-header-button',
-  templateUrl: './button.component.html',
-  standalone: true,
-  imports: [RouterLink],
+    selector: 'app-header-button',
+    templateUrl: './button.component.html',
+    imports: [RouterLink]
 })
 export class HeaderButtonComponent {
   constructor(private router: Router) {}

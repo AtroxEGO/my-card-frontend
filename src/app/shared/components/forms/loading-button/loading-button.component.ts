@@ -7,10 +7,9 @@ export type LoadingButtonPadding = {
 };
 
 @Component({
-  selector: 'app-loading-button',
-  standalone: true,
-  imports: [SpinnerComponent],
-  templateUrl: './loading-button.component.html',
+    selector: 'app-loading-button',
+    imports: [SpinnerComponent],
+    templateUrl: './loading-button.component.html'
 })
 export class LoadingButtonComponent {
   @Input() isLoading: boolean = false;

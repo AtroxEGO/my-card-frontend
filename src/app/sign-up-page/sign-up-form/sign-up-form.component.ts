@@ -14,18 +14,17 @@ import { GoogleAuthButtonComponent } from '../../shared/components/forms/google-
 import { LoadingButtonComponent } from '../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
-  selector: 'app-sign-up-form',
-  standalone: true,
-  templateUrl: './sign-up-form.component.html',
-  imports: [
-    DividerComponent,
-    CustomInputComponent,
-    CustomPasswordInputComponent,
-    ReactiveFormsModule,
-    TranslateModule,
-    GoogleAuthButtonComponent,
-    LoadingButtonComponent,
-  ],
+    selector: 'app-sign-up-form',
+    templateUrl: './sign-up-form.component.html',
+    imports: [
+        DividerComponent,
+        CustomInputComponent,
+        CustomPasswordInputComponent,
+        ReactiveFormsModule,
+        TranslateModule,
+        GoogleAuthButtonComponent,
+        LoadingButtonComponent,
+    ]
 })
 export class SignUpFormComponent {
   constructor(

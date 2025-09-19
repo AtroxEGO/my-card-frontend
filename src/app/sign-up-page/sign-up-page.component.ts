@@ -5,10 +5,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { Title } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-sign-up-page',
-  standalone: true,
-  templateUrl: './sign-up-page.component.html',
-  imports: [RouterLink, SignUpFormComponent, TranslateModule],
+    selector: 'app-sign-up-page',
+    templateUrl: './sign-up-page.component.html',
+    imports: [RouterLink, SignUpFormComponent, TranslateModule]
 })
 export class SignUpPageComponent {
   constructor(

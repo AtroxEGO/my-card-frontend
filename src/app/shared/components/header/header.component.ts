@@ -8,10 +8,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  standalone: true,
-  imports: [RouterLink, HeaderButtonComponent, TranslateModule],
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    imports: [RouterLink, HeaderButtonComponent, TranslateModule]
 })
 export class HeaderComponent {
   currentUrl!: string;

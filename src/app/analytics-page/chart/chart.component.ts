@@ -9,10 +9,9 @@ import {
 import countriesTranslation from 'i18n-iso-countries';
 
 @Component({
-  selector: 'app-chart',
-  standalone: true,
-  imports: [TranslateModule],
-  templateUrl: './chart.component.html',
+    selector: 'app-chart',
+    imports: [TranslateModule],
+    templateUrl: './chart.component.html'
 })
 export class ChartComponent {
   constructor(private translateService: TranslateService) {}

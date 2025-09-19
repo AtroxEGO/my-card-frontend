@@ -21,19 +21,18 @@ import { SpinnerComponent } from '../../shared/components/spinner/spinner.compon
 import { LoadingButtonComponent } from '../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
-  selector: 'app-sign-in-form',
-  standalone: true,
-  templateUrl: './sign-in-form.component.html',
-  imports: [
-    DividerComponent,
-    CustomPasswordInputComponent,
-    CustomInputComponent,
-    ReactiveFormsModule,
-    GoogleAuthButtonComponent,
-    TranslateModule,
-    SpinnerComponent,
-    LoadingButtonComponent,
-  ],
+    selector: 'app-sign-in-form',
+    templateUrl: './sign-in-form.component.html',
+    imports: [
+        DividerComponent,
+        CustomPasswordInputComponent,
+        CustomInputComponent,
+        ReactiveFormsModule,
+        GoogleAuthButtonComponent,
+        TranslateModule,
+        SpinnerComponent,
+        LoadingButtonComponent,
+    ]
 })
 export class SignInFormComponent {
   constructor(

@@ -7,10 +7,9 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-custom-password-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, TranslateModule],
-  templateUrl: './custom-password-input.component.html',
+    selector: 'app-custom-password-input',
+    imports: [ReactiveFormsModule, TranslateModule],
+    templateUrl: './custom-password-input.component.html'
 })
 export class CustomPasswordInputComponent {
   constructor(private formDirective: FormGroupDirective) {}

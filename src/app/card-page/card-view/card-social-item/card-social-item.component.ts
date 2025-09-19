@@ -7,10 +7,9 @@ type SocialItem = {
 };
 
 @Component({
-  selector: 'app-card-social-item',
-  standalone: true,
-  imports: [],
-  templateUrl: './card-social-item.component.html',
+    selector: 'app-card-social-item',
+    imports: [],
+    templateUrl: './card-social-item.component.html'
 })
 export class CardSocialItemComponent {
   constructor(private clipboardService: ClipboardService) {}

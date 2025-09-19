@@ -6,10 +6,9 @@ import { ErrorService } from '../../../services/error.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-google-auth-button',
-  standalone: true,
-  imports: [TranslateModule],
-  templateUrl: './google-auth-button.component.html',
+    selector: 'app-google-auth-button',
+    imports: [TranslateModule],
+    templateUrl: './google-auth-button.component.html'
 })
 export class GoogleAuthButtonComponent {
   constructor(

@@ -3,10 +3,9 @@ import { Component, Input } from '@angular/core';
 export type SpinnerSize = 'small' | 'normal' | 'big';
 
 @Component({
-  selector: 'app-spinner',
-  standalone: true,
-  imports: [],
-  templateUrl: './spinner.component.html',
+    selector: 'app-spinner',
+    imports: [],
+    templateUrl: './spinner.component.html'
 })
 export class SpinnerComponent {
   @Input() size: SpinnerSize = 'small';

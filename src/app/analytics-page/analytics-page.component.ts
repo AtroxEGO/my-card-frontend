@@ -31,18 +31,17 @@ type AnalyticsData = {
 };
 
 @Component({
-  selector: 'app-analytics-page',
-  standalone: true,
-  imports: [
-    ChartComponent,
-    DividerComponent,
-    SpinnerComponent,
-    ErrorComponent,
-    QRCodeModule,
-    ScopeSelectComponent,
-    TranslateModule,
-  ],
-  templateUrl: './analytics-page.component.html',
+    selector: 'app-analytics-page',
+    imports: [
+        ChartComponent,
+        DividerComponent,
+        SpinnerComponent,
+        ErrorComponent,
+        QRCodeModule,
+        ScopeSelectComponent,
+        TranslateModule,
+    ],
+    templateUrl: './analytics-page.component.html'
 })
 export class AnalyticsPageComponent {
   constructor(

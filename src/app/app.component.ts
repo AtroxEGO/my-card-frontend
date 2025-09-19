@@ -7,17 +7,16 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  templateUrl: './app.component.html',
-  imports: [
-    RouterOutlet,
-    HeaderComponent,
-    FooterComponent,
-    ReactiveFormsModule,
-    TranslateModule,
-  ],
-  providers: [],
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    imports: [
+        RouterOutlet,
+        HeaderComponent,
+        FooterComponent,
+        ReactiveFormsModule,
+        TranslateModule,
+    ],
+    providers: []
 })
 export class AppComponent {
   constructor(

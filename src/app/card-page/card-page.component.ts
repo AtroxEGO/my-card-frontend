@@ -14,16 +14,15 @@ import { TranslateService } from '@ngx-translate/core';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 @Component({
-  selector: 'app-card-page',
-  standalone: true,
-  imports: [
-    CommonModule,
-    DividerComponent,
-    CardViewComponent,
-    ErrorComponent,
-    SpinnerComponent,
-  ],
-  templateUrl: './card-page.component.html',
+    selector: 'app-card-page',
+    imports: [
+        CommonModule,
+        DividerComponent,
+        CardViewComponent,
+        ErrorComponent,
+        SpinnerComponent,
+    ],
+    templateUrl: './card-page.component.html'
 })
 export class CardPageComponent {
   cardId: string = '';

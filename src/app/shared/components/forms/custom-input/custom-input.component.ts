@@ -7,10 +7,9 @@ import {
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-custom-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, TranslateModule],
-  templateUrl: './custom-input.component.html',
+    selector: 'app-custom-input',
+    imports: [ReactiveFormsModule, TranslateModule],
+    templateUrl: './custom-input.component.html'
 })
 export class CustomInputComponent {
   constructor(private formDirective: FormGroupDirective) {}

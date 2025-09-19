@@ -6,10 +6,9 @@ import {
 } from '@angular/forms';
 
 @Component({
-  selector: 'app-custom-textarea',
-  standalone: true,
-  imports: [ReactiveFormsModule],
-  templateUrl: './custom-textarea.component.html',
+    selector: 'app-custom-textarea',
+    imports: [ReactiveFormsModule],
+    templateUrl: './custom-textarea.component.html'
 })
 export class CustomTextareaComponent {
   constructor(private formDirective: FormGroupDirective) {}

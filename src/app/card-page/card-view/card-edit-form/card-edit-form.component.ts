@@ -20,20 +20,19 @@ import { TranslateModule } from '@ngx-translate/core';
 import { LoadingButtonComponent } from '../../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
-  selector: 'app-card-edit-form',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    CustomInputComponent,
-    CustomTextareaComponent,
-    DividerComponent,
-    CustomFileInputComponent,
-    CommonModule,
-    CardEditSocialComponent,
-    TranslateModule,
-    LoadingButtonComponent,
-  ],
-  templateUrl: './card-edit-form.component.html',
+    selector: 'app-card-edit-form',
+    imports: [
+        ReactiveFormsModule,
+        CustomInputComponent,
+        CustomTextareaComponent,
+        DividerComponent,
+        CustomFileInputComponent,
+        CommonModule,
+        CardEditSocialComponent,
+        TranslateModule,
+        LoadingButtonComponent,
+    ],
+    templateUrl: './card-edit-form.component.html'
 })
 export class CardEditFormComponent {
   constructor(

@@ -5,10 +5,9 @@ import { TranslateModule } from '@ngx-translate/core';
 export type PeriodOptions = '24h' | '7d' | '1m' | '1y';
 
 @Component({
-  selector: 'app-scope-select',
-  standalone: true,
-  imports: [ScopeSelectBtnComponent, TranslateModule],
-  templateUrl: './scope-select.component.html',
+    selector: 'app-scope-select',
+    imports: [ScopeSelectBtnComponent, TranslateModule],
+    templateUrl: './scope-select.component.html'
 })
 export class ScopeSelectComponent {
   @Input() selected: PeriodOptions = '1m';

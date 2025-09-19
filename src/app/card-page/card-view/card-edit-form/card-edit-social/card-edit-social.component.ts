@@ -17,10 +17,9 @@ type Social = {
 };
 
 @Component({
-  selector: 'app-card-edit-social',
-  standalone: true,
-  imports: [CommonModule, CustomInputComponent, TranslateModule],
-  templateUrl: './card-edit-social.component.html',
+    selector: 'app-card-edit-social',
+    imports: [CommonModule, CustomInputComponent, TranslateModule],
+    templateUrl: './card-edit-social.component.html'
 })
 export class CardEditSocialComponent {
   constructor(

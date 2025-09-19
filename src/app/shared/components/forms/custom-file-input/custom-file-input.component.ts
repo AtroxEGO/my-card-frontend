@@ -3,10 +3,9 @@ import { FormControl, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
-  selector: 'app-custom-file-input',
-  standalone: true,
-  imports: [ReactiveFormsModule, TranslateModule],
-  templateUrl: './custom-file-input.component.html',
+    selector: 'app-custom-file-input',
+    imports: [ReactiveFormsModule, TranslateModule],
+    templateUrl: './custom-file-input.component.html'
 })
 export class CustomFileInputComponent {
   @Input() withPreview: Boolean = true;

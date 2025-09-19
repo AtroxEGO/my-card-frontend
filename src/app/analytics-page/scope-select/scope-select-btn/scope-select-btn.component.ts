@@ -1,10 +1,9 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-scope-select-btn',
-  standalone: true,
-  imports: [],
-  templateUrl: './scope-select-btn.component.html',
+    selector: 'app-scope-select-btn',
+    imports: [],
+    templateUrl: './scope-select-btn.component.html'
 })
 export class ScopeSelectBtnComponent {
   @Input() selected!: boolean;

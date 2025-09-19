@@ -3,10 +3,9 @@ import { SafeUrl } from '@angular/platform-browser';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ClipboardService } from 'ngx-clipboard';
 @Component({
-  selector: 'app-card-share',
-  standalone: true,
-  imports: [QRCodeModule],
-  templateUrl: './card-share.component.html',
+    selector: 'app-card-share',
+    imports: [QRCodeModule],
+    templateUrl: './card-share.component.html'
 })
 export class CardShareComponent {
   constructor(private clipboardService: ClipboardService) {}
