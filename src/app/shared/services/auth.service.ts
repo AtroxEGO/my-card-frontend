@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { shareReplay } from 'rxjs';
 import { environment } from '../../../environments/environment';
-import { tap } from 'rxjs/operators';
 import { jwtDecode } from 'jwt-decode';
 import moment from 'moment';
 import { CookieService } from 'ngx-cookie-service';
@@ -49,6 +48,9 @@ export class AuthService {
   }
 
   signOut() {
+    console.warn(this.cookieSerivce.get('sessionToken'));
+    console.warn('removing token');
+
     this.cookieSerivce.delete('sessionToken', '/', this.getCookieDomain());
     this.cookieSerivce.delete('sessionToken');
     this.cookieSerivce.deleteAll('/', '.polakiewicz.online');
@@ -58,6 +60,8 @@ export class AuthService {
     this.cookieSerivce.delete('sessionToken');
     this.cookieSerivce.deleteAll('/', '.polakiewicz.online');
     this.cookieSerivce.delete('sessionToken', '/');
+    console.warn('token removed');
+    console.warn(this.cookieSerivce.get('sessionToken'));
   }
 
   isLoggedIn() {
