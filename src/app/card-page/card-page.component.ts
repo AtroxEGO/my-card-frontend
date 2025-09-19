@@ -3,26 +3,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 
 import { Card, CardService } from '../shared/services/card.service';
 import { CommonModule } from '@angular/common';
-import { DividerComponent } from '../shared/components/divider/divider.component';
 import { CardViewComponent } from './card-view/card-view.component';
 import { ErrorComponent } from '../shared/components/error/error.component';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
-import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
+import { CardErrorCodes } from '../shared/errors/errorCodes';
 import { ErrorService } from '../shared/services/error.service';
 import { TranslateService } from '@ngx-translate/core';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 
 @Component({
-    selector: 'app-card-page',
-    imports: [
-        CommonModule,
-        DividerComponent,
-        CardViewComponent,
-        ErrorComponent,
-        SpinnerComponent,
-    ],
-    templateUrl: './card-page.component.html'
+  selector: 'app-card-page',
+  imports: [CommonModule, CardViewComponent, ErrorComponent, SpinnerComponent],
+  templateUrl: './card-page.component.html',
 })
 export class CardPageComponent {
   cardId: string = '';

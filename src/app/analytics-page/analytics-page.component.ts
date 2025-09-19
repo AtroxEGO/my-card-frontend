@@ -1,19 +1,17 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { ChartComponent } from './chart/chart.component';
 import { AuthService } from '../shared/services/auth.service';
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { DividerComponent } from '../shared/components/divider/divider.component';
-import { Observable } from 'rxjs';
 import { SpinnerComponent } from '../shared/components/spinner/spinner.component';
 import { ErrorComponent } from '../shared/components/error/error.component';
-import { QRCodeComponent, QRCodeModule } from 'angularx-qrcode';
-import { SafeUrl, Title } from '@angular/platform-browser';
+import { Title } from '@angular/platform-browser';
 import {
   PeriodOptions,
   ScopeSelectComponent,
 } from './scope-select/scope-select.component';
-import { CardErrorCodes, GeneralErrorCodes } from '../shared/errors/errorCodes';
+import { CardErrorCodes } from '../shared/errors/errorCodes';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { ErrorService } from '../shared/services/error.service';
 
@@ -31,17 +29,16 @@ type AnalyticsData = {
 };
 
 @Component({
-    selector: 'app-analytics-page',
-    imports: [
-        ChartComponent,
-        DividerComponent,
-        SpinnerComponent,
-        ErrorComponent,
-        QRCodeModule,
-        ScopeSelectComponent,
-        TranslateModule,
-    ],
-    templateUrl: './analytics-page.component.html'
+  selector: 'app-analytics-page',
+  imports: [
+    ChartComponent,
+    DividerComponent,
+    SpinnerComponent,
+    ErrorComponent,
+    ScopeSelectComponent,
+    TranslateModule,
+  ],
+  templateUrl: './analytics-page.component.html',
 })
 export class AnalyticsPageComponent {
   constructor(

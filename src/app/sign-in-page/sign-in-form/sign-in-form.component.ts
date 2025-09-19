@@ -2,12 +2,7 @@ import { CustomPasswordInputComponent } from '../../shared/components/forms/cust
 import { Component } from '@angular/core';
 import { CustomInputComponent } from '../../shared/components/forms/custom-input/custom-input.component';
 import { DividerComponent } from '../../shared/components/divider/divider.component';
-import {
-  FormBuilder,
-  FormControl,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from '../../shared/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -17,22 +12,20 @@ import { ErrorService } from '../../shared/services/error.service';
 import { TranslateModule } from '@ngx-translate/core';
 import { requiredValidator } from '../../shared/validators/required.directive';
 import { emailValidator } from '../../shared/validators/email.directive';
-import { SpinnerComponent } from '../../shared/components/spinner/spinner.component';
 import { LoadingButtonComponent } from '../../shared/components/forms/loading-button/loading-button.component';
 
 @Component({
-    selector: 'app-sign-in-form',
-    templateUrl: './sign-in-form.component.html',
-    imports: [
-        DividerComponent,
-        CustomPasswordInputComponent,
-        CustomInputComponent,
-        ReactiveFormsModule,
-        GoogleAuthButtonComponent,
-        TranslateModule,
-        SpinnerComponent,
-        LoadingButtonComponent,
-    ]
+  selector: 'app-sign-in-form',
+  templateUrl: './sign-in-form.component.html',
+  imports: [
+    DividerComponent,
+    CustomPasswordInputComponent,
+    CustomInputComponent,
+    ReactiveFormsModule,
+    GoogleAuthButtonComponent,
+    TranslateModule,
+    LoadingButtonComponent,
+  ],
 })
 export class SignInFormComponent {
   constructor(

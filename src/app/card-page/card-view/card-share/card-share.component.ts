@@ -1,15 +1,15 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { SafeUrl } from '@angular/platform-browser';
-import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeComponent } from 'angularx-qrcode';
 import { ClipboardService } from 'ngx-clipboard';
 @Component({
-    selector: 'app-card-share',
-    imports: [QRCodeModule],
-    templateUrl: './card-share.component.html'
+  selector: 'app-card-share',
+  imports: [QRCodeComponent],
+  templateUrl: './card-share.component.html',
 })
 export class CardShareComponent {
-  constructor(private clipboardService: ClipboardService) {}
   @Output() cardClosed = new EventEmitter();
+  private clipboardService = inject(ClipboardService);
   cardURL = window.location.href;
   qrCodeDownloadURL: SafeUrl = '';
   copyButtonText = 'Copy URL';

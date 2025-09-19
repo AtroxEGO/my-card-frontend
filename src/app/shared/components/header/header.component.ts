@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
 import { Router } from '@angular/router';
 import { NavigationEnd } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
@@ -8,9 +7,9 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { CookieService } from 'ngx-cookie-service';
 
 @Component({
-    selector: 'app-header',
-    templateUrl: './header.component.html',
-    imports: [RouterLink, HeaderButtonComponent, TranslateModule]
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  imports: [HeaderButtonComponent, TranslateModule],
 })
 export class HeaderComponent {
   currentUrl!: string;
